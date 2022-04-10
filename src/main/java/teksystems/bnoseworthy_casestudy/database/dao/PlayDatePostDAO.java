@@ -12,17 +12,9 @@ import java.util.List;
 @Repository
 public interface PlayDatePostDAO extends JpaRepository<PlayDatePost, Long> {
 
-    public User findById(@Param("id") Integer id);
+    public PlayDatePost findById(@Param("id") Integer id);
 
 
 
 
-
-    public List<User> findByFirstNameAndLastName(@Param("firstName") String firstName, @Param("lastName") String lastName);
-
-    public List<User> findByFirstNameContainingIgnoreCase(@Param("firstName") String firstName);
-
-    // sample query
-//    @Query(value = "select u from User u where u.password =: pw")
-//    public List<User> getByPassword(@Param("pw") String pw);
 }

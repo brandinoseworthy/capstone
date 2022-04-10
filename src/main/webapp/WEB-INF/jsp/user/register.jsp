@@ -43,6 +43,23 @@
     </c:forEach>
     <br>
     <br>
+
+
+
+    <br>
+    Child First Name <input type="text" name="childFirstName" id="childFirstNamId" value="${childForm.childFirstName}">
+    <br>
+    Child Last Name <input type="text" name="childLastName" id="childLastNameId" value="${childForm.childLastName}">
+    <br>
+    Child Age <input type="number" name="childAge" id="childAgeId" value="${childForm.childAge}">
+    <br>
+    <input type="hidden" name="user_id" value="${childForm.userId}" >
+    <br>
+    <br>
+
+
+
+
     Optional:
     <br>
     Quick Description <input type="text" name="description" id="descriptionId" value="${form.description}">

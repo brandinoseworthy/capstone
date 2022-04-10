@@ -22,7 +22,7 @@ public class RegisterFormBean {
 
     @EmailUnique(message = "Email already exists in the database")
     @NotBlank(message = "Email is required")
-    @Pattern(regexp = "^[a-z0-9]+@[a-z]+\\.[a-z]{2,3}", message="Email format invalid with regex")
+    @Pattern(regexp = "^[A-Za-z0-9+_.-]+@(.+)$", message="Email format invalid with regex")
     private String email;
 
     @NotBlank(message = "First Name is required")
@@ -40,6 +40,17 @@ public class RegisterFormBean {
 
     @NotBlank(message = "Zip Code is required")
     private String zip;
+
+
+//    private String childFirstName;
+//
+//    private String childLastName;
+//
+//    private Integer childAge;
+//
+//    private Integer userId;
+
+
 
     private String description;
 

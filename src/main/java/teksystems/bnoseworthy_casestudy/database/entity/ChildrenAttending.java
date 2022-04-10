@@ -21,9 +21,9 @@ public class ChildrenAttending {
     private Integer id;
 
     @Column(name = "child_id")
-    private Date childId;
+    private Integer childId;
 
     @Column(name = "post_id")
-    private String postId;
+    private Integer postId;
 
 }

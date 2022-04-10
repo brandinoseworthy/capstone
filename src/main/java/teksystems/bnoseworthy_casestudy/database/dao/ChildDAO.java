@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import teksystems.bnoseworthy_casestudy.database.entity.Child;
 import teksystems.bnoseworthy_casestudy.database.entity.User;
 
+import javax.persistence.JoinColumn;
 import java.util.List;
 
 

@@ -9,8 +9,11 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import teksystems.bnoseworthy_casestudy.database.dao.ChildDAO;
 import teksystems.bnoseworthy_casestudy.database.dao.UserDAO;
+import teksystems.bnoseworthy_casestudy.database.entity.Child;
 import teksystems.bnoseworthy_casestudy.database.entity.User;
+import teksystems.bnoseworthy_casestudy.formbean.AddChildFormBean;
 import teksystems.bnoseworthy_casestudy.formbean.RegisterFormBean;
 
 import javax.validation.Valid;
@@ -23,6 +26,9 @@ public class UserController {
 
     @Autowired
     private UserDAO userDao;
+
+    @Autowired
+    private ChildDAO childDao;
 
 
     @RequestMapping(value = "/user/register", method = RequestMethod.GET)
@@ -37,7 +43,7 @@ public class UserController {
 
 
     @RequestMapping(value = "/user/registerSubmit", method = {RequestMethod.POST, RequestMethod.GET})
-    public ModelAndView registerSubmit(@Valid RegisterFormBean form, BindingResult bindingResult) throws Exception {
+    public ModelAndView registerSubmit(@Valid RegisterFormBean form, AddChildFormBean childForm, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
 
 
@@ -78,10 +84,20 @@ public class UserController {
         user.setDescription(form.getDescription());
         user.setFavoritePlaceForPlaydates(form.getFavoritePlaceForPlaydates());
 
-
         userDao.save(user);
 
         log.info(form.toString());
+
+        Child child = new Child();
+
+        child.setFirstName(childForm.getChildFirstName());
+        child.setLastName(childForm.getChildLastName());
+        child.setAge(childForm.getChildAge());
+        child.setUserId(user.getId());
+
+        childDao.save(child);
+
+        log.info(childForm.toString());
 
         response.setViewName("redirect:/user/edit/" + user.getId());
 
