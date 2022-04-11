@@ -17,7 +17,9 @@
     <a href="/index">Index</a> &nbsp; | &nbsp;
     <a href="/user/register">Sign Up</a> &nbsp;| &nbsp;
     <a href="/user/search">Search</a> &nbsp;| &nbsp;&nbsp;
-    <a href="/user/playdatePost">Playdate Post</a> &nbsp;| &nbsp;
+    <a href="/user/playdatePost">Playdate Post</a> &nbsp;|&nbsp;&nbsp;
+    <a href="/user/userPlaydatePosts">User Posts</a> &nbsp;| &nbsp;&nbsp;
+
 
 
 
