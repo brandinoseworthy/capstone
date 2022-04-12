@@ -19,6 +19,7 @@
     <a href="/user/search">Search</a> &nbsp;| &nbsp;&nbsp;
     <a href="/user/playdatePost">Playdate Post</a> &nbsp;|&nbsp;&nbsp;
     <a href="/user/userPlaydatePosts">User Posts</a> &nbsp;| &nbsp;&nbsp;
+    <a href="/login/logout">Logout</a> |
 
 
 
