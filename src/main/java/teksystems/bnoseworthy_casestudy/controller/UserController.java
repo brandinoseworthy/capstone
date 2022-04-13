@@ -27,7 +27,6 @@ import java.util.List;
 
 @Slf4j
 @Controller
-@PreAuthorize("hasAnyAuthority('ADMIN', 'USER')")
 public class UserController {
 
     @Autowired
@@ -46,10 +45,10 @@ public class UserController {
 
 
 
-    @RequestMapping(value = "/user/register", method = RequestMethod.GET)
+    @RequestMapping(value = "/login/register", method = RequestMethod.GET)
     public ModelAndView register() throws Exception {
         ModelAndView response = new ModelAndView();
-        response.setViewName("user/register");
+        response.setViewName("login/register");
 
 
 
@@ -57,7 +56,7 @@ public class UserController {
     }
 
 
-    @RequestMapping(value = "/user/registerSubmit", method = {RequestMethod.POST, RequestMethod.GET})
+    @RequestMapping(value = "/login/registerSubmit", method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView registerSubmit(@Valid RegisterFormBean form, AddChildFormBean childForm, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
 
@@ -83,7 +82,7 @@ public class UserController {
             response.addObject("bindingResult", bindingResult);
 
 
-            response.setViewName("user/register");
+            response.setViewName("login/register");
             return response;
         }
 
@@ -137,7 +136,7 @@ public class UserController {
     @GetMapping(value = "/user/edit/{userId}")
     public ModelAndView editUser(@PathVariable("userId") Integer userId) throws Exception {
         ModelAndView response = new ModelAndView();
-        response.setViewName("user/register");
+        response.setViewName("login/register");
 
         User user = userDao.findById(userId);
         Child child = childDao.findByUserId(userId);
@@ -189,7 +188,7 @@ public class UserController {
 
 
 
-//    Takes You to the User Profile After Login
+    //    Takes You to the User Profile After Login
     @GetMapping(value = "/user/profile")
     public ModelAndView profile(@RequestParam(name = "searchId", required = false, defaultValue = "") String searchFirstName){
         ModelAndView response = new ModelAndView();
@@ -200,7 +199,7 @@ public class UserController {
     }
 
 
-    }
+}
 
 
 

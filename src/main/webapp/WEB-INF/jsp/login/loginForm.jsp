@@ -24,7 +24,6 @@
 <%--</form>--%>
 
 
-
 <section  class="clear" style="background-color: #9A616D; clear: both">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -53,19 +52,19 @@
                                     <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
 
                                     <div class="form-outline mb-4">
-<%--                                        Username : <input type="text" name="username">--%>
+                                        <%--                                        Username : <input type="text" name="username">--%>
                                         <input type="text" id="form2Example17" class="form-control form-control-lg" name="username"/>
                                         <label class="form-label" for="form2Example17">Email address</label>
                                     </div>
 
                                     <div class="form-outline mb-4">
-<%--                                            Password : <input type="text" name="password">  --%>
+                                        <%--                                            Password : <input type="text" name="password">  --%>
                                         <input type="text" id="form2Example27" class="form-control form-control-lg" name="password" />
                                         <label class="form-label" for="form2Example27">Password</label>
                                     </div>
 
                                     <div class="pt-1 mb-4">
-<%--                                        <button type="submit"> Submit </button>--%>
+                                        <%--                                        <button type="submit"> Submit </button>--%>
                                         <button class="btn btn-dark btn-lg btn-block" type="submit" style="background-color: #f38181">Login</button>
                                     </div>
                                     <a class="small text-muted" href="#!">Forgot password?</a>
