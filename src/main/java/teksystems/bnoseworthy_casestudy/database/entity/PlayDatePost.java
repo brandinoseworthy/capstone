@@ -43,4 +43,13 @@ public class PlayDatePost {
     @JoinColumn(name = "user_id", nullable = false, insertable = false, updatable = false)
     private User user;
 
+
+
+
+
+    @ToString.Exclude
+    @OneToMany
+    @JoinColumn(name = "id")
+    private Set<PlayDatePost> playDatePosts;
+
 }

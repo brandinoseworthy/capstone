@@ -22,6 +22,8 @@ import java.util.List;
 
         public List<Child> findByFirstNameContainingIgnoreCase(@Param("firstName") String firstName);
 
+        public Child findByUserId(@Param("user_Id") Integer userId);
+
 
 
     }

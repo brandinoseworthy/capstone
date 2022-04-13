@@ -54,6 +54,10 @@ public class User {
     @JoinColumn(name = "id")
     private Set<User> users;
 
+
+
+
+
     @ToString.Exclude
     @OneToMany
     @JoinColumn(name = "id")

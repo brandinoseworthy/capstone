@@ -4,10 +4,10 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 
-
-    @Getter
+@Getter
     @Setter
     @ToString
     @EqualsAndHashCode
@@ -38,6 +38,12 @@ import java.util.Date;
 
         @Column(name = "user_id")
         private Integer userId;
+
+
+        @ToString.Exclude
+        @OneToMany
+        @JoinColumn(name = "id")
+        private Set<Child> children;
     }
 
 

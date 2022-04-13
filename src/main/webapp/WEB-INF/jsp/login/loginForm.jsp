@@ -2,6 +2,16 @@
 
 <jsp:include page="../include/header.jsp" />
 
+    <c:if test="${empty form.id}">
+<%--    <h2 style="color: #95e1d3">You can now login, your account has been created! </h2>--%>
+    </c:if>
+
+    <c:if test="${not empty form.id}"></c:if>
+
+
+<%--    <h1>You Account has been created!</h1>--%>
+<%--    <h2>Please login!</h2>--%>
+
 <%--<form action="/login/loginSubmit" method="POST">--%>
 
 <%--    Username : <input type="text" name="username">--%>
@@ -15,7 +25,7 @@
 
 
 
-<section class="vh-100" style="background-color: #9A616D;">
+<section  class="clear" style="background-color: #9A616D; clear: both">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-xl-10">
@@ -30,9 +40,12 @@
 
                                 <form action="/login/loginSubmit" method="POST">
 
+
+
+
                                     <div class="d-flex align-items-center mb-3 pb-1">
                                         <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-                                        <span class="h1 fw-bold mb-0">PlayDates <h4>Let kids be kids WITH Kids!</h4></span>
+                                        <span class="h1 fw-bold mb-0" style="color: rgba(243,129,129,.9);">PlayDates <h4 style="color: rgba(243,129,129,.9);">Let kids be kids WITH Kids!</h4></span>
                                     </div>
 
 
@@ -53,14 +66,14 @@
 
                                     <div class="pt-1 mb-4">
 <%--                                        <button type="submit"> Submit </button>--%>
-                                        <button class="btn btn-dark btn-lg btn-block" type="submit">Login</button>
+                                        <button class="btn btn-dark btn-lg btn-block" type="submit" style="background-color: #f38181">Login</button>
                                     </div>
-
                                     <a class="small text-muted" href="#!">Forgot password?</a>
+                                    <br>
+                                    <br>
                                     <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="/user/register"
                                                                                                               style="color: #393f81;">Register here</a></p>
-                                    <a href="#!" class="small text-muted">Terms of use.</a>
-                                    <a href="#!" class="small text-muted">Privacy policy</a>
+
                                 </form>
 
                             </div>

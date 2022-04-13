@@ -98,7 +98,7 @@
 
                                     <div class="d-flex align-items-center mb-3 pb-1">
                                         <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-                                        <span class="h1 fw-bold mb-0">Create An Account</span>
+                                        <span  class="h1 fw-bold mb-0" style="color: rgba(243,129,129,.9);" >Create An Account</span>
                                     </div>
 
 
@@ -191,6 +191,9 @@
 <%--                                        Child First Name <input type="text" name="childFirstName" id="childFirstNamId" value="${childForm.childFirstName}">--%>
                                         <input type="text" id="form2Example27" class="form-control form-control-lg" name="childFirstName" id="childFirstNamId" value="${childForm.childFirstName}" placeholder="Child First Name"/>
 <%--                                        <label class="form-label" for="form2Example27">Child First Name</label>--%>
+                                        <c:forEach items='${bindingResult.getFieldErrors("childFirstName")}' var="error">
+                                            <div style="color: red">${error.getDefaultMessage()}</div>
+                                        </c:forEach>
                                     </div>
 
                                     <div class="form-outline mb-4">
@@ -204,7 +207,9 @@
 <%--                                        Child Age <input type="number" name="childAge" id="childAgeId" value="${childForm.childAge}">--%>
                                         <input type="number" id="form2Example27" class="form-control form-control-lg" name="childAge" id="childAgeId" value="${childForm.childAge}" placeholder="Child Age"/>
 <%--                                        <label class="form-label" for="form2Example27">Child Age</label>--%>
-
+                                        <c:forEach items='${bindingResult.getFieldErrors("childAge")}' var="error">
+                                            <div style="color: red">${error.getDefaultMessage()}</div>
+                                        </c:forEach>
 
                                         <input type="hidden" name="user_id" value="${childForm.userId}" >
 
@@ -234,20 +239,21 @@
 
 <%--                                        <button type="submit"> Submit</button>--%>
 
-                                        <button class="btn btn-dark btn-lg btn-block" type="submit">Create Account</button>
+                                        <button class="btn btn-dark btn-lg btn-block" type="submit" style="background-color: #f38181">Create Account</button>
                                     </div>
 
 
-                                    <input type="checkbox" name="checkbox">
+                                    <input type="checkbox" name="checkbox" style="display: inline-block;">
                                     <c:forEach items='${bindingResult.getFieldErrors("checkbox")}' var="error">
                                         <div style="color: red">${error.getDefaultMessage()}</div>
                                     </c:forEach>
                                     <a href="#!" class="small text-muted">Terms of use.</a>
-                                     <input type="checkbox" name="checkbox">
+                                     <input type="checkbox" name="checkbox" style="display: inline-block;">
                                     <c:forEach items='${bindingResult.getFieldErrors("checkbox")}' var="error">
                                         <div style="color: red">${error.getDefaultMessage()}</div>
                                     </c:forEach>
                                     <a href="#!" class="small text-muted">Privacy policy</a>
+
                                 </form>
 
 

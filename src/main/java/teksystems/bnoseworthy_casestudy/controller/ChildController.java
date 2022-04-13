@@ -47,6 +47,8 @@ public class ChildController {
         ModelAndView response = new ModelAndView();
         response.setViewName("child/search");
         log.info(String.valueOf(searchByAge));
+
+
 //        String search = "a";
 
         // very basic example of error checking
