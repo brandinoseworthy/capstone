@@ -3,6 +3,9 @@ package teksystems.bnoseworthy_casestudy.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -18,7 +21,9 @@ import teksystems.bnoseworthy_casestudy.database.entity.PlayDatePost;
 import teksystems.bnoseworthy_casestudy.database.entity.User;
 import teksystems.bnoseworthy_casestudy.formbean.PlayDatePostFormBean;
 
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -68,21 +73,36 @@ public class PlaydatePostController {
             return response;
         }
 
-        PlayDatePost playDatePost = playdatePostDao.findById(form.getId());
 
-        if (playDatePost == null ) {
-            playDatePost = new PlayDatePost();
-        }
+
+        PlayDatePost playDatePost =  new PlayDatePost();
+
 
 //        playDatePost.setCreateAt(form.getCreateAt());
 //        playDatePost.setId(form.getId());
-        playDatePost.setUserId(form.getUserId());
+
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = ((UserDetails) principal).getUsername();
+
+        User user = userDao.findByEmail(username);
+
+        playDatePost.setUserId(user.getId());
         playDatePost.setPostMessage(form.getPostMessage());
         playDatePost.setLocation(form.getLocation());
 
+//        playDatePost.setPlaydateDate(form.getPlaydateDate());
+        Object date = form.getPlaydateDate();
+        String stringDate = date.toString();
+        playDatePost.setPlaydateDate(stringDate);
+
+        Object time = form.getPlaydateTime();
+        String stringTime = time.toString();
+
+        playDatePost.setPlaydateTime(stringTime);
+
         playdatePostDao.save(playDatePost);
 
-        log.info(form.toString());
+        log.info(playDatePost.toString());
 
 
         response.setViewName("success/playdatePostedSuccessfully");

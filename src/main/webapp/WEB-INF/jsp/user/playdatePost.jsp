@@ -9,12 +9,17 @@
 <%--    <input type="hidden" name="playdatePost" id="playdatePostId" value="${form.id}">--%>
 <%--    <input type="hidden" name="createAt" id="createAtId" value="${form.createAt}">--%>
     <br>
-    By: <input type="number" name="userId" id="userId" value="${form.userId}" style="display: inline-block;";>
-    <br>
+<%--    By: <input type="number" name="userId" id="userId" value="${form.userId}" style="display: inline-block;";>--%>
+<%--    <br>--%>
+
+
     New Playdate Post: <input type="jsonString" name="postMessage" id="postMessageId" value="${form.postMessage}" style="display: inline-block;";>
     <br>
     Location <input type="text" name="location" id="locationId" value="${form.location}" style="display: inline-block;";>
     <br>
+
+    Date: <input type="date"  name="playdateDate" id="playdateDateId"  style="display: inline-block;";>
+    Time:  <input type="time"  name="playdateTime" id="playdateTimeId"  style="display: inline-block;";>
     <br>
 
     <br>

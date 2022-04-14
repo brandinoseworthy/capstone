@@ -2,8 +2,10 @@ package teksystems.bnoseworthy_casestudy.database.entity;
 
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.sql.Time;
 import java.util.Date;
 import java.util.Set;
 
@@ -36,6 +38,13 @@ public class PlayDatePost {
 
     @Column(name = "user_id")
     private Integer userId;
+
+    @Column(name = "playdate_date")
+    private String playdateDate;
+
+//    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "playdate_time")
+    private String playdateTime;
 
 
     @ToString.Exclude

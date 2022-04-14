@@ -52,7 +52,7 @@
 
 
 <sec:authorize access="isAuthenticated()">
-    <a href="/user/playdatePost">Playdate Post</a> &nbsp;|&nbsp;&nbsp;
+    <a href="/user/playdatePost">+ Playdate Post</a> &nbsp;|&nbsp;&nbsp;
     </sec:authorize>
 
     <sec:authorize access="isAuthenticated()">

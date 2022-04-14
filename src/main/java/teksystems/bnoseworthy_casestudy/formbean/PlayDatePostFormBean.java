@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.Lob;
+import java.sql.Time;
 import java.util.Date;
 
 @ToString
@@ -24,6 +25,10 @@ public class PlayDatePostFormBean {
     private String location;
 
     private Integer userId;
+
+    private String playdateDate;
+
+    private String playdateTime;
 
 
 
