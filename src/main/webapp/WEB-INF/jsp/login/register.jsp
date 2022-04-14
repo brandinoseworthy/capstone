@@ -3,12 +3,15 @@
 <jsp:include page="../include/header.jsp" />
 
 <c:if test="${empty form.id}">
-    <%--    <h1>Sign Up</h1>--%>
+    <h1>Sign Up</h1>
 </c:if>
 
 <c:if test="${not empty form.id}">
-    <h1>Edit User</h1>
+    <h1>Review Information</h1>
 </c:if>
+
+<br>
+
 
 <%--<form action="/user/registerSubmit" method="get">--%>
 <%--&lt;%&ndash;    <input type="hidden" name="id" value="${form.id}" >&ndash;%&gt;--%>
@@ -94,7 +97,7 @@
                         <div class="col-md-6 col-lg-7 d-flex align-items-center">
                             <div class="card-body p-4 p-lg-5 text-black">
 
-                                <form action="/login/registerSubmit" method="get">
+                                <form  action="/login/registerSubmit" method="get">
 
                                     <div class="d-flex align-items-center mb-3 pb-1">
                                         <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
@@ -184,36 +187,37 @@
                                         </c:forEach>
                                     </div>
 
-                                    <h5 class="fw-bold mb-0 pb-3" style="letter-spacing: 1px; ">Add Child</h5>
+<%--    COMMENTED OUT CHILD--%>
+<%--                                    <h5 class="fw-bold mb-0 pb-3" style="letter-spacing: 1px; ">Add Child</h5>--%>
 
-                                    <div class="form-outline mb-4">
+<%--                                    <div class="form-outline mb-4">--%>
 
-                                        <%--                                        Child First Name <input type="text" name="childFirstName" id="childFirstNamId" value="${childForm.childFirstName}">--%>
-                                        <input type="text" id="form2Example27" class="form-control form-control-lg" name="childFirstName" id="childFirstNamId" value="${childForm.childFirstName}" placeholder="Child First Name"/>
-                                        <%--                                        <label class="form-label" for="form2Example27">Child First Name</label>--%>
-                                        <c:forEach items='${bindingResult.getFieldErrors("childFirstName")}' var="error">
-                                            <div style="color: red">${error.getDefaultMessage()}</div>
-                                        </c:forEach>
-                                    </div>
+<%--                                        &lt;%&ndash;                                        Child First Name <input type="text" name="childFirstName" id="childFirstNamId" value="${childForm.childFirstName}">&ndash;%&gt;--%>
+<%--                                        <input type="text" id="form2Example27" class="form-control form-control-lg" name="childFirstName" id="childFirstNamId" value="${childForm.childFirstName}" placeholder="Child First Name"/>--%>
+<%--                                        &lt;%&ndash;                                        <label class="form-label" for="form2Example27">Child First Name</label>&ndash;%&gt;--%>
+<%--                                        <c:forEach items='${bindingResultChild.getFieldErrors("childFirstName")}' var="error">--%>
+<%--                                            <div style="color: red">${error.getDefaultMessage()}</div>--%>
+<%--                                        </c:forEach>--%>
+<%--                                    </div>--%>
 
-                                    <div class="form-outline mb-4">
+<%--                                    <div class="form-outline mb-4">--%>
 
-                                        <%--                                        Child Last Name <input type="text" name="childLastName" id="childLastNameId" value="${childForm.childLastName}">--%>
-                                        <input type="text" id="form2Example27" class="form-control form-control-lg" type="text" name="childLastName" id="childLastNameId" value="${childForm.childLastName}" placeholder="Child Last Name"/>
-                                        <%--                                        <label class="form-label" for="form2Example27">Child Last Name</label>--%>
-                                    </div>
+<%--                                        &lt;%&ndash;                                        Child Last Name <input type="text" name="childLastName" id="childLastNameId" value="${childForm.childLastName}">&ndash;%&gt;--%>
+<%--                                        <input type="text" id="form2Example27" class="form-control form-control-lg" type="text" name="childLastName" id="childLastNameId" value="${childForm.childLastName}" placeholder="Child Last Name"/>--%>
+<%--                                        &lt;%&ndash;                                        <label class="form-label" for="form2Example27">Child Last Name</label>&ndash;%&gt;--%>
+<%--                                    </div>--%>
 
-                                    <div class="form-outline mb-4">
-                                        <%--                                        Child Age <input type="number" name="childAge" id="childAgeId" value="${childForm.childAge}">--%>
-                                        <input type="number" id="form2Example27" class="form-control form-control-lg" name="childAge" id="childAgeId" value="${childForm.childAge}" placeholder="Child Age"/>
-                                        <%--                                        <label class="form-label" for="form2Example27">Child Age</label>--%>
-                                        <c:forEach items='${bindingResult.getFieldErrors("childAge")}' var="error">
-                                            <div style="color: red">${error.getDefaultMessage()}</div>
-                                        </c:forEach>
+<%--                                    <div class="form-outline mb-4">--%>
+<%--                                        &lt;%&ndash;                                        Child Age <input type="number" name="childAge" id="childAgeId" value="${childForm.childAge}">&ndash;%&gt;--%>
+<%--                                        <input type="number" id="form2Example27" class="form-control form-control-lg" name="childAge" id="childAgeId" value="${childForm.childAge}" placeholder="Child Age"/>--%>
+<%--                                        &lt;%&ndash;                                        <label class="form-label" for="form2Example27">Child Age</label>&ndash;%&gt;--%>
+<%--                                        <c:forEach items='${bindingResultChild.getFieldErrors("childAge")}' var="error">--%>
+<%--                                            <div style="color: red">${error.getDefaultMessage()}</div>--%>
+<%--                                        </c:forEach>--%>
 
-                                        <input type="hidden" name="user_id" value="${childForm.userId}" >
+<%--                                        <input type="hidden" name="user_id" value="${childForm.userId}" >--%>
 
-                                    </div>
+<%--                                    </div>--%>
 
                                     <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Optional</h5>
 
@@ -243,18 +247,30 @@
                                     </div>
 
 
-                                    <input type="checkbox" name="checkbox" style="display: inline-block;">
-                                    <c:forEach items='${bindingResult.getFieldErrors("checkbox")}' var="error">
-                                        <div style="color: red">${error.getDefaultMessage()}</div>
-                                    </c:forEach>
+                                    <input type="checkbox" name="checkboxTermsOfUse" style="display: inline-block;">
+
                                     <a href="#!" class="small text-muted">Terms of use.</a>
-                                    <input type="checkbox" name="checkbox" style="display: inline-block;">
-                                    <c:forEach items='${bindingResult.getFieldErrors("checkbox")}' var="error">
-                                        <div style="color: red">${error.getDefaultMessage()}</div>
-                                    </c:forEach>
+
+
+
+                                    <input type="checkbox" name="checkboxPrivacy" style="display: inline-block;">
                                     <a href="#!" class="small text-muted">Privacy policy</a>
 
+                                    <br>
+                                    <br>
+
+                                    <c:forEach items='${bindingResult.getFieldErrors("checkboxTermsOfUse")}' var="error">
+                                        <div style="color: red">${error.getDefaultMessage()}</div>
+                                    </c:forEach>
+                                    <c:forEach items='${bindingResult.getFieldErrors("checkboxPrivacy")}' var="error">
+                                        <div style="color: red">${error.getDefaultMessage()}</div>
+                                    </c:forEach>
+
+
+
                                 </form>
+
+
 
 
                                 <%--                                Check Box <input type="checkbox" name="checkbox">--%>

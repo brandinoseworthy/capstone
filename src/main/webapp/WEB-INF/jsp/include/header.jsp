@@ -46,6 +46,9 @@
     <sec:authorize access="isAuthenticated()">
     <a href="/user/search">Search</a> &nbsp;| &nbsp;&nbsp;
     </sec:authorize>
+    <sec:authorize access="isAuthenticated()">
+    | <a href="/user/addChild">+ Child</a>
+    </sec:authorize>
 
 
 <sec:authorize access="isAuthenticated()">
@@ -65,7 +68,6 @@
         <sec:authentication property="principal.username" />
     </sec:authorize>
 
-    <link rel="stylesheet" href="../css/login.css" />
 
 
 

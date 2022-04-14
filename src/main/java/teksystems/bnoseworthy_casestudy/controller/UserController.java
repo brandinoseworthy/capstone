@@ -50,14 +50,14 @@ public class UserController {
         ModelAndView response = new ModelAndView();
         response.setViewName("login/register");
 
-
+        RegisterFormBean form = new RegisterFormBean();
+        response.addObject("form", form);
 
         return response;
     }
 
-
     @RequestMapping(value = "/login/registerSubmit", method = {RequestMethod.POST, RequestMethod.GET})
-    public ModelAndView registerSubmit(@Valid RegisterFormBean form, AddChildFormBean childForm, BindingResult bindingResult) throws Exception {
+    public ModelAndView registerSubmit(@Valid RegisterFormBean form, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
 
 
@@ -118,14 +118,14 @@ public class UserController {
 
         Child child = new Child();
 
-        child.setFirstName(childForm.getChildFirstName());
-        child.setLastName(childForm.getChildLastName());
-        child.setAge(childForm.getChildAge());
-        child.setUserId(user.getId());
-
-        childDao.save(child);
-
-        log.info(childForm.toString());
+//        child.setFirstName(childForm.getChildFirstName());
+//        child.setLastName(childForm.getChildLastName());
+//        child.setAge(childForm.getChildAge());
+//        child.setUserId(user.getId());
+//
+//        childDao.save(child);
+//
+//        log.info(childForm.toString());
 
 //        response.setViewName("redirect:/user/edit/" + user.getId());
 
@@ -133,7 +133,7 @@ public class UserController {
         return response;
     }
 
-    @GetMapping(value = "/user/edit/{userId}")
+    @GetMapping(value = "/login/edit/{userId}")
     public ModelAndView editUser(@PathVariable("userId") Integer userId) throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("login/register");
@@ -153,12 +153,12 @@ public class UserController {
         form.setDescription(user.getDescription());
         form.setFavoritePlaceForPlaydates(user.getFavoritePlaceForPlaydates());
 
-        childForm.setChildFirstName(child.getFirstName());
-        childForm.setChildLastName(child.getLastName());
-        childForm.setChildAge(child.getAge());
+//        childForm.setChildFirstName(child.getFirstName());
+//        childForm.setChildLastName(child.getLastName());
+//        childForm.setChildAge(child.getAge());
 
         response.addObject("form", form);
-        response.addObject("childForm", childForm);
+//        response.addObject("childForm", childForm);
 
         return response;
     }
@@ -194,6 +194,39 @@ public class UserController {
         ModelAndView response = new ModelAndView();
         response.setViewName("user/profile");
 
+
+        return response;
+    }
+
+
+
+
+    @GetMapping(value = "/user/profile/{userId}")
+    public ModelAndView userProfile(@PathVariable("userId") Integer userId) throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("/user/profile/{userId}");
+
+        User user = userDao.findById(userId);
+//        Child child = childDao.findByUserId(userId);
+
+//        RegisterFormBean form = new RegisterFormBean();
+//
+//        AddChildFormBean childForm = new AddChildFormBean();
+//
+//        form.setId(user.getId()); //this is a hidden value - used to populate in the JSP
+//        form.setEmail(user.getEmail());
+//        form.setFirstName(user.getFirstName());
+//        form.setLastName(user.getLastName());
+//        form.setZip(user.getZip());
+//        form.setDescription(user.getDescription());
+//        form.setFavoritePlaceForPlaydates(user.getFavoritePlaceForPlaydates());
+//
+////        childForm.setChildFirstName(child.getFirstName());
+////        childForm.setChildLastName(child.getLastName());
+////        childForm.setChildAge(child.getAge());
+//
+//        response.addObject("form", form);
+//        response.addObject("childForm", childForm);
 
         return response;
     }

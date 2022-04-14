@@ -4,7 +4,7 @@
 
 <form action="/user/search" method="get">
 
-    <input type="text" placeholder="${searchValue}" name="searchId">
+    <input type="text" placeholder="${searchValue}" name="searchId" style="display: inline-block;">
     <button type="submit">Submit</button>
 
 </form>

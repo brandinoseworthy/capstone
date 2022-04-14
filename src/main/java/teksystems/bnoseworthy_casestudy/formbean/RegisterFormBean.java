@@ -9,7 +9,6 @@ import teksystems.bnoseworthy_casestudy.validation.EmailUnique;
 
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
 @ToString
@@ -56,7 +55,10 @@ public class RegisterFormBean {
 
     private String favoritePlaceForPlaydates;
 
-    @AssertTrue(message = "Checkbox is required")
-    private boolean checkbox;
+    @AssertTrue(message = "***** Must read terms of use")
+    private boolean checkboxTermsOfUse;
+
+    @AssertTrue(message = "***** Must read privacy policy")
+    private boolean checkboxPrivacy;
 
 }

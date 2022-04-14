@@ -33,7 +33,7 @@
     </tr>
     <c:forEach items="${postList}" var="post">
         <tr scope="row">
-            <td>${post.createAt}</td>
+            <td >${post.createAt}</td>
             <td>${post.postMessage}</td>
             <td>${post.location}</td>
         </tr>

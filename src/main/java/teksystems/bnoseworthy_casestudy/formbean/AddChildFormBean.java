@@ -8,11 +8,11 @@ import teksystems.bnoseworthy_casestudy.database.entity.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @ToString
 @Getter
 @Setter
-
 public class AddChildFormBean {
 
 
@@ -23,8 +23,9 @@ public class AddChildFormBean {
 
     private String childLastName;
 
-    @NotBlank(message = "Child Age is required")
     private Integer childAge;
 
     private Integer userId;
+
+    private String userEmail;
 }

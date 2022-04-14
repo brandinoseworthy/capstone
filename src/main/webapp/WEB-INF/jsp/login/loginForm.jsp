@@ -6,7 +6,9 @@
 <%--    <h2 style="color: #95e1d3">You can now login, your account has been created! </h2>--%>
     </c:if>
 
-    <c:if test="${not empty form.id}"></c:if>
+<c:if test="${not empty form.id}">
+    <h1>Edit User</h1>
+</c:if>
 
 
 <%--    <h1>You Account has been created!</h1>--%>
@@ -37,7 +39,7 @@
                         <div class="col-md-6 col-lg-7 d-flex align-items-center">
                             <div class="card-body p-4 p-lg-5 text-black">
 
-                                <form action="/login/loginSubmit" method="POST">
+                                <form action="/login/loginSubmit" method="post">
 
 
 
@@ -55,12 +57,18 @@
                                         <%--                                        Username : <input type="text" name="username">--%>
                                         <input type="text" id="form2Example17" class="form-control form-control-lg" name="username"/>
                                         <label class="form-label" for="form2Example17">Email address</label>
+                                            <c:forEach items='${bindingResult.getFieldErrors("username")}' var="error">
+                                                <div style="color: red">${error.getDefaultMessage()}</div>
+                                            </c:forEach>
                                     </div>
 
                                     <div class="form-outline mb-4">
                                         <%--                                            Password : <input type="text" name="password">  --%>
-                                        <input type="text" id="form2Example27" class="form-control form-control-lg" name="password" />
+                                        <input type="password" id="form2Example27" class="form-control form-control-lg" name="password" />
                                         <label class="form-label" for="form2Example27">Password</label>
+                                            <c:forEach items='${bindingResult.getFieldErrors("password")}' var="error">
+                                                <div style="color: red">${error.getDefaultMessage()}</div>
+                                            </c:forEach>
                                     </div>
 
                                     <div class="pt-1 mb-4">
@@ -70,7 +78,7 @@
                                     <a class="small text-muted" href="#!">Forgot password?</a>
                                     <br>
                                     <br>
-                                    <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="/user/register"
+                                    <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="/login/register"
                                                                                                               style="color: #393f81;">Register here</a></p>
 
                                 </form>
