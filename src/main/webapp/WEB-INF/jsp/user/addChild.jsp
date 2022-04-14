@@ -9,7 +9,7 @@
 
 <form  action="/user/addChildSubmit" method="get">
 
-    COMMENTED OUT CHILD--%>
+
     <%--                                    <h5 class="fw-bold mb-0 pb-3" style="letter-spacing: 1px; ">Add Child</h5>--%>
 
                                         <div class="form-outline mb-4">
@@ -41,17 +41,17 @@
 
                                         </div>
 
-                                        <div class="form-outline mb-4">
-                                            <%--                                        Child Age <input type="number" name="childAge" id="childAgeId" value="${childForm.childAge}">--%>
-                                            <input type="email" id="form2Example27" class="form-control form-control-lg" name="userEmail" id="userEmailId" value="${childForm.userEmail}" placeholder="Confirm Email"/>
-                                            <%--                                        <label class="form-label" for="form2Example27">Child Age</label>--%>
-                                            <c:forEach items='${bindingResultChild.getFieldErrors("userEmail")}' var="error">
-                                                <div style="color: red">${error.getDefaultMessage()}</div>
-                                            </c:forEach>
+<%--                                        <div class="form-outline mb-4">--%>
+<%--                                            &lt;%&ndash;                                        Child Age <input type="number" name="childAge" id="childAgeId" value="${childForm.childAge}">&ndash;%&gt;--%>
+<%--                                            <input type="email" id="form2Example27" class="form-control form-control-lg" name="userEmail" id="userEmailId" value="${childForm.userEmail}" placeholder="Confirm Email"/>--%>
+<%--                                            &lt;%&ndash;                                        <label class="form-label" for="form2Example27">Child Age</label>&ndash;%&gt;--%>
+<%--                                            <c:forEach items='${bindingResultChild.getFieldErrors("userEmail")}' var="error">--%>
+<%--                                                <div style="color: red">${error.getDefaultMessage()}</div>--%>
+<%--                                            </c:forEach>--%>
 
-                                            <input type="hidden" name="user_id" value="${childForm.userId}" >
+<%--                                            <input type="hidden" name="user_id" value="${childForm.userId}" >--%>
 
-                                        </div>
+<%--                                        </div>--%>
 
                                         <button class="btn btn-dark btn-lg btn-block" type="submit" style="background-color: #f38181">Add Child</button>
                                         </div>

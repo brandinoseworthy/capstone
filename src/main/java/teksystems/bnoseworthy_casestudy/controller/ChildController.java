@@ -6,6 +6,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.taglibs.standard.lang.jstl.IntegerLiteral;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -19,6 +21,7 @@ import teksystems.bnoseworthy_casestudy.database.entity.User;
 import teksystems.bnoseworthy_casestudy.database.entity.UserRole;
 import teksystems.bnoseworthy_casestudy.formbean.AddChildFormBean;
 import teksystems.bnoseworthy_casestudy.formbean.RegisterFormBean;
+import teksystems.bnoseworthy_casestudy.security.UserDetailsServiceImpl;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -38,6 +41,9 @@ public class ChildController {
 
     @Autowired
     UserDAO userDao;
+
+    @Autowired
+    UserDetailsServiceImpl userDetailsService;
 
 
 
@@ -138,6 +144,7 @@ public class ChildController {
         return response;
     }
 
+    @PreAuthorize("hasAuthority('USER')")
     @RequestMapping(value = "/user/addChildSubmit", method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView addChildSubmit(@Valid AddChildFormBean childForm, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
@@ -176,7 +183,18 @@ public class ChildController {
         child.setLastName(childForm.getChildLastName());
         child.setAge(childForm.getChildAge());
 
-        User user = userDao.findByEmail(childForm.getUserEmail());
+//        User user = userDao.findByEmail(childForm.getUserEmail());
+
+
+
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+//        log.info((String) principal);
+
+
+            String username = ((UserDetails)principal).getUsername();
+
+            User user = userDao.findByEmail(username);
 
         child.setUserId(user.getId());
 
@@ -223,6 +241,25 @@ public class ChildController {
 //    }
 
 
+    @RequestMapping(value = "/user/userChildren", method = {RequestMethod.POST, RequestMethod.GET})
+    public ModelAndView viewUserChildren(@Valid AddChildFormBean childForm, BindingResult bindingResult) throws Exception {
+        ModelAndView response = new ModelAndView();
+
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = ((UserDetails) principal).getUsername();
+
+        User user = userDao.findByEmail(username);
+        List<Child> children = childDao.findChildrenByUserId(user.getId());
+        response.addObject("children", children);
+
+        log.info(children.toString());
+
+
+        return response;
+
+
+
+    }
 
 
 

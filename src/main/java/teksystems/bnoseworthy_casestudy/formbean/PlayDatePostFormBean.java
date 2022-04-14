@@ -12,7 +12,7 @@ import java.util.Date;
 @Getter
 @Setter
 
-public class PlayDatePostBean {
+public class PlayDatePostFormBean {
 
     private Integer id;
 

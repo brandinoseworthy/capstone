@@ -2,7 +2,6 @@ package teksystems.bnoseworthy_casestudy.controller;
 
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -15,17 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import teksystems.bnoseworthy_casestudy.database.dao.PlaydatePostDAO;
 import teksystems.bnoseworthy_casestudy.database.dao.UserDAO;
-import teksystems.bnoseworthy_casestudy.database.entity.Child;
 import teksystems.bnoseworthy_casestudy.database.entity.PlayDatePost;
 import teksystems.bnoseworthy_casestudy.database.entity.User;
-import teksystems.bnoseworthy_casestudy.formbean.AddChildFormBean;
-import teksystems.bnoseworthy_casestudy.formbean.PlayDatePostBean;
-import teksystems.bnoseworthy_casestudy.formbean.RegisterFormBean;
+import teksystems.bnoseworthy_casestudy.formbean.PlayDatePostFormBean;
 
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Slf4j
 @Controller
@@ -49,7 +43,7 @@ public class PlaydatePostController {
     }
 
     @RequestMapping(value = "/user/createplaydatePost", method = {RequestMethod.POST, RequestMethod.GET})
-    public ModelAndView createPlaydatePost(PlayDatePostBean form, BindingResult bindingResult) throws Exception {
+    public ModelAndView createPlaydatePost(PlayDatePostFormBean form, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
 
 

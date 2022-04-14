@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 @Getter
 @Setter
 
-public class LoginBean {
+public class LoginFormBean {
 
     private Integer id;
 

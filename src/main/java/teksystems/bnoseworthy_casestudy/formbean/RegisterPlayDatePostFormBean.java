@@ -5,12 +5,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Column;
-
 @ToString
 @Getter
 @Setter
-public class RegisterPlayDatePostBean {
+public class RegisterPlayDatePostFormBean {
 
     //we want to register children to a user playdate post
 

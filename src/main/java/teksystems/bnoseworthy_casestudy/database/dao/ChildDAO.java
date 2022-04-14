@@ -24,6 +24,8 @@ import java.util.List;
 
         public Child findByUserId(@Param("user_Id") Integer userId);
 
+        public List<Child> findChildrenByUserId(@Param("user_Id") Integer userId);
+
 
 
     }

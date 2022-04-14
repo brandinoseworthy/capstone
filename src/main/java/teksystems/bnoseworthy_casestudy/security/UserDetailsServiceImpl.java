@@ -68,4 +68,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return authorities;
     }
 
+    public String currentUserName(Authentication authentication) {
+        return authentication.getName();
+    }
 }
