@@ -75,6 +75,10 @@
         <sec:authentication property="principal.username" />
     </sec:authorize>
 
+    <sec:authorize access="isAuthenticated()">
+    <a href="/user/searchforplaydate">View PlaydatePosts</a>
+    </sec:authorize>
+
 
 
 

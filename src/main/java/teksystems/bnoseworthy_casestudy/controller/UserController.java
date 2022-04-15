@@ -12,9 +12,11 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import teksystems.bnoseworthy_casestudy.database.dao.ChildDAO;
+import teksystems.bnoseworthy_casestudy.database.dao.PlaydatePostDAO;
 import teksystems.bnoseworthy_casestudy.database.dao.UserDAO;
 import teksystems.bnoseworthy_casestudy.database.dao.UserRoleDAO;
 import teksystems.bnoseworthy_casestudy.database.entity.Child;
+import teksystems.bnoseworthy_casestudy.database.entity.PlayDatePost;
 import teksystems.bnoseworthy_casestudy.database.entity.User;
 import teksystems.bnoseworthy_casestudy.database.entity.UserRole;
 import teksystems.bnoseworthy_casestudy.formbean.AddChildFormBean;
@@ -37,6 +39,9 @@ public class UserController {
 
     @Autowired
     private UserRoleDAO userRoleDao;
+
+    @Autowired
+    private PlaydatePostDAO playdatePostDao;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -182,6 +187,29 @@ public class UserController {
         }
 
         response.addObject("searchValue", searchFirstName);
+
+        return response;
+    }
+
+    @GetMapping(value = "/user/searchforplaydate")
+    public ModelAndView playdateSearch(@RequestParam(name = "searchId", required = false, defaultValue = "") String searchLocation){
+        ModelAndView response = new ModelAndView();
+        response.setViewName("/user/searchforplaydate");
+        log.info(searchLocation);
+//        String search = "a";
+
+        // very basic example of error checking
+//        if ( searchFirstName != null && ! searchFirstName.equals("")){
+
+        if(!StringUtils.isBlank(searchLocation)){
+            List<PlayDatePost> playDatePosts = playdatePostDao.findPlaydatePostsByLocation(searchLocation);
+            response.addObject("playDatePosts", playDatePosts);
+
+        }else {
+            searchLocation = "Search for Location";
+        }
+
+        response.addObject("searchValue", searchLocation);
 
         return response;
     }
