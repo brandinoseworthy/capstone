@@ -21,22 +21,15 @@ public class ChildrenAttending {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "child_id")
-    private Integer childId;
-
-    @Column(name = "post_id")
-    private Integer postId;
 
 
-    @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "child_id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "child_id", nullable = false)
     private Child child;
 
-    @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "post_id", nullable = false, insertable = false, updatable = false)
-    private PlayDatePost post;
+    @JoinColumn(name = "post_id", nullable = false)
+    private PlayDatePost playdatePost;
 
 
 

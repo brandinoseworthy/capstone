@@ -56,9 +56,8 @@ public class PlayDatePost {
 
 
 
-    @ToString.Exclude
-    @OneToMany
-    @JoinColumn(name = "id")
-    private Set<PlayDatePost> playDatePosts;
+    @OneToMany(mappedBy = "playdatePost", fetch = FetchType.LAZY,
+        cascade = CascadeType.ALL)
+    private Set<ChildrenAttending> childAttending;
 
 }
