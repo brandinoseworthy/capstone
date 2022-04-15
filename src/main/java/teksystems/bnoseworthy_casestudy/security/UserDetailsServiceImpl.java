@@ -23,12 +23,17 @@ import java.util.List;
 
 @Component
 public class UserDetailsServiceImpl implements UserDetailsService {
+    private User user;
     public static final Logger LOG = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
+
     @Autowired
     private UserDAO userDao;
 
     @Autowired
     private UserRoleDAO userRoleDao;
+
+
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -71,4 +76,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public String currentUserName(Authentication authentication) {
         return authentication.getName();
     }
+
+
+
+
+
 }

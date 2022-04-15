@@ -27,8 +27,10 @@
 <table class="table">
     <tr scope="row">
         <th>Created At</th>
-        <th>Play Date Post</th>
+        <th>Playdate Post</th>
         <th>Location</th>
+        <th>Date</th>
+        <th>Time</th>
 
     </tr>
     <c:forEach items="${postList}" var="post">
@@ -36,6 +38,8 @@
             <td >${post.createAt}</td>
             <td>${post.postMessage}</td>
             <td>${post.location}</td>
+            <td>${post.playdateDate}</td>
+            <td>${post.playdateTime}</td>
         </tr>
     </c:forEach>
 </table>

@@ -47,8 +47,9 @@
     <a href="/user/search">Search</a> &nbsp;| &nbsp;&nbsp;
     </sec:authorize>
     <sec:authorize access="isAuthenticated()">
-    | <a href="/user/addChild">+ Child</a>
+    <a href="/user/userPlaydatePosts">MyPlaydatePosts</a>
     </sec:authorize>
+
 
 
 <sec:authorize access="isAuthenticated()">
@@ -64,9 +65,18 @@
 
     </sec:authorize>
 
+
+
+    <sec:authorize access="isAuthenticated()">
+    <a href="/user/addChild">+ Child</a>
+
+    </sec:authorize>
     <sec:authorize access="isAuthenticated()">
         <sec:authentication property="principal.username" />
     </sec:authorize>
+
+
+
 
 
 
