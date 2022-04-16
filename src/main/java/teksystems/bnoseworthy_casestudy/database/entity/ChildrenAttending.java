@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
+
 @Getter
 @Setter
 @ToString
@@ -22,14 +23,13 @@ public class ChildrenAttending {
     private Integer id;
 
 
-
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "child_id", nullable = false)
-    private Child child;
+    @EqualsAndHashCode.Exclude private Child childId;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "post_id", nullable = false)
-    private PlayDatePost playdatePost;
+    @EqualsAndHashCode.Exclude private PlayDatePost playdatePostId;
 
 
 

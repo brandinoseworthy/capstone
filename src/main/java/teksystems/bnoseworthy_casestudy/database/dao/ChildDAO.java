@@ -1,7 +1,6 @@
 package teksystems.bnoseworthy_casestudy.database.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import teksystems.bnoseworthy_casestudy.database.entity.Child;
@@ -14,17 +13,21 @@ import java.util.List;
     @Repository
     public interface ChildDAO extends JpaRepository<Child, Long> {
 
-        public Child findById(@Param("id") Integer id);
+         Child findById(@Param("id") Integer id);
 
-        public List<Child> findByAge(@Param("age") Integer age);
+         List<Child> findByAge(@Param("age") Integer age);
 
-        public List<Child> findByFirstNameAndLastName(@Param("firstName") String firstName, @Param("lastName") String lastName);
+         List<Child> findByFirstNameAndLastNameIgnoreCase(@Param("firstName") String firstName, @Param("lastName") String lastName);
 
-        public List<Child> findByFirstNameContainingIgnoreCase(@Param("firstName") String firstName);
 
-        public Child findByUserId(@Param("user_Id") Integer userId);
+         List<Child> findByFirstNameContainingIgnoreCase(@Param("firstName") String firstName);
 
-        public List<Child> findChildrenByUserId(@Param("user_Id") Integer userId);
+         Child findByUserId(@Param("user_Id") Integer userId);
+
+         List<Child> findAllBy();
+
+         List<Child> findChildrenByUserId(@Param("user_Id") Integer userId);
+
 
 
 

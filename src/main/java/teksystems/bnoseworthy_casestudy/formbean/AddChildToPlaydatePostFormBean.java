@@ -8,7 +8,7 @@ import lombok.ToString;
 @ToString
 @Getter
 @Setter
-public class RegisterPlayDatePostFormBean {
+public class AddChildToPlaydatePostFormBean {
 
     //we want to register children to a user playdate post
 

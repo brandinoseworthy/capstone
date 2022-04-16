@@ -11,13 +11,18 @@ import java.util.Set;
 @Repository
 public interface PlaydatePostDAO extends JpaRepository<PlayDatePost, Long> {
 
-    public PlayDatePost findById(@Param("id") Integer id);
+     PlayDatePost findById(@Param("id") Integer id);
 
 
     //find all play date posts by userId
-    public List<PlayDatePost> findUserPlaydatePostsByUserId(@Param("userId") Integer user_id);
+     List<PlayDatePost> findUserPlaydatePostsByUserId(@Param("userId") Integer user_id);
 
-    public List<PlayDatePost> findPlaydatePostsByLocation(@Param("location") String location);
+     List<PlayDatePost> findPlaydatePostsByLocation(@Param("location") String location);
+
+    List<PlayDatePost> findPlaydatePostsByLocationContainsOrderByPlaydateDateDesc(@Param("location") String location);
+
+
+
 
 
 

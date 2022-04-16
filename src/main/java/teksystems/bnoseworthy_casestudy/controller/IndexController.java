@@ -26,7 +26,7 @@ public class IndexController {
         log.info("lombok logging at info level");
         log.warn("lombok logging at warn level");
 
-        List<User> users = userDao.findByFirstName("Brandi");
+        List<User> users = userDao.findByFirstNameContainingIgnoreCase("Brandi");
 
         for ( User user : users ){
             log.debug(user.toString());

@@ -3,7 +3,10 @@ package teksystems.bnoseworthy_casestudy.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -11,17 +14,13 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import teksystems.bnoseworthy_casestudy.database.dao.ChildDAO;
-import teksystems.bnoseworthy_casestudy.database.dao.PlaydatePostDAO;
-import teksystems.bnoseworthy_casestudy.database.dao.UserDAO;
-import teksystems.bnoseworthy_casestudy.database.dao.UserRoleDAO;
-import teksystems.bnoseworthy_casestudy.database.entity.Child;
-import teksystems.bnoseworthy_casestudy.database.entity.PlayDatePost;
-import teksystems.bnoseworthy_casestudy.database.entity.User;
-import teksystems.bnoseworthy_casestudy.database.entity.UserRole;
+import teksystems.bnoseworthy_casestudy.database.dao.*;
+import teksystems.bnoseworthy_casestudy.database.entity.*;
 import teksystems.bnoseworthy_casestudy.formbean.AddChildFormBean;
+import teksystems.bnoseworthy_casestudy.formbean.AddChildToPlaydatePostFormBean;
 import teksystems.bnoseworthy_casestudy.formbean.RegisterFormBean;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.util.ArrayList;
@@ -34,14 +33,19 @@ public class UserController {
     @Autowired
     private UserDAO userDao;
 
+
     @Autowired
     private ChildDAO childDao;
+
 
     @Autowired
     private UserRoleDAO userRoleDao;
 
     @Autowired
     private PlaydatePostDAO playdatePostDao;
+
+    @Autowired
+    private ChildrenAttendingDAO childrenAttendingDAO;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -65,9 +69,6 @@ public class UserController {
     public ModelAndView registerSubmit(@Valid RegisterFormBean form, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
 
-
-//        int i = 10/0;
-
         if ( bindingResult.hasErrors() ) {
 
             List<String> errorMessages = new ArrayList<>();
@@ -80,12 +81,8 @@ public class UserController {
             }
 
             response.addObject("form", form);
-
-
-
             response.addObject("errorMessages", errorMessages);
             response.addObject("bindingResult", bindingResult);
-
 
             response.setViewName("login/register");
             return response;
@@ -100,15 +97,12 @@ public class UserController {
         user.setEmail(form.getEmail());
         user.setFirstName(form.getFirstName());
         user.setLastName(form.getLastName());
-//        user.setPassword(form.getPassword());
         user.setZip(form.getZip());
         user.setDescription(form.getDescription());
         user.setFavoritePlaceForPlaydates(form.getFavoritePlaceForPlaydates());
 
-
         String password = passwordEncoder.encode((form.getPassword()));
         user.setPassword(password);
-
 
         userDao.save(user);
 
@@ -118,39 +112,24 @@ public class UserController {
 
         userRoleDao.save(userRole);
 
-
         log.info(form.toString());
-
-        Child child = new Child();
-
-//        child.setFirstName(childForm.getChildFirstName());
-//        child.setLastName(childForm.getChildLastName());
-//        child.setAge(childForm.getChildAge());
-//        child.setUserId(user.getId());
-//
-//        childDao.save(child);
-//
-//        log.info(childForm.toString());
-
-//        response.setViewName("redirect:/user/edit/" + user.getId());
 
         response.setViewName(("redirect:/login/login"));
         return response;
     }
 
+//    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
     @GetMapping(value = "/login/edit/{userId}")
     public ModelAndView editUser(@PathVariable("userId") Integer userId) throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("login/register");
 
         User user = userDao.findById(userId);
-        Child child = childDao.findByUserId(userId);
 
         RegisterFormBean form = new RegisterFormBean();
 
-        AddChildFormBean childForm = new AddChildFormBean();
 
-        form.setId(user.getId()); //this is a hidden value - used to populate in the JSP
+        form.setId(user.getId());
         form.setEmail(user.getEmail());
         form.setFirstName(user.getFirstName());
         form.setLastName(user.getLastName());
@@ -158,25 +137,17 @@ public class UserController {
         form.setDescription(user.getDescription());
         form.setFavoritePlaceForPlaydates(user.getFavoritePlaceForPlaydates());
 
-//        childForm.setChildFirstName(child.getFirstName());
-//        childForm.setChildLastName(child.getLastName());
-//        childForm.setChildAge(child.getAge());
-
         response.addObject("form", form);
-//        response.addObject("childForm", childForm);
 
         return response;
     }
 
+//    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping(value = "/user/search")
     public ModelAndView search(@RequestParam(name = "searchId", required = false, defaultValue = "") String searchFirstName){
         ModelAndView response = new ModelAndView();
         response.setViewName("user/search");
         log.info(searchFirstName);
-//        String search = "a";
-
-        // very basic example of error checking
-//        if ( searchFirstName != null && ! searchFirstName.equals("")){
 
         if(!StringUtils.isBlank(searchFirstName)){
             List<User> users = userDao.findByFirstNameContainingIgnoreCase(searchFirstName);
@@ -191,18 +162,16 @@ public class UserController {
         return response;
     }
 
+
     @GetMapping(value = "/user/searchforplaydate")
     public ModelAndView playdateSearch(@RequestParam(name = "searchId", required = false, defaultValue = "") String searchLocation){
         ModelAndView response = new ModelAndView();
         response.setViewName("/user/searchforplaydate");
         log.info(searchLocation);
-//        String search = "a";
 
-        // very basic example of error checking
-//        if ( searchFirstName != null && ! searchFirstName.equals("")){
 
         if(!StringUtils.isBlank(searchLocation)){
-            List<PlayDatePost> playDatePosts = playdatePostDao.findPlaydatePostsByLocation(searchLocation);
+            List<PlayDatePost> playDatePosts = playdatePostDao.findPlaydatePostsByLocationContainsOrderByPlaydateDateDesc(searchLocation);
             response.addObject("playDatePosts", playDatePosts);
 
         }else {
@@ -211,8 +180,71 @@ public class UserController {
 
         response.addObject("searchValue", searchLocation);
 
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = ((UserDetails) principal).getUsername();
+
+        User user = userDao.findByEmail(username);
+
+        List<Child> userChild = childDao.findChildrenByUserId(user.getId());
+        response.addObject("userChild", userChild);
+
+        log.info(searchLocation);
+
+
+
         return response;
     }
+
+    @RequestMapping(value = "/user/playdateSearchRegisterChild",  method = {RequestMethod.POST, RequestMethod.GET})
+    public ModelAndView playdateSearchRegisterChild( @RequestParam(name = "child", required=false) Integer childId,
+            @RequestParam(name = "playdatepost", required=false) Integer playdatepostId) throws Exception {
+
+        ModelAndView response = new ModelAndView();
+        response.setViewName("user/searchforplaydate");
+
+
+
+
+        log.info(String.valueOf("Child Id " + childId));
+        log.info(String.valueOf("PlaydatePost Id " + playdatepostId));
+
+        Child child = childDao.findById(childId);
+        log.info(String.valueOf("Child is " + child));
+
+        PlayDatePost playdatePost = playdatePostDao.findById(playdatepostId);
+        log.info(String.valueOf(playdatepostId));
+        log.info("hello");
+
+
+
+
+
+
+
+        ChildrenAttending childrenAttending = new ChildrenAttending();
+        childrenAttending.setChildId(child);
+        childrenAttending.setPlaydatePostId(playdatePost);
+        log.info("hello");
+
+
+        childrenAttendingDAO.save(childrenAttending);
+
+        log.info(String.valueOf(childrenAttending));
+
+        response.setViewName("user/searchforplaydate");
+
+
+
+        return response;
+    }
+
+
+
+//
+
+
+
+
 
 
 
@@ -228,7 +260,7 @@ public class UserController {
 
 
 
-
+//    @PreAuthorize("hasAuthority('USER')")
     @GetMapping(value = "/user/profile/{userId}")
     public ModelAndView userProfile(@PathVariable("userId") Integer userId) throws Exception {
         ModelAndView response = new ModelAndView();

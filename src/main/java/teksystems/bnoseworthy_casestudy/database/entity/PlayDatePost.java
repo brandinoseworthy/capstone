@@ -46,7 +46,6 @@ public class PlayDatePost {
     @Column(name = "playdate_time")
     private String playdateTime;
 
-
     @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false, insertable = false, updatable = false)
@@ -56,7 +55,7 @@ public class PlayDatePost {
 
 
 
-    @OneToMany(mappedBy = "playdatePost", fetch = FetchType.LAZY,
+    @OneToMany(mappedBy = "playdatePostId", fetch = FetchType.LAZY,
         cascade = CascadeType.ALL)
     private Set<ChildrenAttending> childAttending;
 
