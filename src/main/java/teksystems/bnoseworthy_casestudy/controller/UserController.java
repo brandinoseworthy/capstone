@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
+@Transactional
 @Controller
 public class UserController {
 
@@ -196,7 +197,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/user/playdateSearchRegisterChild",  method = {RequestMethod.POST, RequestMethod.GET})
-    public ModelAndView playdateSearchRegisterChild( @RequestParam(name = "child", required=false) Integer childId,
+    public ModelAndView  playdateSearchRegisterChild( @RequestParam(name = "child", required=false) Integer childId,
             @RequestParam(name = "playdatepost", required=false) Integer playdatepostId) throws Exception {
 
         ModelAndView response = new ModelAndView();
@@ -208,12 +209,12 @@ public class UserController {
         log.info(String.valueOf("Child Id " + childId));
         log.info(String.valueOf("PlaydatePost Id " + playdatepostId));
 
-        Child child = childDao.findById(childId);
-        log.info(String.valueOf("Child is " + child));
-
-        PlayDatePost playdatePost = playdatePostDao.findById(playdatepostId);
-        log.info(String.valueOf(playdatepostId));
-        log.info("hello");
+//        Child child = childDao.findById(childId);
+//        log.info(String.valueOf("Child is " + child));
+//
+//        PlayDatePost playdatePost = playdatePostDao.findById(playdatepostId);
+//        log.info(String.valueOf(playdatepostId));
+//        log.info("hello");
 
 
 
@@ -222,8 +223,8 @@ public class UserController {
 
 
         ChildrenAttending childrenAttending = new ChildrenAttending();
-        childrenAttending.setChildId(child);
-        childrenAttending.setPlaydatePostId(playdatePost);
+        childrenAttending.setChildId(childDao.findById(childId));
+        childrenAttending.setPlaydatePostId(playdatePostDao.findById(playdatepostId));
         log.info("hello");
 
 

@@ -113,7 +113,6 @@
             <td>${playdateposts.playdateDate}</td>
             <td>${playdateposts.playdateTime}</td>
 
-            <td><input  type="checkbox"   name="playdatepost" id="playdatepostId"value="${playdateposts.id}" >${playdateposts.id}</td>
 
 
             <c:forEach items="${userChild}" var="userChild">
@@ -124,7 +123,9 @@
                             <input type="hidden" name="child" id="childId" value="${userChild.id}" >
                             ${userChild.firstName}
                         </button>
-                    </td>
+                <td><input  type="checkbox"   name="playdatepost" id="playdatepostId"value="${playdateposts.id}" >${playdateposts.id}</td>
+
+                </td>
 
             </form>
             </c:forEach>
