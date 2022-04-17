@@ -13,8 +13,11 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import teksystems.bnoseworthy_casestudy.database.dao.ChildDAO;
+import teksystems.bnoseworthy_casestudy.database.dao.ChildrenAttendingDAO;
+import teksystems.bnoseworthy_casestudy.database.dao.PlaydatePostDAO;
 import teksystems.bnoseworthy_casestudy.database.dao.UserDAO;
 import teksystems.bnoseworthy_casestudy.database.entity.Child;
+import teksystems.bnoseworthy_casestudy.database.entity.ChildrenAttending;
 import teksystems.bnoseworthy_casestudy.database.entity.PlayDatePost;
 import teksystems.bnoseworthy_casestudy.database.entity.User;
 import teksystems.bnoseworthy_casestudy.formbean.AddChildFormBean;
@@ -32,19 +35,13 @@ import java.util.List;
 public class ChildrenAttendingController {
 
     @Autowired
-    ChildController childController;
+    private ChildrenAttendingDAO childrenAttendingDao;
 
     @Autowired
-    ChildDAO childDao;
+    private ChildDAO childDao;
 
     @Autowired
-    UserController userController;
-
-    @Autowired
-    UserDAO userDao;
-
-    @Autowired
-    UserDetailsServiceImpl userDetailsService;
+    private PlaydatePostDAO playdatePostDao;
 
 
 
@@ -79,5 +76,49 @@ public class ChildrenAttendingController {
 //
 //        return response;
 //    }
+
+
+    @RequestMapping(value = "/user/playdateSearchRegisterChild",  method = {RequestMethod.POST, RequestMethod.GET})
+    public ModelAndView  playdateSearchRegisterChild( @RequestParam(name = "child", required=false) Integer childId,
+                                                      @RequestParam(name = "playdatepost", required=false) Integer playdatepostId) throws Exception {
+
+        ModelAndView response = new ModelAndView();
+        response.setViewName("user/searchforplaydate");
+
+
+
+        log.info(String.valueOf("Child Id " + childId));
+        log.info(String.valueOf("PlaydatePost Id " + playdatepostId));
+
+//        Child child = childDao.findById(childId);
+//        log.info(String.valueOf("Child is " + child));
+//
+//        PlayDatePost playdatePost = playdatePostDao.findById(playdatepostId);
+//        log.info(String.valueOf(playdatepostId));
+//        log.info("hello");
+
+
+
+
+
+
+
+        ChildrenAttending childrenAttending = new ChildrenAttending();
+
+
+        childrenAttending.setChild(childDao.findById(childId));
+        childrenAttending.setPlaydatePost(playdatePostDao.findById(playdatepostId));
+        log.info("hello");
+
+        childrenAttendingDao.save(childrenAttending);
+
+        log.info("here");
+
+        response.setViewName("user/searchforplaydate");
+
+
+
+        return response;
+    }
 
 }

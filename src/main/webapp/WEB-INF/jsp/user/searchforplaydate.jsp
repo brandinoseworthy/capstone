@@ -116,7 +116,7 @@
 
 
             <c:forEach items="${userChild}" var="userChild">
-            <form  action="/user/playdateSearchRegisterChild" method="get">
+            <form  action="/user/playdateSearchRegisterChild" method="post">
                     <td>
 
                         <button type="submit" >

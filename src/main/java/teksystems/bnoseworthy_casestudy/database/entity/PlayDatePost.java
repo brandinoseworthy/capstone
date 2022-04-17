@@ -2,10 +2,8 @@ package teksystems.bnoseworthy_casestudy.database.entity;
 
 
 import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.sql.Time;
 import java.util.Date;
 import java.util.Set;
 
@@ -55,7 +53,7 @@ public class PlayDatePost {
 
 
 
-    @OneToMany(mappedBy = "playdatePostId", fetch = FetchType.LAZY,
+    @OneToMany(mappedBy = "playdatePost", fetch = FetchType.LAZY,
         cascade = CascadeType.ALL)
     private Set<ChildrenAttending> childAttending;
 

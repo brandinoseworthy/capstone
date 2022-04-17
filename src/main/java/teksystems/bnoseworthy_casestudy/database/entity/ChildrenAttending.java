@@ -3,8 +3,6 @@ package teksystems.bnoseworthy_casestudy.database.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.Set;
 
 
 @Getter
@@ -25,11 +23,11 @@ public class ChildrenAttending {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "child_id", nullable = false)
-    @EqualsAndHashCode.Exclude private Child childId;
+    @EqualsAndHashCode.Exclude private Child child;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "post_id", nullable = false)
-    @EqualsAndHashCode.Exclude private PlayDatePost playdatePostId;
+    @EqualsAndHashCode.Exclude private PlayDatePost playdatePost;
 
 
 

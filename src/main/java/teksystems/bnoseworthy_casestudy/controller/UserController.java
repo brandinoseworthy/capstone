@@ -3,8 +3,6 @@ package teksystems.bnoseworthy_casestudy.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,13 +14,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import teksystems.bnoseworthy_casestudy.database.dao.*;
 import teksystems.bnoseworthy_casestudy.database.entity.*;
-import teksystems.bnoseworthy_casestudy.formbean.AddChildFormBean;
-import teksystems.bnoseworthy_casestudy.formbean.AddChildToPlaydatePostFormBean;
 import teksystems.bnoseworthy_casestudy.formbean.RegisterFormBean;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +29,6 @@ public class UserController {
     @Autowired
     private UserDAO userDao;
 
-
     @Autowired
     private ChildDAO childDao;
 
@@ -44,9 +38,7 @@ public class UserController {
 
     @Autowired
     private PlaydatePostDAO playdatePostDao;
-
-    @Autowired
-    private ChildrenAttendingDAO childrenAttendingDAO;
+;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -196,48 +188,51 @@ public class UserController {
         return response;
     }
 
-    @RequestMapping(value = "/user/playdateSearchRegisterChild",  method = {RequestMethod.POST, RequestMethod.GET})
-    public ModelAndView  playdateSearchRegisterChild( @RequestParam(name = "child", required=false) Integer childId,
-            @RequestParam(name = "playdatepost", required=false) Integer playdatepostId) throws Exception {
-
-        ModelAndView response = new ModelAndView();
-        response.setViewName("user/searchforplaydate");
-
-
-
-
-        log.info(String.valueOf("Child Id " + childId));
-        log.info(String.valueOf("PlaydatePost Id " + playdatepostId));
-
-//        Child child = childDao.findById(childId);
-//        log.info(String.valueOf("Child is " + child));
+//    @RequestMapping(value = "/user/playdateSearchRegisterChild",  method = {RequestMethod.POST, RequestMethod.GET})
+//    public ModelAndView  playdateSearchRegisterChild( @RequestParam(name = "child", required=false) Integer childId,
+//            @RequestParam(name = "playdatepost", required=false) Integer playdatepostId) throws Exception {
 //
-//        PlayDatePost playdatePost = playdatePostDao.findById(playdatepostId);
-//        log.info(String.valueOf(playdatepostId));
+//        ModelAndView response = new ModelAndView();
+//        response.setViewName("user/searchforplaydate");
+//
+//
+//
+//
+//        log.info(String.valueOf("Child Id " + childId));
+//        log.info(String.valueOf("PlaydatePost Id " + playdatepostId));
+//
+////        Child child = childDao.findById(childId);
+////        log.info(String.valueOf("Child is " + child));
+////
+////        PlayDatePost playdatePost = playdatePostDao.findById(playdatepostId);
+////        log.info(String.valueOf(playdatepostId));
+////        log.info("hello");
+//
+//
+//
+//
+//
+//
+//
+//        ChildrenAttending childrenAttending = new ChildrenAttending();
+//
+//        childrenAttending.setChild(childDao.findById(childId));
+//        childrenAttending.setPlaydatePost(playdatePostDao.findById(playdatepostId));
 //        log.info("hello");
-
-
-
-
-
-
-
-        ChildrenAttending childrenAttending = new ChildrenAttending();
-        childrenAttending.setChildId(childDao.findById(childId));
-        childrenAttending.setPlaydatePostId(playdatePostDao.findById(playdatepostId));
-        log.info("hello");
-
-
-        childrenAttendingDAO.save(childrenAttending);
-
-        log.info(String.valueOf(childrenAttending));
-
-        response.setViewName("user/searchforplaydate");
-
-
-
-        return response;
-    }
+//
+//        log.info(String.valueOf(childrenAttending));
+//
+//
+//        childrenAttendingDAO.save(childrenAttending);
+//
+//        log.info(String.valueOf(childrenAttending));
+//
+//        response.setViewName("user/searchforplaydate");
+//
+//
+//
+//        return response;
+//    }
 
 
 

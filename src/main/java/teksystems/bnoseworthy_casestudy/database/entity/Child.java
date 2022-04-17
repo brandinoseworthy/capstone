@@ -3,7 +3,6 @@ package teksystems.bnoseworthy_casestudy.database.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.Set;
 
 
@@ -39,7 +38,7 @@ import java.util.Set;
         @Column(name = "user_id")
         private Integer userId;
 
-        @OneToMany(mappedBy = "childId", fetch = FetchType.LAZY,
+        @OneToMany(mappedBy = "child", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
         private Set<ChildrenAttending> childAttending;
     }
