@@ -3,6 +3,7 @@ package teksystems.bnoseworthy_casestudy.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import teksystems.bnoseworthy_casestudy.database.dao.*;
 import teksystems.bnoseworthy_casestudy.database.entity.*;
+import teksystems.bnoseworthy_casestudy.formbean.EditUserFormBean;
 import teksystems.bnoseworthy_casestudy.formbean.RegisterFormBean;
 
 import javax.transaction.Transactional;
@@ -107,11 +109,15 @@ public class UserController {
 
         log.info(form.toString());
 
+
         response.setViewName(("redirect:/login/login"));
         return response;
     }
 
-//    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
+
+    // half working...........
+
+    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
     @GetMapping(value = "/login/edit/{userId}")
     public ModelAndView editUser(@PathVariable("userId") Integer userId) throws Exception {
         ModelAndView response = new ModelAndView();
@@ -119,11 +125,14 @@ public class UserController {
 
         User user = userDao.findById(userId);
 
-        RegisterFormBean form = new RegisterFormBean();
+
+//        RegisterFormBean form = new RegisterFormBean();
+
+        EditUserFormBean form = new EditUserFormBean();
 
 
         form.setId(user.getId());
-        form.setEmail(user.getEmail());
+//        form.setEmail(user.getEmail());
         form.setFirstName(user.getFirstName());
         form.setLastName(user.getLastName());
         form.setZip(user.getZip());
@@ -134,6 +143,10 @@ public class UserController {
 
         return response;
     }
+
+
+
+
 
 //    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping(value = "/user/search")

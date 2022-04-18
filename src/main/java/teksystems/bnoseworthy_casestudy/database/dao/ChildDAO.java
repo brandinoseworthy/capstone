@@ -28,6 +28,8 @@ import java.util.List;
 
          List<Child> findChildrenByUserId(@Param("user_Id") Integer userId);
 
+         Integer deleteById(@Param("id") Integer id);
+
 
 
 

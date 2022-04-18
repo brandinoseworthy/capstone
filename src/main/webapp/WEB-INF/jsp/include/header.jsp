@@ -35,26 +35,25 @@
 
     <sec:authorize access="hasAuthority('ADMIN')">
         <%--    <sec:authorize access="hasAuthority('ADMIN', 'User')">     <-- to add more users--%>
-     <a href="/user/search">ADMINSEARCH</a>
+    <a href="/user/search">Search User</a> &nbsp;| &nbsp;&nbsp;
         <%--    this does not prevernt someone from typing this in browser and get here. Go to User controller to prevent access--%>
     </sec:authorize>
 
 
     <sec:authorize access="!isAuthenticated()">
-    | <a href="/login/login">Login</a>
+    | <a href="/login/login">Login</a> &nbsp;| &nbsp;&nbsp;
     </sec:authorize>
 
 
     <sec:authorize access="isAuthenticated()">
-    <a href="/user/search">Search</a> &nbsp;| &nbsp;&nbsp;
-    <a href="/user/userPlaydatePosts">MyPlaydatePosts</a>
-    <a href="/user/playdatePost">+ Playdate Post</a> &nbsp;|&nbsp;&nbsp;
-    <a href="/user/userPlaydatePosts">User Posts</a> &nbsp;| &nbsp;&nbsp;
-    <a href="/user/addChild">+ Child</a>
-    <a href="/user/searchforplaydate">View PlaydatePosts</a>
-    <a href="/user/userChildren">MyChildren</a>
 
-    <a href="/login/logout">Logout</a>
+    <a href="/user/userPlaydatePosts">MyPlaydatePosts</a>  |
+    <a href="/user/playdatePost">+ Playdate Post</a> &nbsp;|&nbsp;&nbsp;
+    <a href="/user/addChild">+ Child</a> &nbsp;| &nbsp;&nbsp;
+    <a href="/user/searchforplaydate">Find PlaydatePosts</a> &nbsp;| &nbsp;&nbsp;
+    <a href="/user/userChildren">MyChildren</a> &nbsp;| &nbsp;&nbsp;
+
+    <a href="/login/logout">Logout</a> &nbsp;| &nbsp;&nbsp;
         <sec:authentication property="principal.username" />
     </sec:authorize>
 

@@ -23,13 +23,13 @@ import teksystems.bnoseworthy_casestudy.formbean.AddChildFormBean;
 import teksystems.bnoseworthy_casestudy.formbean.RegisterFormBean;
 import teksystems.bnoseworthy_casestudy.security.UserDetailsServiceImpl;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
 @Controller
-
 public class ChildController {
 
 
@@ -46,12 +46,11 @@ public class ChildController {
     UserDetailsServiceImpl userDetailsService;
 
 
-
     /**
      * Search results by child age. Seems to be working
      */
     @GetMapping(value = "/child/search")
-    public ModelAndView search(@RequestParam(name = "searchId", required = false, defaultValue = "") Integer searchByAge){
+    public ModelAndView search(@RequestParam(name = "searchId", required = false, defaultValue = "") Integer searchByAge) {
         ModelAndView response = new ModelAndView();
         response.setViewName("child/search");
         log.info(String.valueOf(searchByAge));
@@ -62,12 +61,12 @@ public class ChildController {
         // very basic example of error checking
 //        if ( searchFirstName != null && ! searchFirstName.equals("")){
 
-        if(searchByAge != null){
+        if (searchByAge != null) {
             List<Child> users = childDao.findByAge(searchByAge);
             response.addObject("users", users);
 
 
-        }else {
+        } else {
             searchByAge = 0;
         }
 
@@ -75,7 +74,6 @@ public class ChildController {
 
         return response;
     }
-
 
 
 //    @RequestMapping(value = "/user/registerSubmit", method = {RequestMethod.POST, RequestMethod.GET})
@@ -149,24 +147,16 @@ public class ChildController {
     public ModelAndView addChildSubmit(@Valid AddChildFormBean childForm, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
 
-
-//        int i = 10/0;
-
-        if ( bindingResult.hasErrors() ) {
-
+        if (bindingResult.hasErrors()) {
             List<String> errorMessages = new ArrayList<>();
 
-
-            for (ObjectError error :bindingResult.getAllErrors() ) {
+            for (ObjectError error : bindingResult.getAllErrors()) {
 
                 errorMessages.add(error.getDefaultMessage());
-                log.info( ((FieldError) error).getField() + " " + error.getDefaultMessage());
+                log.info(((FieldError) error).getField() + " " + error.getDefaultMessage());
             }
 
             response.addObject("childForm", childForm);
-
-
-
             response.addObject("errorMessages", errorMessages);
             response.addObject("bindingResult", bindingResult);
 
@@ -176,35 +166,24 @@ public class ChildController {
         }
 
 
-
         Child child = new Child();
 
         child.setFirstName(childForm.getChildFirstName());
         child.setLastName(childForm.getChildLastName());
         child.setAge(childForm.getChildAge());
 
-//        User user = userDao.findByEmail(childForm.getUserEmail());
-
-
-
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-//        log.info((String) principal);
+        String username = ((UserDetails) principal).getUsername();
 
-
-            String username = ((UserDetails)principal).getUsername();
-
-            User user = userDao.findByEmail(username);
+        User user = userDao.findByEmail(username);
 
         child.setUserId(user.getId());
 
         childDao.save(child);
 
 
-
         log.info(String.valueOf(child));
-
-
 
         response.setViewName(("redirect:/success/registeredChildToUser"));
         return response;
@@ -252,16 +231,22 @@ public class ChildController {
         List<Child> children = childDao.findChildrenByUserId(user.getId());
         response.addObject("children", children);
 
-        log.info(children.toString());
+        return response;
+
+    }
+
+    @Transactional
+    @RequestMapping(value = "/user/removeChild", method = {RequestMethod.POST, RequestMethod.GET})
+    public ModelAndView removeChild(@RequestParam(name = "childId", required = false) Integer childId) throws Exception {
+        ModelAndView response = new ModelAndView();
+
+        log.info(String.valueOf(childId));
+        childDao.deleteById(childId);
 
 
         return response;
 
 
-
     }
-
-
-
 
 }

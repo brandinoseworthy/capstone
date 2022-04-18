@@ -103,6 +103,7 @@
         <th>Location</th>
         <th>Date</th>
         <th>Time</th>
+        <th colspan="4" style="text-align:center;">Who's Going?</th>
 
 
     </tr>
@@ -117,13 +118,15 @@
 
             <c:forEach items="${userChild}" var="userChild">
             <form  action="/user/playdateSearchRegisterChild" method="post">
-                    <td>
+
+                <td><input  type="checkbox"   name="playdatepost" id="playdatepostId"value="${playdateposts.id}" ></td>
+                <td>
 
                         <button type="submit" >
                             <input type="hidden" name="child" id="childId" value="${userChild.id}" >
                             ${userChild.firstName}
                         </button>
-                <td><input  type="checkbox"   name="playdatepost" id="playdatepostId"value="${playdateposts.id}" >${playdateposts.id}</td>
+
 
                 </td>
 

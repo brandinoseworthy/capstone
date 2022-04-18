@@ -34,7 +34,7 @@
 
                                     <div class="d-flex align-items-center mb-3 pb-1">
                                         <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-<%--                                        <span  class="h1 fw-bold mb-0" style="color: rgba(243,129,129,.9);" >Create An Account</span>--%>
+                                        <%--                                        <span  class="h1 fw-bold mb-0" style="color: rgba(243,129,129,.9);" >Create An Account</span>--%>
 
                                         <c:if test="${empty form.id}">
                                             <span  class="h1 fw-bold mb-0" style="color: rgba(243,129,129,.9);" >Create An Account</span>                                        </c:if>
@@ -150,13 +150,13 @@
 
                                         <%--                                        <button type="submit"> Submit</button>--%>
 
-                                            <c:if test="${empty form.id}">
-                                                <button class="btn btn-dark btn-lg btn-block" type="submit" style="background-color: #f38181">Create Account</button>
-                                            </c:if>
-                                            <c:if test="${not empty form.id}">
-                                                <button class="btn btn-dark btn-lg btn-block" type="submit" style="background-color: #f38181">Update Account</button>
-                                            </c:if>
-<%--                                        <button class="btn btn-dark btn-lg btn-block" type="submit" style="background-color: #f38181">Create Account</button>--%>
+                                        <c:if test="${empty form.id}">
+                                            <button class="btn btn-dark btn-lg btn-block" type="submit" style="background-color: #f38181">Create Account</button>
+                                        </c:if>
+                                        <c:if test="${not empty form.id}">
+                                            <button class="btn btn-dark btn-lg btn-block" type="submit" style="background-color: #f38181">Update Account</button>
+                                        </c:if>
+                                        <%--                                        <button class="btn btn-dark btn-lg btn-block" type="submit" style="background-color: #f38181">Create Account</button>--%>
                                     </div>
 
 

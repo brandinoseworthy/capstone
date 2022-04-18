@@ -112,6 +112,7 @@ public class ChildrenAttendingController {
 
         childrenAttendingDao.save(childrenAttending);
 
+
         log.info("here");
 
         response.setViewName("user/searchforplaydate");

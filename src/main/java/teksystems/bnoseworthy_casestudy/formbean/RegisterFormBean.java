@@ -40,17 +40,6 @@ public class RegisterFormBean {
     @NotBlank(message = "Zip Code is required")
     private String zip;
 
-
-//    private String childFirstName;
-//
-//    private String childLastName;
-//
-//    private Integer childAge;
-//
-//    private Integer userId;
-
-
-
     private String description;
 
     private String favoritePlaceForPlaydates;

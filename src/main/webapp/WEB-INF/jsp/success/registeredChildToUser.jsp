@@ -6,8 +6,8 @@
 <br>
 <br>
 
-<a href="/user/addChild"> Add Another Child</a>
-<a href="/user/userChildren"> View Children</a>
+<a href="/user/addChild"> Add Another Child</a> |
+<a href="/user/userChildren"> View Children</a> |
 
 
 <jsp:include page="../include/footer.jsp" />
