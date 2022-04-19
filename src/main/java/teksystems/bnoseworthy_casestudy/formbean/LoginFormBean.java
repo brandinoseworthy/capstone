@@ -13,10 +13,10 @@ public class LoginFormBean {
 
     private Integer id;
 
-    @NotBlank(message = "Email is required")
+//    @NotBlank(message = "Email is required")
     private String email;
 
-    @NotBlank(message = "Password required")
+//    @NotBlank(message = "Password required")
     private String password;
 
 
