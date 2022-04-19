@@ -146,74 +146,181 @@
 
 
 
-<div class="input-group" style="display: block; margin: 0 auto;">
-    <form name="searchForm" action="/user/searchforplaydate" method="get">
+<%--<div class="input-group" style="display: block; margin: 0 auto;">--%>
+<%--    <form name="searchForm" action="/user/searchforplaydate" method="get">--%>
 
-    <input type="text" class="form-control rounded" placeholder="${searchValue}"  name="searchId"  aria-label="Search" aria-describedby="search-addon" style="margin:0 auto; display: block; text-align: center"/>
-    <button type="submit" class="btn btn-outline-primary " style="display: block; margin: 0 auto; ">SEARCH</button>
-    </form>
+<%--    <input type="text" class="form-control rounded" placeholder="${searchValue}"  name="searchId"  aria-label="Search" aria-describedby="search-addon" style="margin:0 auto; display: block; text-align: center"/>--%>
+<%--    <button type="submit" class="btn btn-outline-primary " style="display: block; margin: 0 auto; ">SEARCH</button>--%>
+<%--    </form>--%>
 
-</div>
-<br>
+<%--</div>--%>
+<%--<br>--%>
 
-<c:if test="${not empty searchValue}">
-    <h4>Search Result: ${playDatePosts.size()}</h4>
-</c:if>
+<%--<c:if test="${not empty searchValue}">--%>
+<%--    <h4>Search Result: ${playDatePosts.size()}</h4>--%>
+<%--</c:if>--%>
 
-<table class="table table-striped">
-    <thead>
-    <tr>
-<%--        <th scope="col">#</th>--%>
-<%--        <th scope="col">First</th>--%>
-<%--        <th scope="col">Last</th>--%>
-<%--        <th scope="col">Handle</th>--%>
+<%--<table class="table table-striped">--%>
+<%--    <thead>--%>
+<%--    <tr>--%>
+<%--&lt;%&ndash;        <th scope="col">#</th>&ndash;%&gt;--%>
+<%--&lt;%&ndash;        <th scope="col">First</th>&ndash;%&gt;--%>
+<%--&lt;%&ndash;        <th scope="col">Last</th>&ndash;%&gt;--%>
+<%--&lt;%&ndash;        <th scope="col">Handle</th>&ndash;%&gt;--%>
 
-        <th scope="col">Playdate Post</th>
-        <th scope="col">Location</th>
-        <th scope="col">Date</th>
-        <th scope="col">Time</th>
-        <th colspan="2" style="text-align:center;">Sign Up</th>
-        <th colspan="2">Already Going</th>
-    </tr>
-    </thead>
-    <tbody>
+<%--        <th scope="col">Playdate Post</th>--%>
+<%--        <th scope="col">Location</th>--%>
+<%--        <th scope="col">Date</th>--%>
+<%--        <th scope="col">Time</th>--%>
+<%--        <th colspan="2" style="text-align:center;">Sign Up</th>--%>
+<%--        <th colspan="2">Already Going</th>--%>
+<%--    </tr>--%>
+<%--    </thead>--%>
+<%--    <tbody>--%>
 
-    <c:forEach items="${playDatePosts}" var="playdateposts">
-        <tr scope="row">
-            <td>${playdateposts.postMessage}</td>
-            <td>${playdateposts.location}</td>
-            <td>${playdateposts.playdateDate}</td>
-            <td>${playdateposts.playdateTime}</td>
+<%--    <c:forEach items="${playDatePosts}" var="playdateposts">--%>
+<%--        <tr scope="row">--%>
+<%--            <td>${playdateposts.postMessage}</td>--%>
+<%--            <td>${playdateposts.location}</td>--%>
+<%--            <td>${playdateposts.playdateDate}</td>--%>
+<%--            <td>${playdateposts.playdateTime}</td>--%>
 
-            <c:forEach items="${userChild}" var="userChild">
-                <form  action="/user/playdateSearchRegisterChild" method="post">
+<%--            <c:forEach items="${userChild}" var="userChild">--%>
+<%--                <form  action="/user/playdateSearchRegisterChild" method="post">--%>
 
-                    <td><input  type="checkbox"   name="playdatepost" id="playdatepostId"value="${playdateposts.id}" ></td>
-                    <td>
-                        <button type="submit" >
-                            <input type="hidden" name="child" id="childId" value="${userChild.id}" >
-                                ${userChild.firstName}
-                        </button>
-                    </td>
-                </form>
-            </c:forEach>
-            <td>  <button type="submit" >
-                <input type="hidden" name="" id="" value="" >
-                Will Be Theres
-            </button></td>
+<%--                    <td><input  type="checkbox"   name="playdatepost" id="playdatepostId"value="${playdateposts.id}" ></td>--%>
+<%--                    <td>--%>
+<%--                        <button type="submit" >--%>
+<%--                            <input type="hidden" name="child" id="childId" value="${userChild.id}" >--%>
+<%--                                ${userChild.firstName}--%>
+<%--                        </button>--%>
+<%--                    </td>--%>
+<%--                </form>--%>
+<%--            </c:forEach>--%>
+<%--            <td>  <button type="submit" >--%>
+<%--                <input type="hidden" name="" id="" value="" >--%>
+<%--                Will Be Theres--%>
+<%--            </button></td>--%>
 
-        </tr>
+<%--        </tr>--%>
 
-    </c:forEach>
-
-
+<%--    </c:forEach>--%>
 
 
+<%--    </tbody>--%>
+<%--</table>--%>
 
 
 
-    </tbody>
-</table>
+
+
+
+
+
+
+<%--*******************************--%>
+
+<section  class="clear" style="background-color: #9A616D; clear: both">
+    <div class="container py-5 h-300">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-xl-12">
+                <div class="card" style="border-radius: 1rem;">
+                    <%--                    <div class="row g-0">--%>
+                    <%--                        <div class="col-lg-5 d-none d-md-block">--%>
+                    <%--                            <img src="https://images.pexels.com/photos/7869833/pexels-photo-7869833.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"--%>
+                    <%--                                 alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem; " />--%>
+                    <%--                        </div>--%>
+                    <div class="col-lg-10 d-flex align-items-center" style="display: block; margin: 0 auto">
+                        <div class="card-body p-4 p-lg-5 text-black">
+
+
+                            <div class="d-flex align-items-center mb-3 pb-1">
+                                <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                                <span class="h1 fw-bold mb-0" style="color: rgba(243,129,129,.9); display: block; margin:0 auto;">Find New Playdate Pals </span>
+                            </div>
+
+
+                            <div class="input-group" style="display: block; margin: 0 auto;">
+                                <form name="searchForm" action="/user/searchforplaydate" method="get">
+
+                                    <input type="text" class="form-control rounded" placeholder="${searchValue}"  name="searchId"  aria-label="Search" aria-describedby="search-addon" style="margin:0 auto; display: block; text-align: center"/>
+                                    <br>
+                                    <button type="submit" class="btn btn-outline-primary " style="display: block; margin: 0 auto; " >SEARCH</button>
+                                </form>
+
+                            </div>
+                            <br>
+
+
+
+                            <c:if test="${not empty searchValue}">
+                                <h4>Search Result: ${playDatePosts.size()}</h4>
+                            </c:if>
+
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <%--        <th scope="col">#</th>--%>
+                                    <%--        <th scope="col">First</th>--%>
+                                    <%--        <th scope="col">Last</th>--%>
+                                    <%--        <th scope="col">Handle</th>--%>
+
+                                    <th scope="col">Playdate Post</th>
+                                    <th scope="col">Location</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Time</th>
+                                    <th scope="col" style="text-align:right;"></th>
+                                    <th colspan="3" style="text-align:right;"> Sign Up</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <c:forEach items="${playDatePosts}" var="playdateposts">
+                                    <tr scope="row">
+                                        <td>${playdateposts.postMessage}</td>
+                                        <td>${playdateposts.location}</td>
+                                        <td>${playdateposts.playdateDate}</td>
+                                        <td>${playdateposts.playdateTime}</td>
+
+                                        <td>  <button type="submit" >
+                                            <input type="hidden" name="" id="" value="" >
+                                            Will Be Theres
+                                        </button></td>
+
+                                        <c:forEach items="${userChild}" var="userChild">
+
+                                            <form  action="/user/playdateSearchRegisterChild" method="post">
+
+                                                <td><input  type="checkbox"   name="playdatepost" id="playdatepostId"value="${playdateposts.id}" ></td>
+                                                <td>
+                                                    <button type="submit" >
+                                                        <input type="hidden" name="child" id="childId" value="${userChild.id}" >
+                                                            ${userChild.firstName}
+                                                    </button>
+                                                </td>
+                                            </form>
+                                        </c:forEach>
+
+
+                                    </tr>
+
+                                </c:forEach>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
 
 
 <jsp:include page="../include/footer.jsp" />
