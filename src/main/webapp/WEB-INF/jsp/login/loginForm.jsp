@@ -31,7 +31,8 @@
 
                                         <div class="d-flex align-items-center mb-3 pb-1">
                                             <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-                                            <span class="h1 fw-bold mb-0">PlayDates <h4>Let kids be kids WITH Kids!</h4></span>
+                                            <span  class="h1 fw-bold mb-0" style="color: rgba(243,129,129,.9);" >PlayDates <h4>Let kids be kids WITH Kids!</h4></span>
+<%--                                            <span class="h1 fw-bold mb-0">PlayDates <h4>Let kids be kids WITH Kids!</h4></span>--%>
                                         </div>
 
 
@@ -52,7 +53,7 @@
 
                                         <div class="pt-1 mb-4">
                                             <%--                                        <button type="submit"> Submit </button>--%>
-                                            <button class="btn btn-dark btn-lg btn-block" type="submit">Login</button>
+                                            <button class="btn btn-dark btn-lg btn-block" type="submit" style="background-color: #f38181">Login</button>
                                         </div>
 
                                         <a class="small text-muted" href="#!">Forgot password?</a>

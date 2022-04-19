@@ -88,18 +88,20 @@
                                 <br>
 
 <%--                                Date: <input type="date"  name="playdateDate" id="playdateDateId"  style="display: inline-block;";>--%>
-
+                                    <c:if test="${empty form.id}">
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example17">Location</label>
-                                        <input type="date" class="form-control form-control-lg" name="playdateDate" id="playdateDateId" style="display: inline-block;";/>
-
+                                            <input type="date" class="form-control form-control-lg" name="playdateDate" id="playdateDateId" style="display: inline-block;";/>
                                     </div>
+                                    </c:if>
 <%--                                Time:  <input type="time"  name="playdateTime" id="playdateTimeId"  style="display: inline-block;";>--%>
+
+                                    <c:if test="${empty form.id}">
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example17">Time</label>
-                                        <input type="time" class="form-control form-control-lg"name="playdateTime" id="playdateTimeId" style="display: inline-block;";/>
-
+                                            <input type="time" class="form-control form-control-lg"name="playdateTime" id="playdateTimeId" style="display: inline-block;";/>
                                     </div>
+                                    </c:if>
                                 <br>
 
 

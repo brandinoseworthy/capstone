@@ -97,7 +97,7 @@
                                         </tr>
                                     </c:forEach>
                                 </table>
-                                <form action="/login/loginSubmit" method="post">
+<%--                                <form action="/login/loginSubmit" method="post">--%>
 <%--                            </div>--%>
                         </div>
                     </div>
