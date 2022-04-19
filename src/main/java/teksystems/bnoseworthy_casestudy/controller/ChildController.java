@@ -36,14 +36,9 @@ public class ChildController {
     @Autowired
     private ChildDAO childDao;
 
-    @Autowired
-    private UserController userController;
 
     @Autowired
     private UserDAO userDao;
-
-    @Autowired
-    private UserDetailsServiceImpl userDetailsService;
 
 
     /**
@@ -55,16 +50,9 @@ public class ChildController {
         response.setViewName("child/search");
         log.info(String.valueOf(searchByAge));
 
-
-//        String search = "a";
-
-        // very basic example of error checking
-//        if ( searchFirstName != null && ! searchFirstName.equals("")){
-
         if (searchByAge != null) {
             List<Child> users = childDao.findByAge(searchByAge);
             response.addObject("users", users);
-
 
         } else {
             searchByAge = 0;
@@ -76,54 +64,8 @@ public class ChildController {
     }
 
 
-//    @RequestMapping(value = "/user/registerSubmit", method = {RequestMethod.POST, RequestMethod.GET})
-//    public ModelAndView registerSubmit(@Valid AddChildFormBean childForm, BindingResult bindingResult) throws Exception {
-//        ModelAndView response = new ModelAndView();
-//
-//
-////        int i = 10/0;
-//
-//        if ( bindingResult.hasErrors() ) {
-//
-//            List<String> errorMessages = new ArrayList<>();
-//
-//
-//            for (ObjectError error :bindingResult.getAllErrors() ) {
-//
-//                errorMessages.add(error.getDefaultMessage());
-//                log.info( ((FieldError) error).getField() + " " + error.getDefaultMessage());
-//            }
-//
-//            response.addObject("childForm", childForm);
-//
-//            response.addObject("errorMessages", errorMessages);
-//            response.addObject("bindingResult", bindingResult);
-//
-//
-//            response.setViewName("user/register");
-//            return response;
-//        }
-//
-//        Child child = childDao.findById(childForm.getId());
-//
-//        if (child == null ) {
-//             child = new Child();
-//        }
-//
-//        child.setFirstName(childForm.getFirstName());
-//        child.setLastName(childForm.getLastName());
-//        child.setAge(childForm.getAge());
-//        child.setUserId(form.);
-//
-//        childDao.save(child);
-//
-//        log.info(childForm.toString());
-//
-//        return response;
-//    }
-
     @RequestMapping(value = "/success/registeredChildToUser", method = RequestMethod.GET)
-    public ModelAndView successfullyAddChild() throws Exception {
+    public ModelAndView successfullyAddChild()  {
         ModelAndView response = new ModelAndView();
         response.setViewName("success/registeredChildToUser");
 
@@ -132,7 +74,7 @@ public class ChildController {
     }
 
     @RequestMapping(value = "/user/addChild", method = RequestMethod.GET)
-    public ModelAndView addChild() throws Exception {
+    public ModelAndView addChild()  {
         ModelAndView response = new ModelAndView();
         response.setViewName("user/addChild");
 
@@ -144,7 +86,7 @@ public class ChildController {
 
     @PreAuthorize("hasAuthority('USER')")
     @RequestMapping(value = "/user/addChildSubmit", method = {RequestMethod.POST, RequestMethod.GET})
-    public ModelAndView addChildSubmit(@Valid AddChildFormBean childForm, BindingResult bindingResult) throws Exception {
+    public ModelAndView addChildSubmit(@Valid AddChildFormBean childForm, BindingResult bindingResult)  {
         ModelAndView response = new ModelAndView();
 
         if (bindingResult.hasErrors()) {
@@ -188,36 +130,6 @@ public class ChildController {
         response.setViewName(("redirect:/success/registeredChildToUser"));
         return response;
     }
-
-//    @GetMapping(value = "/login/edit/{userId}")
-//    public ModelAndView editUser(@PathVariable("userId") Integer userId) throws Exception {
-//        ModelAndView response = new ModelAndView();
-//        response.setViewName("login/register");
-//
-//        User user = userDao.findById(userId);
-//        Child child = childDao.findByUserId(userId);
-//
-//        RegisterFormBean form = new RegisterFormBean();
-//
-//        AddChildFormBean childForm = new AddChildFormBean();
-//
-//        form.setId(user.getId()); //this is a hidden value - used to populate in the JSP
-//        form.setEmail(user.getEmail());
-//        form.setFirstName(user.getFirstName());
-//        form.setLastName(user.getLastName());
-//        form.setZip(user.getZip());
-//        form.setDescription(user.getDescription());
-//        form.setFavoritePlaceForPlaydates(user.getFavoritePlaceForPlaydates());
-//
-////        childForm.setChildFirstName(child.getFirstName());
-////        childForm.setChildLastName(child.getLastName());
-////        childForm.setChildAge(child.getAge());
-//
-//        response.addObject("form", form);
-////        response.addObject("childForm", childForm);
-//
-//        return response;
-//    }
 
 
     @RequestMapping(value = "/user/userChildren", method = {RequestMethod.POST, RequestMethod.GET})

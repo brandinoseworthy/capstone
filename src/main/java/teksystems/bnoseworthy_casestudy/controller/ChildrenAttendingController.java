@@ -45,39 +45,6 @@ public class ChildrenAttendingController {
 
 
 
-
-    //    not working yet
-    @RequestMapping(value = "/child/playdateSignup", method = RequestMethod.GET)
-    public ModelAndView playdateSignup() throws Exception {
-        ModelAndView response = new ModelAndView();
-        response.setViewName("child/playdateSignup");
-
-        AddChildToPlaydatePostFormBean form = new AddChildToPlaydatePostFormBean();
-        response.addObject("form", form);
-
-        return response;
-    }
-
-//    @GetMapping(value = "/user/searchforplaydateSubmit")
-//    public ModelAndView searchforplaydateSubmit(@RequestParam (name = "playdatePostId")Integer playdatePostId,
-//                                                @RequestParam(name = "userChildId")  Integer userChildId) throws Exception {
-//        ModelAndView response = new ModelAndView();
-//
-//
-//
-//        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        String username = ((UserDetails) principal).getUsername();
-//
-//        User user = userDao.findByEmail(username);
-//        List<Child> children = childDao.findChildrenByUserId(user.getId());
-//        response.addObject("children", children);
-//
-//
-//
-//        return response;
-//    }
-
-
     @RequestMapping(value = "/user/playdateSearchRegisterChild",  method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView  playdateSearchRegisterChild( @RequestParam(name = "child", required=false) Integer childId,
                                                       @RequestParam(name = "playdatepost", required=false) Integer playdatepostId) throws Exception {
@@ -85,26 +52,10 @@ public class ChildrenAttendingController {
         ModelAndView response = new ModelAndView();
         response.setViewName("user/searchforplaydate");
 
-
-
-        log.info(String.valueOf("Child Id " + childId));
-        log.info(String.valueOf("PlaydatePost Id " + playdatepostId));
-
-//        Child child = childDao.findById(childId);
-//        log.info(String.valueOf("Child is " + child));
-//
-//        PlayDatePost playdatePost = playdatePostDao.findById(playdatepostId);
-//        log.info(String.valueOf(playdatepostId));
-//        log.info("hello");
-
-
-
-
-
-
+        log.info("Child Id " + childId);
+        log.info("PlaydatePost Id " + playdatepostId);
 
         ChildrenAttending childrenAttending = new ChildrenAttending();
-
 
         childrenAttending.setChild(childDao.findById(childId));
         childrenAttending.setPlaydatePost(playdatePostDao.findById(playdatepostId));
@@ -112,12 +63,9 @@ public class ChildrenAttendingController {
 
         childrenAttendingDao.save(childrenAttending);
 
-
         log.info("here");
 
-        response.setViewName("user/searchforplaydate");
-
-
+        response.setViewName("success/childRegisteredForPlaydatePost");
 
         return response;
     }
