@@ -34,16 +34,16 @@ public class ChildController {
 
 
     @Autowired
-    ChildDAO childDao;
+    private ChildDAO childDao;
 
     @Autowired
-    UserController userController;
+    private UserController userController;
 
     @Autowired
-    UserDAO userDao;
+    private UserDAO userDao;
 
     @Autowired
-    UserDetailsServiceImpl userDetailsService;
+    private UserDetailsServiceImpl userDetailsService;
 
 
     /**

@@ -150,20 +150,16 @@ public class UserController {
 
 //    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping(value = "/user/search")
-    public ModelAndView search(@RequestParam(name = "searchId", required = false, defaultValue = "") String searchFirstName){
+    public ModelAndView search(){
         ModelAndView response = new ModelAndView();
         response.setViewName("user/search");
-        log.info(searchFirstName);
 
-        if(!StringUtils.isBlank(searchFirstName)){
-            List<User> users = userDao.findByFirstNameContainingIgnoreCase(searchFirstName);
+
+            List<UserRole> users = userRoleDao.findByUserRole();
             response.addObject("users", users);
 
-        }else {
-            searchFirstName = "Search";
-        }
 
-        response.addObject("searchValue", searchFirstName);
+
 
         return response;
     }

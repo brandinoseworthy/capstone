@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import teksystems.bnoseworthy_casestudy.database.entity.User;
+import teksystems.bnoseworthy_casestudy.database.entity.UserRole;
 
 import java.util.List;
 
@@ -30,4 +31,6 @@ public interface UserDAO extends JpaRepository<User, Long> {
     // sample query
 //    @Query(value = "select u from User u where u.password =: pw")
 //    public List<User> getByPassword(@Param("pw") String pw);
+
+
 }

@@ -9,6 +9,8 @@ import teksystems.bnoseworthy_casestudy.database.entity.ChildrenAttending;
 import teksystems.bnoseworthy_casestudy.database.entity.PlayDatePost;
 import teksystems.bnoseworthy_casestudy.database.entity.User;
 
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import java.util.List;
 
 @Repository
@@ -21,6 +23,8 @@ public interface ChildrenAttendingDAO extends JpaRepository<ChildrenAttending, L
 
     @Query("Select ca from ChildrenAttending ca where ca.playdatePost = :playdatePostId and ca.child = :childId")
     List<ChildrenAttending> findAll(@Param("playdatePostId") Integer playdatePostId, @Param("childId") Integer childId);
+
+
 
 
 
