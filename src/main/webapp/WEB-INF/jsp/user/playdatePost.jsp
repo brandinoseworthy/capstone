@@ -27,10 +27,7 @@
 
 
 
-</form>
-
-
-
+<%--</form>--%>
 
 <section  class="clear" style="background-color: #9A616D; clear: both">
     <div class="container py-5 h-300">
@@ -42,17 +39,24 @@
                     <%--                            <img src="https://images.pexels.com/photos/7869833/pexels-photo-7869833.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"--%>
                     <%--                                 alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem; " />--%>
                     <%--                        </div>--%>
-                    <div class="col-lg-10 d-flex align-items-center" style="display: block; margin: 0 auto" >
+                    <div class="col-lg-7 d-flex align-items-center" style="display: block; margin: 0 auto;" >
                         <div class="card-body p-4 p-lg-5 text-black">
 
 
                             <div class="d-flex align-items-center mb-3 pb-1">
                                 <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-                                <span class="h1 fw-bold mb-0" style="color: rgba(243,129,129,.9); display: block; margin:0 auto;">My Playdate Posts </span>
+                                <span class="h1 fw-bold mb-0" style="color: rgba(243,129,129,.9); display: block; margin: 0 auto;" > <c:if test="${empty form.id}">
+                                    Create Playdate Post
+                                </c:if>
+
+                                 <c:if test="${not empty form.id}">
+                                     Update Playdate Post
+                                 </c:if>  </span>
                             </div>
 
 
-                            <form action="/user/createplaydatePost" method="get"  style="display: inline-block";>
+                            <form action="/user/createplaydatePost" method="get"  style="display: block; margin: auto";>
+
 
                                 <%--    <input type="hidden" name="playdatePost" id="playdatePostId" value="${form.id}">--%>
                                 <%--    <input type="hidden" name="createAt" id="createAtId" value="${form.createAt}">--%>
@@ -69,7 +73,8 @@
                                     <div class="form-outline mb-4">
                                         <%--
                                                                               Username : <input type="text" name="username">--%>
-                                            <label class="form-label" for="form2Example17">Playdate Post</label>
+                                            <input type="hidden" name="playdatePostId" id="playdatePostId" value="${form.id}">
+                                            <label class="form-label" for="form2Example17" >Playdate Post ${form.id}</label>
                                             <input type="jsonString" id="form2Example17" class="form-control form-control-lg" name="postMessage" id="postMessageId"  value="${form.postMessage}"style="display: inline-block;";/>
 
                                     </div>

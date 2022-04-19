@@ -55,9 +55,9 @@
 
                                     <div class="form-outline mb-4">
                                         <%--                                        Username : <input type="text" name="username">--%>
-                                        <input type="text" id="form2Example17" class="form-control form-control-lg" name="username"/>
+                                        <input type="text" id="form2Example17" class="form-control form-control-lg" name="email"/>
                                         <label class="form-label" for="form2Example17">Email address</label>
-                                            <c:forEach items='${bindingResult.getFieldErrors("username")}' var="error">
+                                            <c:forEach items='${bindingResult.getFieldErrors("email")}' var="error">
                                                 <div style="color: red">${error.getDefaultMessage()}</div>
                                             </c:forEach>
                                     </div>
