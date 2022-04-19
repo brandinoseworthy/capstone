@@ -4,6 +4,7 @@ package teksystems.bnoseworthy_casestudy.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ import teksystems.bnoseworthy_casestudy.database.dao.UserDAO;
 import teksystems.bnoseworthy_casestudy.database.entity.PlayDatePost;
 import teksystems.bnoseworthy_casestudy.database.entity.User;
 import teksystems.bnoseworthy_casestudy.formbean.AddChildFormBean;
+import teksystems.bnoseworthy_casestudy.formbean.EditUserFormBean;
 import teksystems.bnoseworthy_casestudy.formbean.PlayDatePostFormBean;
 
 import javax.validation.Valid;
@@ -112,6 +114,29 @@ public class PlaydatePostController {
         return response;
     }
 
+    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
+    @GetMapping(value = "/user/createplaydatePost/{playdatePostId}")
+    public ModelAndView editPlaydatePost(@PathVariable("playdatePostId") Integer playdatePostId) throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("user/playdatePost");
+
+
+        PlayDatePost playDatePost = playdatePostDao.findById(playdatePostId);
+
+
+        PlayDatePostFormBean form = new PlayDatePostFormBean();
+
+        form.setId(playDatePost.getId());
+//        form.setEmail(user.getEmail());
+        form.setPostMessage(playDatePost.getPostMessage());
+        form.setLocation(playDatePost.getLocation());
+        form.setPlaydateDate(playDatePost.getPlaydateDate());
+        form.setPlaydateTime(playDatePost.getPlaydateTime());
+
+        response.addObject("form", form);
+
+        return response;
+    }
 
 
 

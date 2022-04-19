@@ -243,7 +243,7 @@ public class ChildController {
         log.info(String.valueOf(childId));
         childDao.deleteById(childId);
 
-
+        response.setViewName("success/childRemoved");
         return response;
 
 

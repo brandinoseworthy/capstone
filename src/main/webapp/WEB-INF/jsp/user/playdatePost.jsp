@@ -12,7 +12,6 @@
 <%--    By: <input type="number" name="userId" id="userId" value="${form.userId}" style="display: inline-block;";>--%>
 <%--    <br>--%>
 
-
     New Playdate Post: <input type="jsonString" name="postMessage" id="postMessageId" value="${form.postMessage}" style="display: inline-block;";>
     <br>
     Location <input type="text" name="location" id="locationId" value="${form.location}" style="display: inline-block;";>

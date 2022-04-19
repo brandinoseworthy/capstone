@@ -40,6 +40,8 @@
             <td>${post.location}</td>
             <td>${post.playdateDate}</td>
             <td>${post.playdateTime}</td>
+            <td><a href="http://localhost:8080/user/createplaydatePost/${post.id}"> Edit</a> </td>
+
         </tr>
     </c:forEach>
 </table>
