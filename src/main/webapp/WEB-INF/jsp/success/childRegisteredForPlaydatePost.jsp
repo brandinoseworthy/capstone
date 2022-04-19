@@ -4,7 +4,7 @@
 
 <h1>Child Registered for Play Date</h1>
 
-<a href="/user/searchforplaydate"> Explore More Playdate Posts</a> 
+<a href="/user/searchforplaydate"> Explore More Playdate Posts</a>
 
 
 <jsp:include page="../include/footer.jsp" />

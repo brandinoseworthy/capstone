@@ -7,7 +7,7 @@
 </c:if>
 
 <c:if test="${not empty form.id}">
-    <h1>Edit Information</h1>
+    <h1>Edit All Information</h1>
 </c:if>
 
 <br>
@@ -154,6 +154,7 @@
                                                 <button class="btn btn-dark btn-lg btn-block" type="submit" style="background-color: #f38181">Create Account</button>
                                             </c:if>
                                             <c:if test="${not empty form.id}">
+
                                                 <button class="btn btn-dark btn-lg btn-block" type="submit" style="background-color: #f38181">Update Account</button>
                                             </c:if>
 <%--                                        <button class="btn btn-dark btn-lg btn-block" type="submit" style="background-color: #f38181">Create Account</button>--%>

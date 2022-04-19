@@ -3,7 +3,6 @@ package teksystems.bnoseworthy_casestudy.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,14 +19,10 @@ import teksystems.bnoseworthy_casestudy.database.dao.PlaydatePostDAO;
 import teksystems.bnoseworthy_casestudy.database.dao.UserDAO;
 import teksystems.bnoseworthy_casestudy.database.entity.PlayDatePost;
 import teksystems.bnoseworthy_casestudy.database.entity.User;
-import teksystems.bnoseworthy_casestudy.formbean.AddChildFormBean;
-import teksystems.bnoseworthy_casestudy.formbean.EditUserFormBean;
 import teksystems.bnoseworthy_casestudy.formbean.PlayDatePostFormBean;
 
 import javax.validation.Valid;
-import java.sql.Time;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -78,12 +73,14 @@ public class PlaydatePostController {
         }
 
 
+        PlayDatePost playDatePost = playdatePostDao.findById(form.getId());
 
-        PlayDatePost playDatePost =  new PlayDatePost();
+        if (playDatePost == null){
+            playDatePost = new PlayDatePost();
+        }
 
 
-//        playDatePost.setCreateAt(form.getCreateAt());
-//        playDatePost.setId(form.getId());
+//        PlayDatePost playDatePost =  new PlayDatePost();
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username = ((UserDetails) principal).getUsername();
@@ -94,7 +91,7 @@ public class PlaydatePostController {
         playDatePost.setPostMessage(form.getPostMessage());
         playDatePost.setLocation(form.getLocation());
 
-//        playDatePost.setPlaydateDate(form.getPlaydateDate());
+        //convert the date and time to a String
         Object date = form.getPlaydateDate();
         String stringDate = date.toString();
         playDatePost.setPlaydateDate(stringDate);
@@ -103,6 +100,7 @@ public class PlaydatePostController {
         String stringTime = time.toString();
 
         playDatePost.setPlaydateTime(stringTime);
+
 
         playdatePostDao.save(playDatePost);
 
@@ -120,14 +118,11 @@ public class PlaydatePostController {
         ModelAndView response = new ModelAndView();
         response.setViewName("user/playdatePost");
 
-
         PlayDatePost playDatePost = playdatePostDao.findById(playdatePostId);
-
 
         PlayDatePostFormBean form = new PlayDatePostFormBean();
 
         form.setId(playDatePost.getId());
-//        form.setEmail(user.getEmail());
         form.setPostMessage(playDatePost.getPostMessage());
         form.setLocation(playDatePost.getLocation());
         form.setPlaydateDate(playDatePost.getPlaydateDate());
@@ -140,9 +135,6 @@ public class PlaydatePostController {
 
 
 
-
-
-//    @GetMapping(value ="/user/userPlaydatePosts/{userId}")
     @RequestMapping(value = "/user/userPlaydatePosts", method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView displayUserPlaydatePosts(@Valid PlayDatePostFormBean playDatePostFormBean, BindingResult bindingResult) throws Exception {
 
@@ -155,15 +147,9 @@ public class PlaydatePostController {
 
         User user = userDao.findByEmail(username);
 
-
-
             List<PlayDatePost> postList = playdatePostDao.findUserPlaydatePostsByUserId(user.getId());
 
             response.addObject("postList", postList);
-
-
-
-
 
         return response;
 

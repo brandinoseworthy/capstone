@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import teksystems.bnoseworthy_casestudy.database.dao.*;
 import teksystems.bnoseworthy_casestudy.database.entity.*;
-import teksystems.bnoseworthy_casestudy.formbean.EditUserFormBean;
 import teksystems.bnoseworthy_casestudy.formbean.RegisterFormBean;
 
 import javax.transaction.Transactional;
@@ -34,13 +33,11 @@ public class UserController {
     @Autowired
     private ChildDAO childDao;
 
-
     @Autowired
     private UserRoleDAO userRoleDao;
 
     @Autowired
     private PlaydatePostDAO playdatePostDao;
-;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -125,14 +122,10 @@ public class UserController {
 
         User user = userDao.findById(userId);
 
-
-//        RegisterFormBean form = new RegisterFormBean();
-
-        EditUserFormBean form = new EditUserFormBean();
-
+        RegisterFormBean form = new RegisterFormBean();
 
         form.setId(user.getId());
-//        form.setEmail(user.getEmail());
+        form.setEmail(user.getEmail());
         form.setFirstName(user.getFirstName());
         form.setLastName(user.getLastName());
         form.setZip(user.getZip());
@@ -145,21 +138,15 @@ public class UserController {
     }
 
 
-
-
-
-//    @PreAuthorize("hasAuthority('ADMIN')")
+    // working on a native query and then I want to be able to delete accounts
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping(value = "/user/search")
     public ModelAndView search(){
         ModelAndView response = new ModelAndView();
         response.setViewName("user/search");
 
-
             List<UserRole> users = userRoleDao.findByUserRole();
             response.addObject("users", users);
-
-
-
 
         return response;
     }
@@ -193,62 +180,8 @@ public class UserController {
         log.info(searchLocation);
 
 
-
         return response;
     }
-
-//    @RequestMapping(value = "/user/playdateSearchRegisterChild",  method = {RequestMethod.POST, RequestMethod.GET})
-//    public ModelAndView  playdateSearchRegisterChild( @RequestParam(name = "child", required=false) Integer childId,
-//            @RequestParam(name = "playdatepost", required=false) Integer playdatepostId) throws Exception {
-//
-//        ModelAndView response = new ModelAndView();
-//        response.setViewName("user/searchforplaydate");
-//
-//
-//
-//
-//        log.info(String.valueOf("Child Id " + childId));
-//        log.info(String.valueOf("PlaydatePost Id " + playdatepostId));
-//
-////        Child child = childDao.findById(childId);
-////        log.info(String.valueOf("Child is " + child));
-////
-////        PlayDatePost playdatePost = playdatePostDao.findById(playdatepostId);
-////        log.info(String.valueOf(playdatepostId));
-////        log.info("hello");
-//
-//
-//
-//
-//
-//
-//
-//        ChildrenAttending childrenAttending = new ChildrenAttending();
-//
-//        childrenAttending.setChild(childDao.findById(childId));
-//        childrenAttending.setPlaydatePost(playdatePostDao.findById(playdatepostId));
-//        log.info("hello");
-//
-//        log.info(String.valueOf(childrenAttending));
-//
-//
-//        childrenAttendingDAO.save(childrenAttending);
-//
-//        log.info(String.valueOf(childrenAttending));
-//
-//        response.setViewName("user/searchforplaydate");
-//
-//
-//
-//        return response;
-//    }
-
-
-
-//
-
-
-
 
 
 
@@ -264,7 +197,7 @@ public class UserController {
     }
 
 
-
+// does nothing right now
 //    @PreAuthorize("hasAuthority('USER')")
     @GetMapping(value = "/user/profile/{userId}")
     public ModelAndView userProfile(@PathVariable("userId") Integer userId) throws Exception {

@@ -20,9 +20,9 @@
 
 <body>
 
-<div class="container">
-    <a href="/index">Index</a> &nbsp; | &nbsp;
-    <a href="/login/register">Sign Up</a> &nbsp;| &nbsp;
+<%--<div class="container">--%>
+<%--    <a href="/index">Index</a> &nbsp; | &nbsp;--%>
+<%--    <a href="/login/register">Sign Up</a> &nbsp;| &nbsp;--%>
 <%--    <a href="/user/search">Search</a> &nbsp;| &nbsp;&nbsp;--%>
 <%--    <a href="/user/playdatePost">Playdate Post</a> &nbsp;|&nbsp;&nbsp;--%>
 <%--    <a href="/user/userPlaydatePosts">User Posts</a> &nbsp;| &nbsp;&nbsp;--%>
@@ -33,29 +33,95 @@
 
 
 
-    <sec:authorize access="hasAuthority('ADMIN')">
-        <%--    <sec:authorize access="hasAuthority('ADMIN', 'User')">     <-- to add more users--%>
-    <a href="/user/search">Search User</a> &nbsp;| &nbsp;&nbsp;
-        <%--    this does not prevernt someone from typing this in browser and get here. Go to User controller to prevent access--%>
-    </sec:authorize>
+<%--    <sec:authorize access="hasAuthority('ADMIN')">--%>
+<%--        &lt;%&ndash;    <sec:authorize access="hasAuthority('ADMIN', 'User')">     <-- to add more users&ndash;%&gt;--%>
+<%--    <a href="/user/search">Search User</a> &nbsp;| &nbsp;&nbsp;--%>
+<%--        &lt;%&ndash;    this does not prevernt someone from typing this in browser and get here. Go to User controller to prevent access&ndash;%&gt;--%>
+<%--    </sec:authorize>--%>
 
 
-    <sec:authorize access="!isAuthenticated()">
-    | <a href="/login/login">Login</a> &nbsp;| &nbsp;&nbsp;
-    </sec:authorize>
+<%--    <sec:authorize access="!isAuthenticated()">--%>
+<%--    | <a href="/login/login">Login</a> &nbsp;| &nbsp;&nbsp;--%>
+<%--    <a href="/login/register">Sign Up</a> &nbsp;|--%>
+<%--    </sec:authorize>--%>
 
 
-    <sec:authorize access="isAuthenticated()">
+<%--    <sec:authorize access="isAuthenticated()">--%>
 
-    <a href="/user/userPlaydatePosts">MyPlaydatePosts</a>  |
-    <a href="/user/playdatePost">+ Playdate Post</a> &nbsp;|&nbsp;&nbsp;
-    <a href="/user/addChild">+ Child</a> &nbsp;| &nbsp;&nbsp;
-    <a href="/user/searchforplaydate">Find PlaydatePosts</a> &nbsp;| &nbsp;&nbsp;
-    <a href="/user/userChildren">MyChildren</a> &nbsp;| &nbsp;&nbsp;
+<%--    <a href="/user/userPlaydatePosts">MyPlaydatePosts</a>  |--%>
+<%--    <a href="/user/playdatePost">+ Playdate Post</a> &nbsp;|&nbsp;&nbsp;--%>
+<%--    <a href="/user/addChild">+ Child</a> &nbsp;| &nbsp;&nbsp;--%>
+<%--    <a href="/user/searchforplaydate">Find PlaydatePosts</a> &nbsp;| &nbsp;&nbsp;--%>
+<%--    <a href="/user/userChildren">MyChildren</a> &nbsp;| &nbsp;&nbsp;--%>
+<%--    <a href="/login/logout">Logout</a> &nbsp;| &nbsp;&nbsp;--%>
+<%--        <sec:authentication property="principal.username" />--%>
+<%--    </sec:authorize>--%>
 
-    <a href="/login/logout">Logout</a> &nbsp;| &nbsp;&nbsp;
-        <sec:authentication property="principal.username" />
-    </sec:authorize>
+
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Playdate Posts</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <sec:authorize access="isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Playdate Posts
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="/user/searchforplaydate">Find Playdates</a></li>
+                            <li><a class="dropdown-item" href="/user/playdatePost">Create Playdate Post</a></li>
+                            <li><a class="dropdown-item" href="/user/userPlaydatePosts"> MyPlaydate Posts</a></li>
+                        </ul>
+                    </li>
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Account
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="/user/addChild">Add Child</a></li>
+                            <li><a class="dropdown-item" href="#">Edit Account</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+
+                        <a class="nav-link active" aria-current="page" href="#">
+                            <sec:authentication property="principal.username" />
+                       </a>
+
+                    </li>
+                    </sec:authorize>
+
+
+                    <sec:authorize access="!isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/login/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link active" aria-current="page"href="/login/register">Sign Up</a>
+                </li>
+
+                    </sec:authorize>
+
+
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+
 
 
 
