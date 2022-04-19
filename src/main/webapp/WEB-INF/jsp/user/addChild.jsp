@@ -106,7 +106,9 @@
                                     <%--                                        Child Age <input type="number" name="childAge" id="childAgeId" value="${childForm.childAge}">--%>
                                     <input type="number" id="form2Example27" class="form-control form-control-lg" name="childAge" id="childAgeId" value="${childForm.childAge}" placeholder="Child Age"/>
                                     <%--                                        <label class="form-label" for="form2Example27">Child Age</label>--%>
-
+                                        <c:forEach items='${bindingResult.getFieldErrors("childAge")}' var="error">
+                                            <div style="color: red">${error.getDefaultMessage()}</div>
+                                        </c:forEach>
                                     <input type="hidden" name="user_id" value="${childForm.userId}" >
 
                                 </div>

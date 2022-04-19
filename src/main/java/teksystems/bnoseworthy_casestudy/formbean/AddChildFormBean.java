@@ -7,9 +7,7 @@ import lombok.ToString;
 import teksystems.bnoseworthy_casestudy.database.entity.User;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 @ToString
 @Getter
@@ -24,6 +22,10 @@ public class AddChildFormBean {
 
     private String childLastName;
 
+
+    @Min(value = 0, message =  "Age should not be less than 0")
+    @Max(value = 16, message = "Age should not be greater than 16")
+    @NotNull(message = "Age is required")
     private Integer childAge;
 
     private Integer userId;
