@@ -75,19 +75,22 @@
 
                                 <table class="table" >
                                     <tr scope="row">
-                                        <th>Created At</th>
+<%--                                        <th>Created At</th>--%>
+                                        <th style="width : 3cm" >Date</th>
                                         <th>Playdate Post</th>
                                         <th>Location</th>
-                                        <th>Date</th>
+
                                         <th>Time</th>
+                                        <th> </th>
 
                                     </tr>
                                     <c:forEach items="${postList}" var="post">
                                         <tr scope="row">
-                                            <td >${post.createAt}</td>
+<%--                                            <td >${post.createAt}</td>--%>
+                                            <td>${post.playdateDate}</td>
                                             <td>${post.postMessage}</td>
                                             <td>${post.location}</td>
-                                            <td>${post.playdateDate}</td>
+
                                             <td>${post.playdateTime}</td>
                                             <td><a href="http://localhost:8080/user/createplaydatePost/${post.id}" style="color: rgba(243,129,129,.9);"> Edit</a> </td>
 

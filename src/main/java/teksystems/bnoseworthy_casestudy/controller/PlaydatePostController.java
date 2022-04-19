@@ -150,7 +150,7 @@ public class PlaydatePostController {
 
         User user = userDao.findByEmail(username);
 
-            List<PlayDatePost> postList = playdatePostDao.findUserPlaydatePostsByUserId(user.getId());
+            List<PlayDatePost> postList = playdatePostDao.findUserPlaydatePostsByUserIdOrderByPlaydateDateDesc(user.getId());
 
             response.addObject("postList", postList);
 

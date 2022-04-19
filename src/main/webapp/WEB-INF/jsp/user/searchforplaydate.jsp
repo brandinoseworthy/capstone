@@ -223,7 +223,7 @@
 <section  class="clear" style="background-color: #9A616D; clear: both">
     <div class="container py-5 h-300">
         <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-xl-12">
+<%--            <div >class="col-xl-12"--%>
                 <div class="card" style="border-radius: 1rem;">
                     <%--                    <div class="row g-0">--%>
                     <%--                        <div class="col-lg-5 d-none d-md-block">--%>
@@ -264,27 +264,30 @@
                                     <%--        <th scope="col">First</th>--%>
                                     <%--        <th scope="col">Last</th>--%>
                                     <%--        <th scope="col">Handle</th>--%>
-
-                                    <th scope="col">Playdate Post</th>
-                                    <th scope="col">Location</th>
-                                    <th scope="col">Date</th>
+                                    <th scope="col" style="width : 3cm">Date</th>
                                     <th scope="col">Time</th>
+                                    <th scope="col" style="width : 5cm">Playdate Post</th>
+                                    <th scope="col" style="width : 4cm">Location</th>
+
+
                                     <th scope="col" style="text-align:right;"></th>
-                                    <th colspan="3" style="text-align:right;"> Sign Up</th>
+                                    <th colspan=100% style="text-align:right;"> Let's take...</th>
                                 </tr>
                                 </thead>
                                 <tbody>
 
                                 <c:forEach items="${playDatePosts}" var="playdateposts">
                                     <tr scope="row">
-                                        <td>${playdateposts.postMessage}</td>
-                                        <td>${playdateposts.location}</td>
                                         <td>${playdateposts.playdateDate}</td>
                                         <td>${playdateposts.playdateTime}</td>
+                                        <td>${playdateposts.postMessage}</td>
+                                        <td>${playdateposts.location}</td>
+
+
 
                                         <td>  <button type="submit" >
                                             <input type="hidden" name="" id="" value="" >
-                                            Will Be Theres
+                                            &hearts;
                                         </button></td>
 
                                         <c:forEach items="${userChild}" var="userChild">
