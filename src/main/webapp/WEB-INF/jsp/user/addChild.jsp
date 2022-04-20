@@ -85,7 +85,7 @@
 
                                 <%--                                    <h5 class="fw-bold mb-0 pb-3" style="letter-spacing: 1px; ">Add Child</h5>--%>
 
-                                <div class="form-outline mb-4">
+                                    <div class="form-outline mb-4">
 
                                     <%--                                        Child First Name <input type="text" name="childFirstName" id="childFirstNamId" value="${childForm.childFirstName}">--%>
                                     <input type="text" id="form2Example27" class="form-control form-control-lg" name="childFirstName" id="childFirstNamId" value="${childForm.childFirstName}" placeholder="Child First Name"/>
@@ -98,7 +98,8 @@
                                 <div class="form-outline mb-4">
 
                                     <%--                                        Child Last Name <input type="text" name="childLastName" id="childLastNameId" value="${childForm.childLastName}">--%>
-                                    <input type="text" id="form2Example27" class="form-control form-control-lg" type="text" name="childLastName" id="childLastNameId" value="${childForm.childLastName}" placeholder="Child Last Name"/>
+                                    <input type="text" id="form2Example27" class="form-control form-control-lg" type="text" name="childLastName" id="childLastNameId"
+                                           value="${childForm.childLastName}" placeholder="Child Last Name" />
                                     <%--                                        <label class="form-label" for="form2Example27">Child Last Name</label>--%>
                                 </div>
 
@@ -113,9 +114,15 @@
 
                                 </div>
 
+                                    <div class="form-outline mb-4">
+
+                                        <input type="text"  class="form-control form-control-lg" name="image" id="imageId" value="${childForm.image}" placeholder="Optional: Insert Image Address" />
+                                    </div>
 
 
-                                <button class="btn btn-dark btn-lg btn-block" type="submit" style="background-color: #f38181">Add Child</button>
+
+
+                                    <button class="btn btn-dark btn-lg btn-block" type="submit" style="background-color: #f38181">Add Child</button>
                         </div>
                         </form>
                         </div>
@@ -125,6 +132,8 @@
         </div>
     </div>
 </section>
+
+
 
 
 <jsp:include page="../include/footer.jsp" />

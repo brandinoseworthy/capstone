@@ -114,7 +114,13 @@ public class ChildController {
         child.setFirstName(childForm.getChildFirstName());
         child.setLastName(childForm.getChildLastName());
         child.setAge(childForm.getChildAge());
-        child.setImage(childForm.getImage());
+
+        if (childForm.getImage() == ""){
+            child.setImage("https://images.pexels.com/photos/6284647/pexels-photo-6284647.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+        } else
+        child.setImage(childForm.getImage().trim());
+
+
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
