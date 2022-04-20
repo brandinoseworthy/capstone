@@ -103,13 +103,17 @@
                                 <c:forEach items="${children}" var="child">
                                     <div class="col-md-4"  style="display: block; margin: 0 auto;">
                                         <br>
-                                        <div class="card" style="width: 18rem;">
-                                            <img src="${child.image}" class="card-img-top" alt="...">
+                                        <div class="card" style="height: 100%;">
+                                            <img src="${child.image}" class="card-img-top" alt="..." style="height: 380px; object-fit: cover;">
 
                                             <div class="card-body">
-                                                <h5 class="card-title"> ${child.firstName} ${child.lastName} - ${child.age} </h5>
+                                                <h5 class="card-title"  style="text-align: center"> ${child.firstName} ${child.lastName}   </h5>
+                                                <p class="card-text" style="text-align: center">Age: ${child.age}</p>
                                                 <p class="card-text">${child.lastName}</p>
                                                     <%--        <a href="#" class="btn btn-primary">Go somewhere</a>--%>
+
+
+                                                
                                                 <form action="/user/removeChild" method="post">
                                                     <button type="submit">
                                                         <input type="hidden" name="childId" id="childId" value="${child.id}">
