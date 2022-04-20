@@ -47,7 +47,7 @@ public class PlaydatePostController {
     }
 
     @RequestMapping(value = "/user/createplaydatePost", method = {RequestMethod.POST, RequestMethod.GET})
-    public ModelAndView createPlaydatePost(PlayDatePostFormBean form, BindingResult bindingResult) throws Exception {
+    public ModelAndView createPlaydatePost(@Valid PlayDatePostFormBean form, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
 
 
@@ -114,7 +114,7 @@ public class PlaydatePostController {
 //        log.info(playDatePost.toString());
 
 
-        response.setViewName("success/playdatePostedSuccessfully");
+        response.setViewName("redirect:/user/userPlaydatePosts");
 
         return response;
     }
@@ -161,6 +161,8 @@ public class PlaydatePostController {
         return response;
 
         }
+
+
 
 
    }

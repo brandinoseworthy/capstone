@@ -289,16 +289,16 @@
 
                                         <td>  <button type="submit" >
                                             <input type="hidden" name="" id="" value="" >
-                                            &hearts;
+                                            <a href="/childrenattending/willbetheres/${playdateposts.userId}" style="color: #222222"> &hearts; </a>
                                         </button></td>
 
                                         <c:forEach items="${userChild}" var="userChild">
 
                                             <form  action="/user/playdateSearchRegisterChild" method="post">
 
-                                                <td><input  type="checkbox"   name="playdatepost" id="playdatepostId"value="${playdateposts.id}" ></td>
+                                                <td><input   type="checkbox"  checked="checked"  name="playdatepost" id="playdatepostId"value="${playdateposts.id}" style="display: none";> </td>
                                                 <td>
-                                                    <button type="submit" onmouseover="this.style.color='#3a3939'; this.style.fontWeight='bold'" onmouseout="this.style.color='#e88382';this.style.fontWeight='normal'" style="color:  #e88382;  ">
+                                                    <button type="submit"  onmouseover="this.style.color='#3a3939'; this.style.fontWeight='bold'" onmouseout="this.style.color='#e88382';this.style.fontWeight='normal'" style="color:  #e88382;  ">
                                                         <input type="hidden" name="child" id="childId" value="${userChild.id}">
                                                             ${userChild.firstName}
                                                     </button>

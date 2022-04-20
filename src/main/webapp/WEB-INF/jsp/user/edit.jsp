@@ -92,9 +92,9 @@
                                         <%--                                        <c:forEach items='${bindingResult.getFieldErrors("zip")}' var="error">--%>
                                         <%--                                            <div style="color: red">${error.getDefaultMessage()}</div>--%>
                                         <%--                                        </c:forEach>--%>
-                                        <input type="text" id="form2Example27" class="form-control form-control-lg" name="zip" id="zipId" value="${form.zip}"/>
+                                        <input type="text" id="form2Example27" class="form-control form-control-lg" name="townState" id="townStateId" value="${form.zip}"/>
                                         <label class="form-label" for="form2Example27">Zip Code</label>
-                                        <c:forEach items='${bindingResult.getFieldErrors("zip")}' var="error">
+                                        <c:forEach items='${bindingResult.getFieldErrors("townState")}' var="error">
                                             <div style="color: red">${error.getDefaultMessage()}</div>
                                         </c:forEach>
                                     </div>

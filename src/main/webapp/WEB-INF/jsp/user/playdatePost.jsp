@@ -76,13 +76,18 @@
                                             <input type="hidden" name="id" id="id" value="${form.id}">
                                             <label class="form-label" for="form2Example17" >Playdate Post ${form.id}</label>
                                             <input type="jsonString" id="form2Example17" class="form-control form-control-lg" name="postMessage" id="postMessageId"  value="${form.postMessage}"style="display: inline-block;";/>
-
+                                            <c:forEach items='${bindingResult.getFieldErrors("postMessage")}' var="error">
+                                                <div style="color: red">${error.getDefaultMessage()}</div>
+                                            </c:forEach>
                                     </div>
                                 <br>
 <%--                                Location <input type="text" name="location" id="locationId" value="${form.location}" style="display: inline-block;";>--%>
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example17">Location</label>
                                         <input type="text" class="form-control form-control-lg" name="location" id="locationId" value="${form.location}" style="display: inline-block;";/>
+                                        <c:forEach items='${bindingResult.getFieldErrors("location")}' var="error">
+                                            <div style="color: red">${error.getDefaultMessage()}</div>
+                                        </c:forEach>
 
                                     </div>
                                 <br>
@@ -90,7 +95,7 @@
 <%--                                Date: <input type="date"  name="playdateDate" id="playdateDateId"  style="display: inline-block;";>--%>
 <%--                                    <c:if test="${empty form.id}">--%>
                                     <div class="form-outline mb-4">
-                                        <label class="form-label" for="form2Example17">Location</label>
+                                        <label class="form-label" for="form2Example17">Date</label>
                                             <input type="date" class="form-control form-control-lg" name="playdateDate" id="playdateDateId" style="display: inline-block;";/>
                                     </div>
 <%--                                    </c:if>--%>

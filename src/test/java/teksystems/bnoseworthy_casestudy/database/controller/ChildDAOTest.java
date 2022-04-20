@@ -28,6 +28,8 @@ public class ChildDAOTest {
         expected.setLastName("Marie");
         expected.setAge(12);
         expected.setUserId(3);
+        expected.setImage("No image");
+        expected.setAbout("I am a child");
 
         childDao.save(expected);
 
@@ -73,6 +75,8 @@ public class ChildDAOTest {
         actual.setLastName("Marie");
         actual.setAge(12);
         actual.setUserId(3);
+        actual.setAbout("I am a child");
+        actual.setImage("No Image");
 
         childDao.save(actual);
 

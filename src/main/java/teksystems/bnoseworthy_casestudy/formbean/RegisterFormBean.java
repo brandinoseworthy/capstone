@@ -37,8 +37,8 @@ public class RegisterFormBean {
     @NotBlank(message = "Confirm Password is required")
     private String confirmPassword;
 
-    @NotBlank(message = "Zip Code is required")
-    private String zip;
+    @NotBlank(message = "Town and State is required")
+    private String townState;
 
     private String description;
 

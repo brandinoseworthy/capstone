@@ -4,6 +4,7 @@ package teksystems.bnoseworthy_casestudy.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -47,10 +48,11 @@ public class ChildrenAttendingController {
 
     @RequestMapping(value = "/user/playdateSearchRegisterChild",  method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView  playdateSearchRegisterChild( @RequestParam(name = "child", required=false) Integer childId,
-                                                      @RequestParam(name = "playdatepost", required=false) Integer playdatepostId) throws Exception {
+                                                      @RequestParam(name = "playdatepost", required=false)  Integer playdatepostId) throws Exception {
 
         ModelAndView response = new ModelAndView();
         response.setViewName("user/searchforplaydate");
+
 
         log.info("Child Id " + childId);
         log.info("PlaydatePost Id " + playdatepostId);
@@ -68,6 +70,40 @@ public class ChildrenAttendingController {
         response.setViewName("success/childRegisteredForPlaydatePost");
 
         return response;
+    }
+
+
+//    Not working yet
+    @PreAuthorize("hasAuthority('USER')")
+    @GetMapping(value = "/childrenattending/willbetheres/{playdatePostId}")
+    public ModelAndView viewChildrenAttending(@PathVariable("playdatePostId") Integer playdatePostId) throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("/childrenattending/willbetheres");
+
+        log.info("PlaydatePost " + playdatePostId);
+        List <ChildrenAttending> childAttending = childrenAttendingDao.findAll(playdatePostId);
+        response.addObject("childAttendings", childAttending);
+
+
+
+//        User user = userDao.findById(userId);
+//
+//        RegisterFormBean form = new RegisterFormBean();
+//
+//        form.setId(user.getId());
+//        form.setEmail(user.getEmail());
+//        form.setFirstName(user.getFirstName());
+//        form.setLastName(user.getLastName());
+//        form.setZip(user.getZip());
+//        form.setDescription(user.getDescription());
+//        form.setFavoritePlaceForPlaydates(user.getFavoritePlaceForPlaydates());
+//
+//        form.setImageURL(user.getProfileImg());
+//
+//        response.addObject("form", form);
+
+        return response;
+
     }
 
 }

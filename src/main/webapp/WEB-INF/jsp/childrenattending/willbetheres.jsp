@@ -3,18 +3,20 @@
 
 <jsp:include page="../include/header.jsp" />
 
+
+<%--Not working yet--%>
 <h1> WILL BE THERE </h1>
 
 <table class="table" >
     <tr scope="row">
-        <th>User Id</th>
+        <th>Child Id</th>
         <th>First Name</th>
         <th>Last Name</th>
 
     </tr>
-    <c:forEach items="${users}" var="user">
+    <c:forEach items="${childAttendings}" var="childAttendings">
         <tr scope="row">
-            <td>${user.userId}</td>
+            <td>${childAttendings.childAttending}</td>
                 <%--            <td>${user.firstName}</td>--%>
         </tr>
     </c:forEach>

@@ -13,7 +13,6 @@ import teksystems.bnoseworthy_casestudy.database.dao.UserDAO;
 import teksystems.bnoseworthy_casestudy.database.entity.User;
 
 import java.util.Date;
-import java.util.List;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -33,7 +32,7 @@ public class UserDAOTest {
         expected.setFirstName("test");
         expected.setLastName("test");
         expected.setPassword("root");
-        expected.setZip("02152");
+        expected.setTownState("02152");
         expected.setDescription("123");
         expected.setFavoritePlaceForPlaydates("Park");
         expected.setCreateDate(new Date());
@@ -81,10 +80,11 @@ public class UserDAOTest {
         actual.setFirstName("test");
         actual.setLastName("test");
         actual.setPassword("root");
-        actual.setZip("02152");
+        actual.setTownState("02152");
         actual.setDescription("123");
         actual.setFavoritePlaceForPlaydates("Park");
         actual.setCreateDate(new Date());
+        
 
         userDao.save(actual);
 

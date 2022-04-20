@@ -51,11 +51,17 @@
                                             <label class="form-label" for="form2Example27">Password</label>
                                         </div>
 
+                                        <div class="form-outline mb-4">
+                                            <%--                                            Password : <input type="text" name="password">  --%>
+
+                                        </div>
+
                                         <div class="pt-1 mb-4">
-                                            <%--                                        <button type="submit"> Submit </button>--%>
+
                                             <button class="btn btn-dark btn-lg btn-block" type="submit" style="background-color: #f38181">Login</button>
                                         </div>
 
+                                        <p> <input type="radio" >  <label class="form-label" for="form2Example27">Save Password</label> </p>
                                         <a class="small text-muted" href="#!">Forgot password?</a>
                                         <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="/user/register"
                                                                                                                   style="color: #393f81;">Register here</a></p>

@@ -90,7 +90,7 @@ public class UserController {
         user.setEmail(form.getEmail());
         user.setFirstName(form.getFirstName());
         user.setLastName(form.getLastName());
-        user.setZip(form.getZip());
+        user.setTownState(form.getTownState());
         user.setDescription(form.getDescription());
         user.setFavoritePlaceForPlaydates(form.getFavoritePlaceForPlaydates());
 
@@ -134,7 +134,7 @@ public class UserController {
         form.setEmail(user.getEmail());
         form.setFirstName(user.getFirstName());
         form.setLastName(user.getLastName());
-        form.setZip(user.getZip());
+        form.setTownState(user.getTownState());
         form.setDescription(user.getDescription());
         form.setFavoritePlaceForPlaydates(user.getFavoritePlaceForPlaydates());
 
@@ -209,7 +209,7 @@ public class UserController {
         form.setEmail(user.getEmail());
         form.setFirstName(user.getFirstName());
         form.setLastName(user.getLastName());
-        form.setZip(user.getZip());
+        form.setTownState(user.getTownState());
         form.setDescription(user.getDescription());
         form.setFavoritePlaceForPlaydates(user.getFavoritePlaceForPlaydates());
 
@@ -231,7 +231,7 @@ public class UserController {
     @GetMapping(value = "/user/profile/{userId}")
     public ModelAndView viewTargetUserProfile(@PathVariable("userId") Integer userId) throws Exception {
         ModelAndView response = new ModelAndView();
-        response.setViewName("/user/profile");
+        response.setViewName("/user/targetprofile");
 
         User user = userDao.findById(userId);
 
@@ -241,7 +241,7 @@ public class UserController {
         form.setEmail(user.getEmail());
         form.setFirstName(user.getFirstName());
         form.setLastName(user.getLastName());
-        form.setZip(user.getZip());
+        form.setTownState(user.getTownState());
         form.setDescription(user.getDescription());
         form.setFavoritePlaceForPlaydates(user.getFavoritePlaceForPlaydates());
 
