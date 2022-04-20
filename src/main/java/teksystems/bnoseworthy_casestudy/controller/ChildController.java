@@ -114,6 +114,7 @@ public class ChildController {
         child.setFirstName(childForm.getChildFirstName());
         child.setLastName(childForm.getChildLastName());
         child.setAge(childForm.getChildAge());
+        child.setImage(childForm.getImage());
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
@@ -128,7 +129,7 @@ public class ChildController {
 
         log.info(String.valueOf(child));
 
-        response.setViewName(("redirect:/success/registeredChildToUser"));
+        response.setViewName(("redirect:/user/userChildren"));
         return response;
     }
 

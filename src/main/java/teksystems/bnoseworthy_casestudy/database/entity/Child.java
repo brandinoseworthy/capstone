@@ -38,6 +38,9 @@ import java.util.Set;
         @Column(name = "user_id")
         private Integer userId;
 
+        @Column(name = "image")
+        private String image;
+
         @OneToMany(mappedBy = "child", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
         private Set<ChildrenAttending> childAttending;

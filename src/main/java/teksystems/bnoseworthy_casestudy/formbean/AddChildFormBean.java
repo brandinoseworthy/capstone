@@ -30,4 +30,6 @@ public class AddChildFormBean {
 
     private Integer userId;
 
+    private String image;
+
 }
