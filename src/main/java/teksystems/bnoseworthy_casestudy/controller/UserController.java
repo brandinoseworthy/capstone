@@ -226,32 +226,32 @@ public class UserController {
     }
 
 
-// does nothing right now
-//    @PreAuthorize("hasAuthority('USER')")
-//    @GetMapping(value = "/user/profile/{userId}")
-//    public ModelAndView userProfile(@PathVariable("userId") Integer userId) throws Exception {
-//        ModelAndView response = new ModelAndView();
-//        response.setViewName("/user/profile");
-//
-//        User user = userDao.findById(userId);
-//
-//        RegisterFormBean form = new RegisterFormBean();
-//
-//        form.setId(user.getId());
-//        form.setEmail(user.getEmail());
-//        form.setFirstName(user.getFirstName());
-//        form.setLastName(user.getLastName());
-//        form.setZip(user.getZip());
-//        form.setDescription(user.getDescription());
-//        form.setFavoritePlaceForPlaydates(user.getFavoritePlaceForPlaydates());
-//
-//        form.setImageURL(user.getProfileImg());
-//
-//        response.addObject("form", form);
-//
-//        return response;
-//
-//    }
+// we can see target user profile with this. How to get it to work effectively without typing in the URL?
+    @PreAuthorize("hasAuthority('USER')")
+    @GetMapping(value = "/user/profile/{userId}")
+    public ModelAndView viewTargetUserProfile(@PathVariable("userId") Integer userId) throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("/user/profile");
+
+        User user = userDao.findById(userId);
+
+        RegisterFormBean form = new RegisterFormBean();
+
+        form.setId(user.getId());
+        form.setEmail(user.getEmail());
+        form.setFirstName(user.getFirstName());
+        form.setLastName(user.getLastName());
+        form.setZip(user.getZip());
+        form.setDescription(user.getDescription());
+        form.setFavoritePlaceForPlaydates(user.getFavoritePlaceForPlaydates());
+
+        form.setImageURL(user.getProfileImg());
+
+        response.addObject("form", form);
+
+        return response;
+
+    }
 
 
 }

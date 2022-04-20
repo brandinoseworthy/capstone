@@ -264,6 +264,7 @@
                                     <%--        <th scope="col">First</th>--%>
                                     <%--        <th scope="col">Last</th>--%>
                                     <%--        <th scope="col">Handle</th>--%>
+                                    <th scope="col" style="width : 1cm"> </th>
                                     <th scope="col" style="width : 3cm">Date</th>
                                     <th scope="col">Time</th>
                                     <th scope="col" style="width : 5cm">Playdate Post</th>
@@ -278,6 +279,7 @@
 
                                 <c:forEach items="${playDatePosts}" var="playdateposts">
                                     <tr scope="row">
+                                        <td><a href="/user/profile/${playdateposts.userId}">View</a>  </td>
                                         <td>${playdateposts.playdateDate}</td>
                                         <td>${playdateposts.playdateTime}</td>
                                         <td>${playdateposts.postMessage}</td>

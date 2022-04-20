@@ -94,6 +94,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="/user/addChild">Add Child</a></li>
+                            <li><a class="dropdown-item" href="/user/userChildren"> View Children</a></li>
                             <li><a class="dropdown-item" href="#">Edit Account</a></li>
                         </ul>
                     </li>

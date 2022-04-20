@@ -21,9 +21,12 @@ public interface ChildrenAttendingDAO extends JpaRepository<ChildrenAttending, L
 
     ChildrenAttending findByPlaydatePostIdAndChildId(@Param("playdatePostId") Integer playdatePostId, @Param("childId") Integer childId);
 
-    @Query("Select ca from ChildrenAttending ca where ca.playdatePost = :playdatePostId and ca.child = :childId")
-    List<ChildrenAttending> findAll(@Param("playdatePostId") Integer playdatePostId, @Param("childId") Integer childId);
+//    @Query("Select ca from ChildrenAttending ca where ca.playdatePost = :playdatePostId and ca.child = :childId")
+//    List<ChildrenAttending> findAll(@Param("playdatePostId") Integer playdatePostId, @Param("childId") Integer childId);
 
+
+    @Query("Select ca from ChildrenAttending ca where ca.playdatePost = :playdatePostId")
+    List<ChildrenAttending> findAll(@Param("playdatePostId") Integer playdatePostId);
 
 
 

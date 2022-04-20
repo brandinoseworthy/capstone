@@ -29,6 +29,7 @@
     <c:forEach items="${users}" var="user">
         <tr scope="row">
             <td>${user.userId}</td>
+
 <%--            <td>${user.firstName}</td>--%>
         </tr>
     </c:forEach>

@@ -22,4 +22,5 @@ public interface UserRoleDAO extends JpaRepository<UserRole, Long> {
 
 
 
+
 }
