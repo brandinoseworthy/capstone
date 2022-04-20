@@ -142,7 +142,7 @@ public class ChildController {
 
 
     @RequestMapping(value = "/user/userChildren", method = {RequestMethod.POST, RequestMethod.GET})
-    public ModelAndView viewUserChildren() throws Exception {
+    public ModelAndView viewUserChildren()  {
         ModelAndView response = new ModelAndView();
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
