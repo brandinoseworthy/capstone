@@ -92,7 +92,11 @@ public class UserController {
         user.setZip(form.getZip());
         user.setDescription(form.getDescription());
         user.setFavoritePlaceForPlaydates(form.getFavoritePlaceForPlaydates());
-        user.setProfileImg(form.getImageURL());
+
+        if (form.getImageURL() == ""){
+            user.setProfileImg("https://images.pexels.com/photos/6284647/pexels-photo-6284647.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+        } else
+            user.setProfileImg(form.getImageURL().trim());
 
         String password = passwordEncoder.encode((form.getPassword()));
         user.setPassword(password);
