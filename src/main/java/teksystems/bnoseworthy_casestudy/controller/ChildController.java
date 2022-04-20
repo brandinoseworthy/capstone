@@ -27,6 +27,7 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Controller
@@ -133,7 +134,7 @@ public class ChildController {
 
 
     @RequestMapping(value = "/user/userChildren", method = {RequestMethod.POST, RequestMethod.GET})
-    public ModelAndView viewUserChildren(@Valid AddChildFormBean childForm, BindingResult bindingResult) throws Exception {
+    public ModelAndView viewUserChildren() throws Exception {
         ModelAndView response = new ModelAndView();
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -143,6 +144,16 @@ public class ChildController {
         List<Child> children = childDao.findChildrenByUserId(user.getId());
         response.addObject("children", children);
 
+//        for(Child child : children){
+//            log.info("Child Name: "+  child.getFirstName() + " Age: " + child.getAge() );
+//
+//        }
+
+        log.info("*********");
+
+        children.forEach( (child)-> log.info("Child Name: "+  child.getFirstName() + " Age: " + child.getAge()));
+
+        
         return response;
 
     }
