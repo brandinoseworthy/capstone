@@ -279,7 +279,7 @@
 
                                 <c:forEach items="${playDatePosts}" var="playdateposts">
                                     <tr scope="row">
-                                        <td><a href="/user/profile/${playdateposts.userId}">View</a>  </td>
+                                        <td><a href="/user/profile/${playdateposts.userId}" onmouseover="this.style.color='#3a3939'" onmouseout="this.style.color='#e88382'" style="color:  #e88382;">View</a>  </td>
                                         <td>${playdateposts.playdateDate}</td>
                                         <td>${playdateposts.playdateTime}</td>
                                         <td>${playdateposts.postMessage}</td>
@@ -298,8 +298,8 @@
 
                                                 <td><input  type="checkbox"   name="playdatepost" id="playdatepostId"value="${playdateposts.id}" ></td>
                                                 <td>
-                                                    <button type="submit" >
-                                                        <input type="hidden" name="child" id="childId" value="${userChild.id}" >
+                                                    <button type="submit" onmouseover="this.style.color='#3a3939'; this.style.fontWeight='bold'" onmouseout="this.style.color='#e88382';this.style.fontWeight='normal'" style="color:  #e88382;  ">
+                                                        <input type="hidden" name="child" id="childId" value="${userChild.id}">
                                                             ${userChild.firstName}
                                                     </button>
                                                 </td>
