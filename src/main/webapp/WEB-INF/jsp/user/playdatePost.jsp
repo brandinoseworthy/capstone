@@ -73,7 +73,7 @@
                                     <div class="form-outline mb-4">
                                         <%--
                                                                               Username : <input type="text" name="username">--%>
-                                            <input type="hidden" name="playdatePostId" id="playdatePostId" value="${form.id}">
+                                            <input type="hidden" name="id" id="id" value="${form.id}">
                                             <label class="form-label" for="form2Example17" >Playdate Post ${form.id}</label>
                                             <input type="jsonString" id="form2Example17" class="form-control form-control-lg" name="postMessage" id="postMessageId"  value="${form.postMessage}"style="display: inline-block;";/>
 
@@ -88,20 +88,20 @@
                                 <br>
 
 <%--                                Date: <input type="date"  name="playdateDate" id="playdateDateId"  style="display: inline-block;";>--%>
-                                    <c:if test="${empty form.id}">
+<%--                                    <c:if test="${empty form.id}">--%>
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example17">Location</label>
                                             <input type="date" class="form-control form-control-lg" name="playdateDate" id="playdateDateId" style="display: inline-block;";/>
                                     </div>
-                                    </c:if>
+<%--                                    </c:if>--%>
 <%--                                Time:  <input type="time"  name="playdateTime" id="playdateTimeId"  style="display: inline-block;";>--%>
 
-                                    <c:if test="${empty form.id}">
+<%--                                    <c:if test="${empty form.id}">--%>
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="form2Example17">Time</label>
                                             <input type="time" class="form-control form-control-lg"name="playdateTime" id="playdateTimeId" style="display: inline-block;";/>
                                     </div>
-                                    </c:if>
+<%--                                    </c:if>--%>
                                 <br>
 
 

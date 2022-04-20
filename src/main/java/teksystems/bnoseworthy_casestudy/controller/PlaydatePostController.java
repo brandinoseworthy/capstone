@@ -72,10 +72,12 @@ public class PlaydatePostController {
             return response;
         }
 
-        log.info("In Create Posts the ID is: " + form.getId());
+        log.info(String.valueOf(form));
+//        log.info("In Create Posts the ID is: " + form.getId());
 
         PlayDatePost playDatePost = playdatePostDao.findById(form.getId());
-        log.info("In Create Posts the ID is: " + form.getId());
+
+//        log.info("In Create Posts the ID is: " + form.getId());
 
 
         if (playDatePost == null){
@@ -89,6 +91,8 @@ public class PlaydatePostController {
         String username = ((UserDetails) principal).getUsername();
 
         User user = userDao.findByEmail(username);
+
+
         playDatePost.setId(form.getId());
         playDatePost.setUserId(user.getId());
         playDatePost.setPostMessage(form.getPostMessage());
@@ -107,7 +111,7 @@ public class PlaydatePostController {
 
         playdatePostDao.save(playDatePost);
 
-        log.info(playDatePost.toString());
+//        log.info(playDatePost.toString());
 
 
         response.setViewName("success/playdatePostedSuccessfully");
