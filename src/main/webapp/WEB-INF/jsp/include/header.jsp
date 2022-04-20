@@ -73,7 +73,7 @@
                 <ul class="navbar-nav">
                     <sec:authorize access="isAuthenticated()">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/user/profile">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/user/profile/${form.id}">Home</a>
                     </li>
 
                     <li class="nav-item dropdown">

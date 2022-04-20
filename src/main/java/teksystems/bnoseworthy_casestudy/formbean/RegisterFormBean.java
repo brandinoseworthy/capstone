@@ -50,4 +50,6 @@ public class RegisterFormBean {
     @AssertTrue(message = "***** Must read privacy policy")
     private boolean checkboxPrivacy;
 
+    private String imageURL;
+
 }

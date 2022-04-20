@@ -146,6 +146,14 @@
 
                                     </div>
 
+                                    <div class="form-outline mb-4">
+
+                                        <%--                                        Favorite Play Date Location(s) <input type="text" name="favoritePlaceForPlaydates" id="favoritePlaceForPlayDatesId" value="${form.favoritePlaceForPlaydates}">--%>
+                                            <label class="form-label" for="form2Example27">Insert Profile Image Address</label>
+                                        <input type="text" id="form2Example27" class="form-control form-control-lg"  name="imageURL" id="imageURLId" value="${form.imageURL}"P/>
+
+                                    </div>
+
                                     <div class="pt-1 mb-4">
 
                                         <%--                                        <button type="submit"> Submit</button>--%>

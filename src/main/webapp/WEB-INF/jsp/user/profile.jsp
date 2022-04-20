@@ -139,7 +139,7 @@
 <hr>
 
 
-<h1>USER PROFILE PAGE</h1>
+<h1>USER PROFILE PAGE </h1>
 
 
 
@@ -157,19 +157,25 @@
 <%--                 styling                                 --%>
 
 <section class="h-100 gradient-custom-2">
+
+    <form  action="/user/profile" method="get">
+
+
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-lg-9 col-xl-7">
                 <div class="card">
                     <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
                         <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
-                            <img src="https://images.pexels.com/photos/3662770/pexels-photo-3662770.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 130px; z-index: 1">
+                            <img src="${form.imageURL}" class="img-fluid img-thumbnail mt-4 mb-2" name="imageURL" style="width: 130px; z-index: 1">
                             <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="z-index: 1;">
                                 Edit profile
                             </button>
                         </div>
                         <div class="ms-3" style="margin-top: 130px;">
-                            <h5>Andy Horwitz</h5>
+
+                            <input  type="hidden"  name="firstName" id="firstNameId" value="${form.firstName}" />
+                            <h5 style="color: white">${form.firstName}</h5>
                             <p>New York</p>
                         </div>
                     </div>
@@ -195,9 +201,8 @@
                         <div class="mb-5">
                             <p class="lead fw-normal mb-1">About</p>
                             <div class="p-4" style="background-color: #f8f9fa;">
-                                <p class="font-italic mb-1">Web Developer</p>
-                                <p class="font-italic mb-1">Lives in New York</p>
-                                <p class="font-italic mb-0">Photographer</p>
+                                <p class="font-italic mb-1" >${form.description}</p>
+
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center mb-4">
@@ -225,6 +230,9 @@
             </div>
         </div>
     </div>
+
+
+    </form>
 </section>
 
 <jsp:include page="../include/footer.jsp" />

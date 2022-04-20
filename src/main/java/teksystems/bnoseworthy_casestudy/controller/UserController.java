@@ -92,6 +92,7 @@ public class UserController {
         user.setZip(form.getZip());
         user.setDescription(form.getDescription());
         user.setFavoritePlaceForPlaydates(form.getFavoritePlaceForPlaydates());
+        user.setProfileImg(form.getImageURL());
 
         String password = passwordEncoder.encode((form.getPassword()));
         user.setPassword(password);
@@ -192,26 +193,42 @@ public class UserController {
         ModelAndView response = new ModelAndView();
         response.setViewName("user/profile");
 
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = ((UserDetails) principal).getUsername();
+
+        User user = userDao.findByEmail(username);
+
+        RegisterFormBean form = new RegisterFormBean();
+
+        form.setId(user.getId());
+        form.setEmail(user.getEmail());
+        form.setFirstName(user.getFirstName());
+        form.setLastName(user.getLastName());
+        form.setZip(user.getZip());
+        form.setDescription(user.getDescription());
+        form.setFavoritePlaceForPlaydates(user.getFavoritePlaceForPlaydates());
+
+        form.setImageURL(user.getProfileImg());
+
+        response.addObject("form", form);
 
         return response;
+
     }
 
 
 // does nothing right now
 //    @PreAuthorize("hasAuthority('USER')")
-    @GetMapping(value = "/user/profile/{userId}")
-    public ModelAndView userProfile(@PathVariable("userId") Integer userId) throws Exception {
-        ModelAndView response = new ModelAndView();
-        response.setViewName("/user/profile/{userId}");
-
-        User user = userDao.findById(userId);
-//        Child child = childDao.findByUserId(userId);
-
+//    @GetMapping(value = "/user/profile/{userId}")
+//    public ModelAndView userProfile(@PathVariable("userId") Integer userId) throws Exception {
+//        ModelAndView response = new ModelAndView();
+//        response.setViewName("/user/profile");
+//
+//        User user = userDao.findById(userId);
+//
 //        RegisterFormBean form = new RegisterFormBean();
 //
-//        AddChildFormBean childForm = new AddChildFormBean();
-//
-//        form.setId(user.getId()); //this is a hidden value - used to populate in the JSP
+//        form.setId(user.getId());
 //        form.setEmail(user.getEmail());
 //        form.setFirstName(user.getFirstName());
 //        form.setLastName(user.getLastName());
@@ -219,15 +236,13 @@ public class UserController {
 //        form.setDescription(user.getDescription());
 //        form.setFavoritePlaceForPlaydates(user.getFavoritePlaceForPlaydates());
 //
-////        childForm.setChildFirstName(child.getFirstName());
-////        childForm.setChildLastName(child.getLastName());
-////        childForm.setChildAge(child.getAge());
+//        form.setImageURL(user.getProfileImg());
 //
 //        response.addObject("form", form);
-//        response.addObject("childForm", childForm);
-
-        return response;
-    }
+//
+//        return response;
+//
+//    }
 
 
 }
