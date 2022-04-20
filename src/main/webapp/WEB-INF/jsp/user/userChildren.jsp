@@ -109,11 +109,11 @@
                                             <div class="card-body">
                                                 <h5 class="card-title"  style="text-align: center"> ${child.firstName} ${child.lastName}   </h5>
                                                 <p class="card-text" style="text-align: center">Age: ${child.age}</p>
-                                                <p class="card-text">${child.lastName}</p>
+                                                <p class="card-text">${child.about}</p>
                                                     <%--        <a href="#" class="btn btn-primary">Go somewhere</a>--%>
 
 
-                                                
+
                                                 <form action="/user/removeChild" method="post">
                                                     <button type="submit">
                                                         <input type="hidden" name="childId" id="childId" value="${child.id}">

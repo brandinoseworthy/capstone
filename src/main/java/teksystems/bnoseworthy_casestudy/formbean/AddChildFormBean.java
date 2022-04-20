@@ -32,4 +32,6 @@ public class AddChildFormBean {
 
     private String image;
 
+    private String about;
+
 }

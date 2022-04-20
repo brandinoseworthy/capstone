@@ -119,7 +119,13 @@
                                         <input type="text"  class="form-control form-control-lg" name="image" id="imageId" value="${childForm.image}" placeholder="Optional: Insert Image Address" />
                                     </div>
 
+                                    <div class="form-outline mb-4">
 
+                                        <%--                                        Child Last Name <input type="text" name="childLastName" id="childLastNameId" value="${childForm.childLastName}">--%>
+                                        <input type="text" id="form2Example27" class="form-control form-control-lg" type="text" name="about" id="aboutId"
+                                               value="${childForm.about}" placeholder="Optional: About" />
+                                        <%--                                        <label class="form-label" for="form2Example27">Child Last Name</label>--%>
+                                    </div>
 
 
                                     <button class="btn btn-dark btn-lg btn-block" type="submit" style="background-color: #f38181">Add Child</button>

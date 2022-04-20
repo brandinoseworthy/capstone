@@ -41,6 +41,9 @@ import java.util.Set;
         @Column(name = "image")
         private String image;
 
+        @Column(name = "about")
+        private String about;
+
         @OneToMany(mappedBy = "child", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
         private Set<ChildrenAttending> childAttending;
