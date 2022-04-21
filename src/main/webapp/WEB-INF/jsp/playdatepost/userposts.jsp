@@ -38,19 +38,22 @@
 
                                         <td>${post.playdateTime}</td>
                                         <td><a href="http://localhost:8080/playdatepost/createpost/${post.id}"
-                                               onmouseover="this.style.fontWeight='bold'" onmouseout="this.style.fontWeight='normal'"   style="color: rgba(243,129,129,.9);"> Edit</a></td>
-                                    <td>
-                                        <form action="/playdatepost/delete" method="post">
-                                            <button type="submit" onmouseover="this.style.fontWeight='bold'" onmouseout="this.style.fontWeight='normal'" style="background-color: #f8f9fa; color: #e88382 ">
-                                                <input type="hidden" name="id" id="id"
-                                                       value="${post.id}">
-                                                Remove
-                                            </button>
-                                        </form>
+                                               onmouseover="this.style.fontWeight='bold'"
+                                               onmouseout="this.style.fontWeight='normal'"
+                                               style="color: rgba(243,129,129,.9);"> Edit</a></td>
+                                        <td>
+                                            <form action="/playdatepost/delete" method="post">
+                                                <button type="submit" onmouseover="this.style.fontWeight='bold'"
+                                                        onmouseout="this.style.fontWeight='normal'"
+                                                        style="background-color: #f8f9fa; color: #e88382 ">
+                                                    <input type="hidden" name="id" id="id"
+                                                           value="${post.id}">
+                                                    Remove
+                                                </button>
+                                            </form>
 
-                                    </td>
+                                        </td>
                                     </tr>
-
 
                                 </c:forEach>
                             </table>

@@ -17,6 +17,7 @@ import teksystems.bnoseworthy_casestudy.database.dao.UserDAO;
 import teksystems.bnoseworthy_casestudy.database.entity.Child;
 import teksystems.bnoseworthy_casestudy.database.entity.User;
 import teksystems.bnoseworthy_casestudy.formbean.AddChildFormBean;
+import teksystems.bnoseworthy_casestudy.formbean.RegisterFormBean;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
@@ -150,5 +151,24 @@ public class ChildController {
         return response;
 
     }
+
+    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
+    @GetMapping(value = "/user/children/{userId}")
+    public ModelAndView viewTargetUserChildren(@PathVariable("userId") Integer userId) throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("user/targetuserchildren");
+
+        User user = userDao.findById(userId);
+
+
+        List<Child> children = childDao.findChildrenByUserId(user.getId());
+        response.addObject("children", children);
+
+        children.forEach((child) -> log.info("Child Name: " + child.getFirstName() + " Age: " + child.getAge()));
+
+        return response;
+
+    }
+
 
 }

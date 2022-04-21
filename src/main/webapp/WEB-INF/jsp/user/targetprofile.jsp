@@ -136,7 +136,7 @@
                             </div>
                             <div class="d-flex justify-content-between align-items-center mb-4">
                                 <p class="lead fw-normal mb-0">Explore</p>
-                                <p class="mb-0"><a href="http://localhost:8080/playdatepost/userposts" class="text-muted">PlaydatePosts</a>  | <a href="http://localhost:8080/user/mychildren" class="text-muted">View Children</a></p>
+                                <p class="mb-0"><a href="http://localhost:8080/playdatepost/userposts" class="text-muted">PlaydatePosts</a>  | <a href="http://localhost:8080/user/children/${form.id}" class="text-muted">View Children</a></p>
                             </div>
 
                         </div>
