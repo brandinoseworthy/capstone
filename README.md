@@ -49,3 +49,7 @@ Maven
 Tomcat
 JSP
 JUnit
+
+# Future
+
+This project is still being worked on. The next stesps is to work on viewing the list of children that will be attending the event and to create a user playdate newsfeed where a user can see playdates that are happening in their area to allow them to quickly check what is going on in the area currently. After - I would like to narrow this to include school districts and classes per student per child registered which will require a new table for School code and Class code - so a user can autatically see users and attend playdates that their children are connected with daily.
