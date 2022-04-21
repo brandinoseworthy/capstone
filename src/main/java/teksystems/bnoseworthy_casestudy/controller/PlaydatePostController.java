@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import teksystems.bnoseworthy_casestudy.database.dao.PlaydatePostDAO;
 import teksystems.bnoseworthy_casestudy.database.dao.UserDAO;
+import teksystems.bnoseworthy_casestudy.database.entity.Child;
 import teksystems.bnoseworthy_casestudy.database.entity.PlayDatePost;
 import teksystems.bnoseworthy_casestudy.database.entity.User;
 import teksystems.bnoseworthy_casestudy.formbean.PlayDatePostFormBean;
@@ -158,6 +159,23 @@ public class PlaydatePostController {
         playdatePostDao.deleteById(playdatepostId);
 
         response.setViewName("redirect:/playdatepost/userposts");
+
+        return response;
+
+    }
+
+    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
+    @GetMapping(value = "/playdateposts/user/{userId}")
+    public ModelAndView viewTargetUserPosts(@PathVariable("userId") Integer userId) throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("playdatepost/targetposts");
+
+        User user = userDao.findById(userId);
+
+
+        List<PlayDatePost> postList = playdatePostDao.findUserPlaydatePostsByUserIdOrderByPlaydateDateDesc(user.getId());
+
+        response.addObject("postList", postList);
 
         return response;
 
