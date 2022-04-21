@@ -3,18 +3,13 @@
 <jsp:include page="../include/header.jsp" />
 
 <c:if test="${empty form.id}">
-    <h1>Sign Up</h1>
 </c:if>
 
 <c:if test="${not empty form.id}">
 </c:if>
 
-<br>
 
-
-
-
-<section class="clear" style="background-color: #9A616D; clear: both">
+<section class="h-100 gradient-custom-2">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-xl-10">

@@ -3,8 +3,7 @@
 
 <jsp:include page="../include/header.jsp"/>
 
-
-<section class="clear" style="background-color: #9A616D; clear: both">
+<section class="h-100 gradient-custom-2">
     <div class="container py-5 h-300">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="card" style="border-radius: 1rem;">

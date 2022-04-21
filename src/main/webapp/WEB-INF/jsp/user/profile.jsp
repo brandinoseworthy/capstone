@@ -93,8 +93,6 @@
 
 <hr>
 
-
-<br>
 <section class="h-100 gradient-custom-2">
 
     <form action="/user/profile" method="get">

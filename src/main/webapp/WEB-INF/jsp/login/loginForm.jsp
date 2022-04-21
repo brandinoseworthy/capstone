@@ -4,11 +4,13 @@
 <form action="/login/loginSubmit" method="POST">
 
 
-    <section class="vh-100" style="background-color: #9A616D;">
-        <div class="container py-5 h-100">
+<%--    <section class="vh-100" style="background-color: #9A616D;">--%>
+    <section class="h-100 gradient-custom-2">
+
+    <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col col-xl-10">
-                    <div class="card" style="border-radius: 1rem;">
+                    <div class="card" style="border-radius: 1rem; border-color: #222222;">
                         <div class="row g-0">
                             <div class="col-md-6 col-lg-5 d-none d-md-block">
                                 <img src="https://images.pexels.com/photos/7869833/pexels-photo-7869833.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
