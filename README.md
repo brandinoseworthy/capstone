@@ -1,6 +1,6 @@
 
 
-<h1>#Problem</h1>
+<h1>Problem</h1>
 
 As a parent that stays home or works - it can be hard to navigate where other kids are playing, even in your own town if you are not friends with the other parents. Which can make socializing your child at any age difficult. 
 
