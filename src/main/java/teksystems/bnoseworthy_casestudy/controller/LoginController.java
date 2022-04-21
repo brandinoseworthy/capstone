@@ -13,8 +13,6 @@ import teksystems.bnoseworthy_casestudy.database.dao.UserDAO;
 @Controller
 public class LoginController {
 
-
-
     @RequestMapping(value = "/login/login", method = RequestMethod.GET)
     public ModelAndView login() throws Exception {
         ModelAndView response = new ModelAndView();

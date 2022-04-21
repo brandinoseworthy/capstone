@@ -11,56 +11,13 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <%--    <link href="<c:url value="../../../pub/css/header.css" />" rel="stylesheet">--%>
-    <%--    <link href="<c:url value="../../../pub/css/profile.css" />" rel="stylesheet">--%>
 
-    <%----%>
     <title>Sample Project</title>
 
     <link href="<c:url value="../../../pub/css/profile.css" />" rel="stylesheet">
 </head>
 
 <body>
-
-<%--<div class="container">--%>
-<%--    <a href="/index">Index</a> &nbsp; | &nbsp;--%>
-<%--    <a href="/login/register">Sign Up</a> &nbsp;| &nbsp;--%>
-<%--    <a href="/user/search">Search</a> &nbsp;| &nbsp;&nbsp;--%>
-<%--    <a href="/user/playdatePost">Playdate Post</a> &nbsp;|&nbsp;&nbsp;--%>
-<%--    <a href="/user/userPlaydatePosts">User Posts</a> &nbsp;| &nbsp;&nbsp;--%>
-<%--    <a href="/login/logout">Logout</a> |--%>
-
-
-
-
-
-
-<%--    <sec:authorize access="hasAuthority('ADMIN')">--%>
-<%--        &lt;%&ndash;    <sec:authorize access="hasAuthority('ADMIN', 'User')">     <-- to add more users&ndash;%&gt;--%>
-<%--    <a href="/user/search">Search User</a> &nbsp;| &nbsp;&nbsp;--%>
-<%--        &lt;%&ndash;    this does not prevernt someone from typing this in browser and get here. Go to User controller to prevent access&ndash;%&gt;--%>
-<%--    </sec:authorize>--%>
-
-
-<%--    <sec:authorize access="!isAuthenticated()">--%>
-<%--    | <a href="/login/login">Login</a> &nbsp;| &nbsp;&nbsp;--%>
-<%--    <a href="/login/register">Sign Up</a> &nbsp;|--%>
-<%--    </sec:authorize>--%>
-
-
-<%--    <sec:authorize access="isAuthenticated()">--%>
-
-<%--    <a href="/user/userPlaydatePosts">MyPlaydatePosts</a>  |--%>
-<%--    <a href="/user/playdatePost">+ Playdate Post</a> &nbsp;|&nbsp;&nbsp;--%>
-<%--    <a href="/user/addChild">+ Child</a> &nbsp;| &nbsp;&nbsp;--%>
-<%--    <a href="/user/searchforplaydate">Find PlaydatePosts</a> &nbsp;| &nbsp;&nbsp;--%>
-<%--    <a href="/user/userChildren">MyChildren</a> &nbsp;| &nbsp;&nbsp;--%>
-<%--    <a href="/login/logout">Logout</a> &nbsp;| &nbsp;&nbsp;--%>
-<%--        <sec:authentication property="principal.username" />--%>
-<%--    </sec:authorize>--%>
-
-
-
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -81,9 +38,9 @@
                             Playdate Posts
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="/user/searchforplaydate">Find Playdates</a></li>
+                            <li><a class="dropdown-item" href="/playdatepost/search">Find Playdates</a></li>
                             <li><a class="dropdown-item" href="/user/playdatePost">Create Playdate Post</a></li>
-                            <li><a class="dropdown-item" href="/user/userPlaydatePosts"> MyPlaydate Posts</a></li>
+                            <li><a class="dropdown-item" href="/playdatepost/userposts"> MyPlaydate Posts</a></li>
                         </ul>
                     </li>
 
@@ -93,8 +50,8 @@
                             Account
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="/user/addChild">Add Child</a></li>
-                            <li><a class="dropdown-item" href="/user/userChildren"> View Children</a></li>
+                            <li><a class="dropdown-item" href="/child/add">Add Child</a></li>
+                            <li><a class="dropdown-item" href="/user/mychildren"> View Children</a></li>
 
                         </ul>
                     </li>
@@ -132,11 +89,6 @@
 
 
 
-
-
-
-
-
 <hr>
 
 <br>
@@ -162,20 +114,7 @@
                             </div>
                         </div>
                         <div class="p-4 text-black" style="background-color: #f8f9fa;">
-                            <%--                        <div class="d-flex justify-content-end text-center py-1">--%>
-                            <%--                            <div>--%>
-                            <%--                                <p class="mb-1 h5">253</p>--%>
-                            <%--                                <p class="small text-muted mb-0">Photos</p>--%>
-                            <%--                            </div>--%>
-                            <%--                            <div class="px-3">--%>
-                            <%--                                <p class="mb-1 h5">1026</p>--%>
-                            <%--                                <p class="small text-muted mb-0">Followers</p>--%>
-                            <%--                            </div>--%>
-                            <%--                            <div>--%>
-                            <%--                                <p class="mb-1 h5">478</p>--%>
-                            <%--                                <p class="small text-muted mb-0">Following</p>--%>
-                            <%--                            </div>--%>
-                            <%--                        </div>--%>
+
                         </div>
                         <br>
                         <br>
@@ -186,26 +125,19 @@
                                     <p class="font-italic mb-1" >${form.description}</p>
 
                                 </div>
+                                <br>
+                                <div class="mb-5">
+                                    <p class="lead fw-normal mb-1">Favorite Playdate location(s)</p>
+                                    <div class="p-4" style="background-color: #f8f9fa;">
+                                        <p class="font-italic mb-1">${form.favoritePlaceForPlaydates}</p>
+
+                                    </div>
+                                </div>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mb-4">
                                 <p class="lead fw-normal mb-0">Explore</p>
-                                <p class="mb-0"><a href="http://localhost:8080/user/userPlaydatePosts" class="text-muted">PlaydatePosts</a>  | <a href="http://localhost:8080/user/userChildren" class="text-muted">View Children</a></p>
+                                <p class="mb-0"><a href="http://localhost:8080/playdatepost/userposts" class="text-muted">PlaydatePosts</a>  | <a href="http://localhost:8080/user/mychildren" class="text-muted">View Children</a></p>
                             </div>
-                            <%--                        <div class="row g-2">--%>
-                            <%--                            <div class="col mb-2">--%>
-                            <%--                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp" alt="image 1" class="w-100 rounded-3">--%>
-                            <%--                            </div>--%>
-                            <%--                            <div class="col mb-2">--%>
-                            <%--                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp" alt="image 1" class="w-100 rounded-3">--%>
-                            <%--                            </div>--%>
-                            <%--                        </div>--%>
-                            <%--                        <div class="row g-2">--%>
-                            <%--                            <div class="col">--%>
-                            <%--                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp" alt="image 1" class="w-100 rounded-3">--%>
-                            <%--                            </div>--%>
-                            <%--                            <div class="col">--%>
-                            <%--                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp" alt="image 1" class="w-100 rounded-3">--%>
-                            <%--                            </div>--%>
 
                         </div>
                     </div>

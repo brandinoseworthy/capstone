@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import teksystems.bnoseworthy_casestudy.database.entity.User;
-import teksystems.bnoseworthy_casestudy.database.entity.UserRole;
 
 import java.util.List;
 
@@ -16,7 +15,6 @@ public interface UserDAO extends JpaRepository<User, Long> {
 
     @Query(value = "select * from users where email = :email", nativeQuery = true)
     User findByEmail(@Param("email") String email);
-
 
     List<User> findByFirstNameContainingIgnoreCase(@Param("firstName") String firstName);
 

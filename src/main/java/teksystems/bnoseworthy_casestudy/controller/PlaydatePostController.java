@@ -35,31 +35,28 @@ public class PlaydatePostController {
     @Autowired
     private UserDAO userDao;
 
+
     @RequestMapping(value = "/user/playdatePost", method = RequestMethod.GET)
     public ModelAndView playdatePost() throws Exception {
         ModelAndView response = new ModelAndView();
-        response.setViewName("user/playdatePost");
-
+        response.setViewName("playdatepost/create");
 
         return response;
-
-
     }
 
-    @RequestMapping(value = "/user/createplaydatePost", method = {RequestMethod.POST, RequestMethod.GET})
+    @RequestMapping(value = "playdatepost/createpost", method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView createPlaydatePost(@Valid PlayDatePostFormBean form, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
 
-
-        if ( bindingResult.hasErrors() ) {
+        if (bindingResult.hasErrors()) {
 
             List<String> errorMessages = new ArrayList<>();
 
 
-            for (ObjectError error :bindingResult.getAllErrors() ) {
+            for (ObjectError error : bindingResult.getAllErrors()) {
 
                 errorMessages.add(error.getDefaultMessage());
-                log.info( ((FieldError) error).getField() + " " + error.getDefaultMessage());
+                log.info(((FieldError) error).getField() + " " + error.getDefaultMessage());
             }
 
             response.addObject("form", form);
@@ -68,30 +65,23 @@ public class PlaydatePostController {
             response.addObject("bindingResult", bindingResult);
 
 
-            response.setViewName("user/playdatePost");
+            response.setViewName("playdatepost/create");
+
+
             return response;
         }
 
-        log.info(String.valueOf(form));
-//        log.info("In Create Posts the ID is: " + form.getId());
-
         PlayDatePost playDatePost = playdatePostDao.findById(form.getId());
 
-//        log.info("In Create Posts the ID is: " + form.getId());
 
-
-        if (playDatePost == null){
+        if (playDatePost == null) {
             playDatePost = new PlayDatePost();
         }
-
-
-//        PlayDatePost playDatePost =  new PlayDatePost();
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username = ((UserDetails) principal).getUsername();
 
         User user = userDao.findByEmail(username);
-
 
         playDatePost.setId(form.getId());
         playDatePost.setUserId(user.getId());
@@ -111,22 +101,21 @@ public class PlaydatePostController {
 
         playdatePostDao.save(playDatePost);
 
-//        log.info(playDatePost.toString());
+        log.info("New Playdate Post created: " + playDatePost);
 
-
-        response.setViewName("redirect:/user/userPlaydatePosts");
+        response.setViewName("redirect:/playdatepost/userposts");
 
         return response;
     }
 
     @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
-    @GetMapping(value = "/user/createplaydatePost/{playdatePostId}")
+    @GetMapping(value = "/playdatepost/createpost/{playdatePostId}")
     public ModelAndView editPlaydatePost(@PathVariable("playdatePostId") Integer playdatePostId) throws Exception {
         ModelAndView response = new ModelAndView();
-        response.setViewName("user/playdatePost");
+        response.setViewName("playdatepost/create");
 
         PlayDatePost playDatePost = playdatePostDao.findById(playdatePostId);
-        log.info("Playdate Post Id: " + playdatePostId);
+        log.info("Editing playdatepost Id: " + playdatePostId);
         PlayDatePostFormBean form = new PlayDatePostFormBean();
 
         form.setId(playDatePost.getId());
@@ -141,28 +130,25 @@ public class PlaydatePostController {
     }
 
 
-
-    @RequestMapping(value = "/user/userPlaydatePosts", method = {RequestMethod.POST, RequestMethod.GET})
+    @RequestMapping(value = "/playdatepost/userposts", method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView displayUserPlaydatePosts(@Valid PlayDatePostFormBean playDatePostFormBean, BindingResult bindingResult) throws Exception {
 
         ModelAndView response = new ModelAndView();
 
-        response.setViewName("user/userPlaydatePosts");
+        response.setViewName("playdatepost/userposts");
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username = ((UserDetails) principal).getUsername();
 
         User user = userDao.findByEmail(username);
 
-            List<PlayDatePost> postList = playdatePostDao.findUserPlaydatePostsByUserIdOrderByPlaydateDateDesc(user.getId());
+        List<PlayDatePost> postList = playdatePostDao.findUserPlaydatePostsByUserIdOrderByPlaydateDateDesc(user.getId());
 
-            response.addObject("postList", postList);
+        response.addObject("postList", postList);
 
         return response;
 
-        }
+    }
 
 
-
-
-   }
+}

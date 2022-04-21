@@ -44,9 +44,6 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
 
 
-
-
-
     @RequestMapping(value = "/login/register", method = RequestMethod.GET)
     public ModelAndView register() throws Exception {
         ModelAndView response = new ModelAndView();
@@ -62,15 +59,15 @@ public class UserController {
     public ModelAndView registerSubmit(@Valid RegisterFormBean form, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
 
-        if ( bindingResult.hasErrors() ) {
+        if (bindingResult.hasErrors()) {
 
             List<String> errorMessages = new ArrayList<>();
 
 
-            for (ObjectError error :bindingResult.getAllErrors() ) {
+            for (ObjectError error : bindingResult.getAllErrors()) {
 
                 errorMessages.add(error.getDefaultMessage());
-                log.info( ((FieldError) error).getField() + " " + error.getDefaultMessage());
+                log.info(((FieldError) error).getField() + " " + error.getDefaultMessage());
             }
 
             response.addObject("form", form);
@@ -83,10 +80,11 @@ public class UserController {
 
         User user = userDao.findById(form.getId());
 
-        if (user == null ) {
+        if (user == null) {
             user = new User();
         }
 
+        log.info("Form Information: " + form);
         user.setEmail(form.getEmail());
         user.setFirstName(form.getFirstName());
         user.setLastName(form.getLastName());
@@ -94,7 +92,7 @@ public class UserController {
         user.setDescription(form.getDescription());
         user.setFavoritePlaceForPlaydates(form.getFavoritePlaceForPlaydates());
 
-        if (form.getImageURL() == ""){
+        if (form.getImageURL() == "") {
             user.setProfileImg("https://images.pexels.com/photos/6284647/pexels-photo-6284647.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
         } else
             user.setProfileImg(form.getImageURL().trim());
@@ -110,7 +108,9 @@ public class UserController {
 
         userRoleDao.save(userRole);
 
-        log.info(form.toString());
+
+        log.info("Saved: " + user);
+        log.info("User Role: " + userRole.getUserRole());
 
 
         response.setViewName(("redirect:/login/login"));
@@ -140,6 +140,8 @@ public class UserController {
 
         response.addObject("form", form);
 
+        log.info("User Information before update: " + form);
+
         return response;
     }
 
@@ -147,29 +149,30 @@ public class UserController {
     // working on a native query and then I want to be able to delete accounts
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping(value = "/user/search")
-    public ModelAndView search(){
+    public ModelAndView search() {
         ModelAndView response = new ModelAndView();
         response.setViewName("user/search");
 
-            List<UserRole> users = userRoleDao.findByUserRole();
-            response.addObject("users", users);
+        List<UserRole> users = userRoleDao.findByUserRole();
+        response.addObject("users", users);
 
         return response;
     }
 
 
-    @GetMapping(value = "/user/searchforplaydate")
-    public ModelAndView playdateSearch(@RequestParam(name = "searchId", required = false, defaultValue = "") String searchLocation){
+    @GetMapping(value = "/playdatepost/search")
+    public ModelAndView playdateSearch(@RequestParam(name = "searchId", required = false, defaultValue = "") String searchLocation) {
         ModelAndView response = new ModelAndView();
-        response.setViewName("/user/searchforplaydate");
-        log.info(searchLocation);
+//        response.setViewName("/user/searchforplaydate");
+        response.setViewName("/playdatepost/search");
+        log.info("User is searching for: " + searchLocation);
 
 
-        if(!StringUtils.isBlank(searchLocation)){
+        if (!StringUtils.isBlank(searchLocation)) {
             List<PlayDatePost> playDatePosts = playdatePostDao.findPlaydatePostsByLocationContainsOrderByPlaydateDateDesc(searchLocation);
             response.addObject("playDatePosts", playDatePosts);
 
-        }else {
+        } else {
             searchLocation = "Search for Location";
         }
 
@@ -183,18 +186,13 @@ public class UserController {
         List<Child> userChild = childDao.findChildrenByUserId(user.getId());
         response.addObject("userChild", userChild);
 
-        log.info(searchLocation);
-
-
         return response;
     }
 
 
-
-
     //    Takes You to the User Profile After Login
     @GetMapping(value = "/user/profile")
-    public ModelAndView profile(@RequestParam(name = "searchId", required = false, defaultValue = "") String searchFirstName){
+    public ModelAndView profile(@RequestParam(name = "searchId", required = false, defaultValue = "") String searchFirstName) {
         ModelAndView response = new ModelAndView();
         response.setViewName("user/profile");
 
@@ -202,6 +200,8 @@ public class UserController {
         String username = ((UserDetails) principal).getUsername();
 
         User user = userDao.findByEmail(username);
+
+        log.info("Home Profile of: " + user.getId() + " " + user.getFirstName() + " " + user.getLastName());
 
         RegisterFormBean form = new RegisterFormBean();
 
@@ -217,16 +217,12 @@ public class UserController {
 
         response.addObject("form", form);
 
-
-
-
-
         return response;
 
     }
 
 
-// we can see target user profile with this. How to get it to work effectively without typing in the URL?
+    // we can see target user profile with this. How to get it to work effectively without typing in the URL?
     @PreAuthorize("hasAuthority('USER')")
     @GetMapping(value = "/user/profile/{userId}")
     public ModelAndView viewTargetUserProfile(@PathVariable("userId") Integer userId) throws Exception {
@@ -248,6 +244,8 @@ public class UserController {
         form.setImageURL(user.getProfileImg());
 
         response.addObject("form", form);
+
+        log.info("Currently Viewing Profile of" + " " + user.getId() + " " + user.getFirstName() + " " + user.getLastName());
 
         return response;
 

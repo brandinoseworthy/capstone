@@ -26,8 +26,6 @@ public class ErrorController {
     }
 
 
-
-
     @ExceptionHandler(Exception.class)
     public ModelAndView handleAllExceptions(HttpServletRequest request, Exception ex) {
 
@@ -38,11 +36,11 @@ public class ErrorController {
 
         String stackTrace = getHTMLStackTrace(ExceptionUtils.getStackFrames(ex));
 
-        model.addObject("requestUrl",  getRequestURL(request));
+        model.addObject("requestUrl", getRequestURL(request));
         model.addObject("message", ex.getMessage());
         model.addObject("stackTrace", stackTrace);
 
-        if ( ex.getCause() != null ) {
+        if (ex.getCause() != null) {
             Throwable root = ExceptionUtils.getRootCause(ex);
             model.addObject("rootcause", root);
 
@@ -59,7 +57,7 @@ public class ErrorController {
         for (String frame : stack) {
             if (frame.contains("teksystems")) {
                 result.append(" &nbsp; &nbsp; &nbsp;" + frame.trim().substring(3) + "<br>\n");
-            } else if ( frame.contains("Caused by:")) {
+            } else if (frame.contains("Caused by:")) {
                 result.append("Caused By: " + frame + "<br>");
             }
         }

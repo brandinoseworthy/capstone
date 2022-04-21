@@ -41,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // this is the URL to log the user out
                 .logoutUrl("/login/logout")
                 // the URL that the user goes to after they logout
-                .logoutSuccessUrl("/index")
+                .logoutSuccessUrl("/login/login")
                 .and()
                 .exceptionHandling()
                 .accessDeniedPage("/error/**");

@@ -1,17 +1,6 @@
 <jsp:include page="../include/header.jsp" />
 
 <form action="/login/loginSubmit" method="POST">
-    <%--<form action="/login/loginSubmit" method="POST">--%>
-
-    <%--    Username : <input type="text" name="username">--%>
-    <%--    <br>--%>
-    <%--    Password : <input type="text" name="password">--%>
-
-    <%--    <br>--%>
-    <%--    <button type="submit"> Submit </button>--%>
-
-    <%--</form>--%>
-
 
 
     <section class="vh-100" style="background-color: #9A616D;">
@@ -32,27 +21,22 @@
                                         <div class="d-flex align-items-center mb-3 pb-1">
                                             <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
                                             <span  class="h1 fw-bold mb-0" style="color: rgba(243,129,129,.9);" >PlayDates <h4>Let kids be kids WITH Kids!</h4></span>
-<%--                                            <span class="h1 fw-bold mb-0">PlayDates <h4>Let kids be kids WITH Kids!</h4></span>--%>
                                         </div>
-
 
 
                                         <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
 
                                         <div class="form-outline mb-4">
-                                            <%--                                        Username : <input type="text" name="username">--%>
                                             <input type="text" id="form2Example17" class="form-control form-control-lg" name="username"/>
                                             <label class="form-label" for="form2Example17">Email address</label>
                                         </div>
 
                                         <div class="form-outline mb-4">
-                                            <%--                                            Password : <input type="text" name="password">  --%>
                                             <input type="password" id="form2Example27" class="form-control form-control-lg" name="password" />
                                             <label class="form-label" for="form2Example27">Password</label>
                                         </div>
 
                                         <div class="form-outline mb-4">
-                                            <%--                                            Password : <input type="text" name="password">  --%>
 
                                         </div>
 
@@ -63,10 +47,9 @@
 
                                         <p> <input type="radio" >  <label class="form-label" for="form2Example27">Save Password</label> </p>
                                         <a class="small text-muted" href="#!">Forgot password?</a>
-                                        <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="/user/register"
+                                        <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="/login/register"
                                                                                                                   style="color: #393f81;">Register here</a></p>
-                                        <a href="#!" class="small text-muted">Terms of use.</a>
-                                        <a href="#!" class="small text-muted">Privacy policy</a>
+
                                     </form>
 
                                 </div>

@@ -22,15 +22,15 @@ public class IndexController {
     public ModelAndView index() throws Exception {
         ModelAndView response = new ModelAndView();
 
-        log.debug("lombok logging at debug level");
-        log.info("lombok logging at info level");
-        log.warn("lombok logging at warn level");
-
-        List<User> users = userDao.findByFirstNameContainingIgnoreCase("Brandi");
-
-        for ( User user : users ){
-            log.debug(user.toString());
-        }
+//        log.debug("lombok logging at debug level");
+//        log.info("lombok logging at info level");
+//        log.warn("lombok logging at warn level");
+//
+//        List<User> users = userDao.findByFirstNameContainingIgnoreCase("Brandi");
+//
+//        for ( User user : users ){
+//            log.debug(user.toString());
+//        }
 
         response.setViewName("index");
 

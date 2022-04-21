@@ -11,57 +11,13 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<%--    <link href="<c:url value="../../../pub/css/header.css" />" rel="stylesheet">--%>
-<%--    <link href="<c:url value="../../../pub/css/profile.css" />" rel="stylesheet">--%>
 
-<%----%>
     <title>Sample Project</title>
 
 
 </head>
 
 <body>
-
-<%--<div class="container">--%>
-<%--    <a href="/index">Index</a> &nbsp; | &nbsp;--%>
-<%--    <a href="/login/register">Sign Up</a> &nbsp;| &nbsp;--%>
-<%--    <a href="/user/search">Search</a> &nbsp;| &nbsp;&nbsp;--%>
-<%--    <a href="/user/playdatePost">Playdate Post</a> &nbsp;|&nbsp;&nbsp;--%>
-<%--    <a href="/user/userPlaydatePosts">User Posts</a> &nbsp;| &nbsp;&nbsp;--%>
-<%--    <a href="/login/logout">Logout</a> |--%>
-
-
-
-
-
-
-<%--    <sec:authorize access="hasAuthority('ADMIN')">--%>
-<%--        &lt;%&ndash;    <sec:authorize access="hasAuthority('ADMIN', 'User')">     <-- to add more users&ndash;%&gt;--%>
-<%--    <a href="/user/search">Search User</a> &nbsp;| &nbsp;&nbsp;--%>
-<%--        &lt;%&ndash;    this does not prevernt someone from typing this in browser and get here. Go to User controller to prevent access&ndash;%&gt;--%>
-<%--    </sec:authorize>--%>
-
-
-<%--    <sec:authorize access="!isAuthenticated()">--%>
-<%--    | <a href="/login/login">Login</a> &nbsp;| &nbsp;&nbsp;--%>
-<%--    <a href="/login/register">Sign Up</a> &nbsp;|--%>
-<%--    </sec:authorize>--%>
-
-
-<%--    <sec:authorize access="isAuthenticated()">--%>
-
-<%--    <a href="/user/userPlaydatePosts">MyPlaydatePosts</a>  |--%>
-<%--    <a href="/user/playdatePost">+ Playdate Post</a> &nbsp;|&nbsp;&nbsp;--%>
-<%--    <a href="/user/addChild">+ Child</a> &nbsp;| &nbsp;&nbsp;--%>
-<%--    <a href="/user/searchforplaydate">Find PlaydatePosts</a> &nbsp;| &nbsp;&nbsp;--%>
-<%--    <a href="/user/userChildren">MyChildren</a> &nbsp;| &nbsp;&nbsp;--%>
-<%--    <a href="/login/logout">Logout</a> &nbsp;| &nbsp;&nbsp;--%>
-<%--        <sec:authentication property="principal.username" />--%>
-<%--    </sec:authorize>--%>
-
-
-
-
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -81,9 +37,9 @@
                             Playdate Posts
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="/user/searchforplaydate">Find Playdates</a></li>
+                            <li><a class="dropdown-item" href="/playdatepost/search">Find Playdates</a></li>
                             <li><a class="dropdown-item" href="/user/playdatePost">Create Playdate Post</a></li>
-                            <li><a class="dropdown-item" href="/user/userPlaydatePosts"> MyPlaydate Posts</a></li>
+                            <li><a class="dropdown-item" href="/playdatepost/userposts"> MyPlaydate Posts</a></li>
                         </ul>
                     </li>
 
@@ -93,8 +49,8 @@
                             Account
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="/user/addChild">Add Child</a></li>
-                            <li><a class="dropdown-item" href="/user/userChildren"> View Children</a></li>
+                            <li><a class="dropdown-item" href="/child/add">Add Child</a></li>
+                            <li><a class="dropdown-item" href="/user/mychildren"> View Children</a></li>
                             <li><a class="dropdown-item" href="#">Edit Account</a></li>
                         </ul>
                     </li>

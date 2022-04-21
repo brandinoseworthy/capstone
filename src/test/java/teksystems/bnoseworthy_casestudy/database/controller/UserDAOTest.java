@@ -84,7 +84,7 @@ public class UserDAOTest {
         actual.setDescription("123");
         actual.setFavoritePlaceForPlaydates("Park");
         actual.setCreateDate(new Date());
-        
+
 
         userDao.save(actual);
 

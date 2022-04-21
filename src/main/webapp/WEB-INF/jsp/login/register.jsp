@@ -7,7 +7,6 @@
 </c:if>
 
 <c:if test="${not empty form.id}">
-    <h1>Edit All Information</h1>
 </c:if>
 
 <br>
@@ -34,7 +33,6 @@
 
                                     <div class="d-flex align-items-center mb-3 pb-1">
                                         <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-<%--                                        <span  class="h1 fw-bold mb-0" style="color: rgba(243,129,129,.9);" >Create An Account</span>--%>
 
                                         <c:if test="${empty form.id}">
                                             <span  class="h1 fw-bold mb-0" style="color: rgba(243,129,129,.9);" >Create An Account</span>                                        </c:if>
@@ -47,11 +45,6 @@
 
                                         <input type="hidden" name="id" value="${form.id}" >
 
-                                        <%--                                        Email <input type="email" name="email" id="emailId" value="${form.email}">--%>
-                                        <%--                                        <c:forEach items='${bindingResult.getFieldErrors("email")}' var="error">--%>
-                                        <%--                                            <div style="color: red">${error.getDefaultMessage()}</div>--%>
-                                        <%--                                        </c:forEach>--%>
-
 
                                         <input type="email" id="form2Example17" class="form-control form-control-lg" name="email" id="emailId" value="${form.email}" />
                                         <label class="form-label" for="form2Example17">Email address</label>
@@ -62,10 +55,7 @@
 
                                     <div class="form-outline mb-4">
 
-                                        <%--                                        First Name <input type="text" name="firstName" id="firstNameId" value="${form.firstName}">--%>
-                                        <%--                                        <c:forEach items='${bindingResult.getFieldErrors("firstName")}' var="error">--%>
-                                        <%--                                            <div style="color: red">${error.getDefaultMessage()}</div>--%>
-                                        <%--                                        </c:forEach>--%>
+
                                         <input type="text" id="form2Example27" class="form-control form-control-lg" name="firstName" id="firstNameId" value="${form.firstName}" />
                                         <label class="form-label" for="form2Example27">First Name</label>
                                         <c:forEach items='${bindingResult.getFieldErrors("firstName")}' var="error">
@@ -75,10 +65,7 @@
 
                                     <div class="form-outline mb-4">
 
-                                        <%--                                        Last Name <input type="text" name="lastName" id="lastNameId" value="${form.lastName}">--%>
-                                        <%--                                        <c:forEach items='${bindingResult.getFieldErrors("lastName")}' var="error">--%>
-                                        <%--                                            <div style="color: red">${error.getDefaultMessage()}</div>--%>
-                                        <%--                                        </c:forEach>--%>
+
                                         <input type="text" id="form2Example27" class="form-control form-control-lg" name="lastName" id="lastNameId" value="${form.lastName}"/>
                                         <label class="form-label" for="form2Example27">Last Name</label>
                                         <c:forEach items='${bindingResult.getFieldErrors("lastName")}' var="error">
@@ -88,10 +75,7 @@
 
                                     <div class="form-outline mb-4">
 
-                                        <%--                                        Zip <input type="text" name="zip" id="zipId" value="${form.zip}">--%>
-                                        <%--                                        <c:forEach items='${bindingResult.getFieldErrors("zip")}' var="error">--%>
-                                        <%--                                            <div style="color: red">${error.getDefaultMessage()}</div>--%>
-                                        <%--                                        </c:forEach>--%>
+
                                         <input type="text" id="form2Example27" class="form-control form-control-lg" name="townState" id="townStateId" value="${form.townState}"/>
                                         <label class="form-label" for="form2Example27">Town, State</label>
                                         <c:forEach items='${bindingResult.getFieldErrors("townState")}' var="error">
@@ -101,10 +85,7 @@
 
                                     <div class="form-outline mb-4">
 
-                                        <%--                                        Password <input type="password" name="password" id="passwordId" >--%>
-                                        <%--                                        <c:forEach items='${bindingResult.getFieldErrors("password")}' var="error">--%>
-                                        <%--                                            <div style="color: red">${error.getDefaultMessage()}</div>--%>
-                                        <%--                                        </c:forEach>--%>
+
                                         <input type="password" id="form2Example27" class="form-control form-control-lg" name="password" id="passwordId"/>
                                         <label class="form-label" for="form2Example27">Password</label>
                                         <c:forEach items='${bindingResult.getFieldErrors("password")}' var="error">
@@ -114,10 +95,7 @@
 
                                     <div class="form-outline mb-4">
 
-                                        <%--                                        Confirm Password <input type="password" name="confirmPassword" id="confirmPasswordId">--%>
-                                        <%--                                        <c:forEach items='${bindingResult.getFieldErrors("confirmPassword")}' var="error">--%>
-                                        <%--                                            <div style="color: red">${error.getDefaultMessage()}</div>--%>
-                                        <%--                                        </c:forEach>--%>
+
                                         <input type="password" id="form2Example27" class="form-control form-control-lg" name="confirmPassword" id="confirmPasswordId"/>
                                         <label class="form-label" for="form2Example27">Confirm Password</label>
                                         <c:forEach items='${bindingResult.getFieldErrors("confirmPassword")}' var="error">
@@ -163,7 +141,7 @@
                                             </c:if>
                                             <c:if test="${not empty form.id}">
 
-                                                <button class="btn btn-dark btn-lg btn-block" type="submit" style="background-color: #f38181">Update Account</button>
+                                                <button class="btn btn-dark btn-lg btn-block" onclick="location.href='/user/profile'" style="background-color: #f38181">Update Account</button>
                                             </c:if>
 <%--                                        <button class="btn btn-dark btn-lg btn-block" type="submit" style="background-color: #f38181">Create Account</button>--%>
                                     </div>

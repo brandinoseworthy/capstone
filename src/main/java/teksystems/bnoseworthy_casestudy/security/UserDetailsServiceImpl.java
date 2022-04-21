@@ -33,8 +33,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private UserRoleDAO userRoleDao;
 
 
-
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userDao.findByEmail(username);

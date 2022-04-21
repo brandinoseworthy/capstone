@@ -7,7 +7,6 @@ import lombok.ToString;
 
 import javax.persistence.Lob;
 import javax.validation.constraints.NotBlank;
-import java.sql.Time;
 import java.util.Date;
 
 @ToString
