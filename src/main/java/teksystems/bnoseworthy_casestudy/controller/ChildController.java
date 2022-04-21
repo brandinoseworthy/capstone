@@ -95,8 +95,8 @@ public class ChildController {
 
         Child child = new Child();
 
-        child.setFirstName(childForm.getChildFirstName());
-        child.setLastName(childForm.getChildLastName());
+        child.setFirstName(childForm.getChildFirstName().trim());
+        child.setLastName(childForm.getChildLastName().trim());
         child.setAge(childForm.getChildAge());
 
         if (childForm.getImage() == "") {

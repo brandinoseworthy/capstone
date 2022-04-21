@@ -33,6 +33,8 @@ public class UserController {
     @Autowired
     private ChildDAO childDao;
 
+    @Autowired
+    private ChildrenAttendingDAO childrenAttendingDao;
 
     @Autowired
     private UserRoleDAO userRoleDao;
@@ -85,15 +87,15 @@ public class UserController {
         }
 
         log.info("Form Information: " + form);
-        user.setEmail(form.getEmail());
-        user.setFirstName(form.getFirstName());
-        user.setLastName(form.getLastName());
-        user.setTownState(form.getTownState());
-        user.setDescription(form.getDescription());
-        user.setFavoritePlaceForPlaydates(form.getFavoritePlaceForPlaydates());
+        user.setEmail(form.getEmail().toLowerCase().trim());
+        user.setFirstName(form.getFirstName().trim());
+        user.setLastName(form.getLastName().trim());
+        user.setTownState(form.getTownState().trim());
+        user.setDescription(form.getDescription().trim());
+        user.setFavoritePlaceForPlaydates(form.getFavoritePlaceForPlaydates().trim());
 
         if (form.getImageURL() == "") {
-            user.setProfileImg("https://images.pexels.com/photos/6284647/pexels-photo-6284647.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+            user.setProfileImg("https://images.pexels.com/photos/3683107/pexels-photo-3683107.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
         } else
             user.setProfileImg(form.getImageURL().trim());
 
@@ -163,7 +165,6 @@ public class UserController {
     @GetMapping(value = "/playdatepost/search")
     public ModelAndView playdateSearch(@RequestParam(name = "searchId", required = false, defaultValue = "") String searchLocation) {
         ModelAndView response = new ModelAndView();
-//        response.setViewName("/user/searchforplaydate");
         response.setViewName("/playdatepost/search");
         log.info("User is searching for: " + searchLocation);
 
@@ -185,6 +186,7 @@ public class UserController {
 
         List<Child> userChild = childDao.findChildrenByUserId(user.getId());
         response.addObject("userChild", userChild);
+
 
         return response;
     }

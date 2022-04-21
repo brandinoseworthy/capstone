@@ -6,6 +6,8 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -53,6 +55,18 @@ public class UserDAOTest {
         User actual = userDao.findById(3);
 
         org.junit.jupiter.api.Assertions.assertEquals(expected.getId(), actual.getId());
+
+    }
+    @ParameterizedTest
+    @CsvSource({"1,Brandi Lee", "2,Kaci", "3,bee"}) // 1 and 2 will pass 3 will fail.
+    public void testJUnit5CsvParameters(int id, String firstName) {
+        User expected = new User();
+        expected.setId(id);
+        expected.setFirstName(firstName);
+
+        User actual = userDao.findById(id);
+
+        Assertions.assertEquals(expected.getFirstName(),actual.getFirstName());
 
     }
 

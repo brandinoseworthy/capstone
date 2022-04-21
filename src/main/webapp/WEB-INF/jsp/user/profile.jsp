@@ -119,7 +119,7 @@
                             <div class="ms-3" style="margin-top: 130px;">
 
                                 <input type="hidden" name="firstName" id="firstNameId" value="${form.firstName}"/>
-                                <h5 style="color: white">${form.firstName}</h5>
+                                <h5 style="color: white">${form.firstName} ${form.lastName}</h5>
                                 <p>${form.townState}</p>
                             </div>
                         </div>

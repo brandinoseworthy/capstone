@@ -74,6 +74,8 @@
                                             <a href="/childrenattending/willbetheres/${playdateposts.userId}"
                                                style="color: #222222"> &hearts; </a>
                                         </button>
+
+
                                     </td>
 
                                     <c:forEach items="${userChild}" var="userChild">

@@ -49,7 +49,18 @@ public class ChildrenAttendingController {
         childrenAttendingDao.save(childrenAttending);
 
         log.info("Child ID: " + " " + childId + " " + "is registered for Post ID: " + " " + playdatepostId);
+
+        List<ChildrenAttending> kidsgoing = childrenAttendingDao.findByPlaydatePostId(playdatepostId);
+        Long bethere = kidsgoing.stream().count();
+
+        log.info("There will be: " + bethere +" kids going!"  );
+        response.addObject("kidsgoing", kidsgoing);
+
+
+
         response.setViewName("playdatepost/childregistered");
+
+
 
         return response;
     }

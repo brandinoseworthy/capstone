@@ -85,8 +85,8 @@ public class PlaydatePostController {
 
         playDatePost.setId(form.getId());
         playDatePost.setUserId(user.getId());
-        playDatePost.setPostMessage(form.getPostMessage());
-        playDatePost.setLocation(form.getLocation());
+        playDatePost.setPostMessage(form.getPostMessage().trim());
+        playDatePost.setLocation(form.getLocation().trim());
 
         //convert the date and time to a String
         Object date = form.getPlaydateDate();

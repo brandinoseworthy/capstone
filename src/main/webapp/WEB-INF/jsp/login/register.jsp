@@ -165,15 +165,20 @@
                                     <c:forEach items='${bindingResult.getFieldErrors("checkboxPrivacy")}' var="error">
                                         <div style="color: red">${error.getDefaultMessage()}</div>
                                     </c:forEach>
-
-
-
                                 </form>
 
+                                Sign Up For Newsletter? <select name="newsletter" >
+                                    <option> Yes </option>
+                                    <option> No </option>
+                                </select>
 
 
 
-                                <%--                                Check Box <input type="checkbox" name="checkbox">--%>
+
+
+
+
+                            <%--                                Check Box <input type="checkbox" name="checkbox">--%>
                                 <%--                                <c:forEach items='${bindingResult.getFieldErrors("checkbox")}' var="error">--%>
                                 <%--                                    <div style="color: red">${error.getDefaultMessage()}</div>--%>
                                 <%--                                </c:forEach>--%>
