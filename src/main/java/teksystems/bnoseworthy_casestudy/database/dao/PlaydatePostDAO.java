@@ -12,6 +12,8 @@ public interface PlaydatePostDAO extends JpaRepository<PlayDatePost, Long> {
 
      PlayDatePost findById(@Param("id") Integer id);
 
+    Integer deleteById(@Param("id") Integer id);
+
     List<PlayDatePost> findUserPlaydatePostsByUserIdOrderByPlaydateDateDesc(@Param("userId") Integer user_id);
 
     List<PlayDatePost> findPlaydatePostsByLocationContainsOrderByPlaydateDateDesc(@Param("location") String location);

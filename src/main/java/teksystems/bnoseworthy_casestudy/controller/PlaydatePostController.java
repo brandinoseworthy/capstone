@@ -10,10 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import teksystems.bnoseworthy_casestudy.database.dao.PlaydatePostDAO;
 import teksystems.bnoseworthy_casestudy.database.dao.UserDAO;
@@ -21,6 +18,7 @@ import teksystems.bnoseworthy_casestudy.database.entity.PlayDatePost;
 import teksystems.bnoseworthy_casestudy.database.entity.User;
 import teksystems.bnoseworthy_casestudy.formbean.PlayDatePostFormBean;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
@@ -145,6 +143,21 @@ public class PlaydatePostController {
         List<PlayDatePost> postList = playdatePostDao.findUserPlaydatePostsByUserIdOrderByPlaydateDateDesc(user.getId());
 
         response.addObject("postList", postList);
+
+        return response;
+
+    }
+
+
+    @Transactional
+    @RequestMapping(value = "/playdatepost/delete", method = {RequestMethod.POST, RequestMethod.GET})
+    public ModelAndView removeChild(@RequestParam(name = "id", required = false) Integer playdatepostId) throws Exception {
+        ModelAndView response = new ModelAndView();
+
+        log.info("Playdate post being removed - Post ID: " + playdatepostId);
+        playdatePostDao.deleteById(playdatepostId);
+
+        response.setViewName("redirect:/playdatepost/userposts");
 
         return response;
 
